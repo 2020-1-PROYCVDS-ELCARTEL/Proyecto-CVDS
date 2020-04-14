@@ -1,18 +1,21 @@
-create table tipoUsuario(
-	id int,
-	tipo VARCHAR(30));
+CREATE TYPE tipoUsuario AS ENUM ('Admin', 'User', 'PMO', 'Proponente');
 
+CREATE TYPE tipoEstado AS ENUM ('En espera de revisión', 'En revisión', 'Proyecto', 'Solucionado');
 
 create table usuario(
-	id int,
-	nombre VARCHAR(120),
-	correo VARCHAR(120),
-	tipoUsuario int);
-	
-ALTER TABLE tipousuario 
-ADD CONSTRAINT PK_tipoUsuario
-PRIMARY KEY (id);
+	id serial,
+	nombre VARCHAR(120) not NULL,
+	correo VARCHAR(120) not NULL,
+	contraseña VARCHAR(20) not NULL,
+	tipoUser tipoUsuario not NULL,
+	dependencia VARCHAR(100));
 
-ALTER TABLE usuario 
-ADD CONSTRAINT PK_Usuario
-PRIMARY KEY (id);
+create table iniciativa(
+	id serial,
+	nombre VARCHAR(120) not null,
+	estado tipoEstado not null,
+	numeroVotos int not null,
+	descripcion VARCHAR(300) not null,
+	palabrasClave VARCHAR(180) not null,
+	nombreUsuario VARCHAR(120) not null,
+	correoUsuario VARCHAR(120) not null);
