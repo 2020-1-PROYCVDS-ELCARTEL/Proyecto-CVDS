@@ -7,13 +7,15 @@ public class Usuario {
     private String contraseña;
     private String correo;
     private String tipoUsuario;
+    private String dependencia;
 
-    public Usuario(int id, String nombre, String contraseña, String correo, String tipoUsuario) {
+    public Usuario(int id, String nombre, String contraseña, String correo, String tipoUsuario, String dependencia) {
         this.id = id;
         this.nombre = nombre;
         this.contraseña = contraseña;
         this.correo = correo;
         this.tipoUsuario = tipoUsuario;
+        this.dependencia = dependencia;
     }
 
     public int getId() {
@@ -52,9 +54,11 @@ public class Usuario {
         return tipoUsuario;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
+    public void setTipoUsuario(String tipoUsuario) { this.tipoUsuario = tipoUsuario; }
+
+    public String getDependencia() {return dependencia; }
+
+    public void setDependencia(String dependencia) { this.dependencia = dependencia; }
 
     @Override
     public String toString() {

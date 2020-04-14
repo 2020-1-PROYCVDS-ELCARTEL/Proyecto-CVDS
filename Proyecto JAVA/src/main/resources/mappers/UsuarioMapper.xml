@@ -5,41 +5,46 @@
 
 <mapper namespace="persistence.mybatisimpl.mappers.UsuarioMapper">
 
+
+
+    <select parameterType="map" id="getUser" resultMap="UserResult">
+        SELECT
+        u.id,
+        u.nombre,
+        u.correo,
+        u.contraseña,
+        u.tipouser,
+        u.dependencia
+        FROM
+        usuario as u WHERE u.correo=#{correoUser}
+    </select>
+
+    <select parameterType="map" id="getUsers" resultMap="UserResult">
+        SELECT
+        u.id,
+        u.nombre,
+        u.correo,
+        u.contraseña,
+        u.tipouser,
+        u.dependencia
+        FROM
+        usuario as u
+    </select>
+
+    <insert id="insertUser">
+        insert into usuario(id,nombre,correo,contraseña,tipoUser,dependencia) values (#{id},#{nombre},#{correo},#{contraseña},#{tipoUsuario}, #{dependencia})
+    </insert>
+
+
+
     <resultMap type='User' id='UserResult'>
         <id property='id' column='id'/>
         <result property='nombre' column='nombre'/>
         <result property='correo' column='correo'/>
         <result property='contraseña' column='contraseña'/>
         <result property='tipoUser' column='tipoUser'/>
+        <result property='dependencia' column='dependencia'/>
     </resultMap>
 
-    <select parameterType="map" id="getUsers" resultMap="UserResult">
-        SELECT
-        u.id,
-        u.nombre,
-        u.correo,
-        u.contraseña,
-        u.tipouser
-        FROM
-        usuario as u WHERE u.correo={correoUser}
-    </select>
 
-    <select parameterType="map" id="getUsers" resultMap="UserResult">
-        SELECT
-        u.id,
-        u.nombre,
-        u.correo,
-        u.contraseña,
-        u.tipouser
-        FROM
-        usuario as u
-    </select>
-
-    <insert id="insertUser" parameterType="entities.Usuario">
-        insert into usuario(id,nombre,correo,contraseña,tipoUser) values (#{id},#{nombre},#{correo},#{contraseña},#{tipoUsuario})
-    </insert>
-
-    <delete id="deleteAll">
-        delete from usuario
-    </delete>
 </mapper>

@@ -24,7 +24,7 @@ public class GuiceContextListener implements ServletContextListener {
 
                                                          setEnvironmentId("development");
 
-                                                         setClassPathResource("mybatis-config.xml");
+                                                         setClassPathResource("bd-config.xml");
 
                                                          // Blog
                                                          //bind(BlogServices.class).to(BlogServicesImpl.class);

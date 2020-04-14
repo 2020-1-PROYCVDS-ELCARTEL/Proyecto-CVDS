@@ -5,56 +5,55 @@
 
 
 	<listener>
-		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>  
+		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
 	</listener>
 
 	<listener>
-    	<listener-class>edu.eci.cvds.guice.GuiceContextListener</listener-class>
+		<listener-class>guice.GuiceContextListener</listener-class>
 	</listener>
 
 	<listener>
-        <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
-    </listener>
-		
+		<listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+	</listener>
+
 	<filter>
-    <filter-name>ShiroFilter</filter-name>
-    <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
-   </filter>
+		<filter-name>ShiroFilter</filter-name>
+		<filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+	</filter>
 
-   <filter-mapping>
-    <filter-name>ShiroFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
-    <dispatcher>INCLUDE</dispatcher>
-    <dispatcher>ERROR</dispatcher>
-   </filter-mapping>
- 	
-	
+	<filter-mapping>
+		<filter-name>ShiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+
+
 	<servlet>
-   		<servlet-name>Faces Servlet</servlet-name>
-   		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-   		<load-on-startup>1</load-on-startup>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+
 	<servlet-mapping>
-   		<servlet-name>Faces Servlet</servlet-name>
-   		<url-pattern>*.xhtml</url-pattern>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet-mapping>
-   		<servlet-name>Faces Servlet</servlet-name>
-   		<url-pattern>/faces/*</url-pattern>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
 	</servlet-mapping>
 
 	<error-page>
-        <error-code>404</error-code>
-        <location>/iniciosesion.xhtml</location>
-    </error-page>
+		<error-code>404</error-code>
+		<location>/iniciosesion.xhtml</location>
+	</error-page>
 
 
-    <welcome-file-list>
-        <welcome-file>iniciosesion.xhtml</welcome-file>
-    </welcome-file-list>
-	
-</web-app>
+	<welcome-file-list>
+		<welcome-file>iniciosesion.xhtml</welcome-file>
+	</welcome-file-list>
+	</web-app>

@@ -11,21 +11,35 @@
         <result property='correo' column='correo'/>
         <result property='contraseña' column='contraseña'/>
         <result property='tipoUser' column='tipoUser'/>
+        <result property='dependencia' column='dependencia'/>
     </resultMap>
 
-    <select id="getUsers" resultMap="UserResult">
+    <select parameterType="map" id="getUsers" resultMap="UserResult">
         SELECT
         u.id,
         u.nombre,
         u.correo,
         u.contraseña,
-        u.tipouser
+        u.tipouser,
+        u.dependencia
+        FROM
+        usuario as u WHERE u.correo=#{correoUser}
+    </select>
+
+    <select parameterType="map" id="getUsers" resultMap="UserResult">
+        SELECT
+        u.id,
+        u.nombre,
+        u.correo,
+        u.contraseña,
+        u.tipouser,
+        u.dependencia
         FROM
         usuario as u
     </select>
 
     <insert id="insertUser" parameterType="entities.Usuario">
-        insert into usuario(id,nombre,correo,contraseña,tipoUser) values (#{id},#{nombre},#{correo},#{contraseña},#{tipoUsuario})
+        insert into usuario(id,nombre,correo,contraseña,tipoUser, u.dependencia) values (#{id},#{nombre},#{correo},#{contraseña},#{tipoUsuario}, #{dependencia})
     </insert>
 
     <delete id="deleteAll">

@@ -1,7 +1,7 @@
 package persistence;
 
 import entities.Usuario;
-import org.apache.ibatis.annotations.Param;
+import exceptions.PersistenceException;
 
 import java.util.List;
 

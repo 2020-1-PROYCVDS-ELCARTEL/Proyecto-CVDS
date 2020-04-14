@@ -7,7 +7,7 @@ import entities.Usuario;
 
 import com.google.inject.Inject;
 
-import persistence.PersistenceException;
+import exceptions.PersistenceException;
 import persistence.UsuarioDAO;
 import persistence.mybatisimpl.mappers.UsuarioMapper;
 
