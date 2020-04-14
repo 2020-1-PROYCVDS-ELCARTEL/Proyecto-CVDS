@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BasePageBean.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BancoDeProyectos</a> &gt; <a href="index.source.html" class="el_package">managedbeans</a> &gt; <span class="el_source">BasePageBean.java</span></div><h1>BasePageBean.java</h1><pre class="source lang-java linenums">package managedbeans;
+
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
+
+import com.google.inject.Injector;
+
+
+import persistence.UsuarioDAO;
+import services.ServiciosUsuario;
+
+
+@SuppressWarnings(&quot;deprecation&quot;)
+@ManagedBean(name=&quot;ReservaBean&quot;)
+@SessionScoped
+<span class="nc" id="L20">public class BasePageBean implements Serializable {</span>
+
+    private static final long serialVersionUID = 1L;
+
+    private Injector injector;
+    private long idRec;
+    private String usuario;
+
+
+    private Injector getInjector() {
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        if (injector == null) {</span>
+<span class="nc" id="L31">            ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext()</span>
+<span class="nc" id="L32">                    .getContext();</span>
+<span class="nc" id="L33">            injector = (Injector) servletContext.getAttribute(Injector.class.getName());</span>
+        }
+<span class="nc" id="L35">        return injector;</span>
+    }
+
+    protected UsuarioDAO getClientDao() {
+<span class="nc" id="L39">        return getInjector().getInstance(UsuarioDAO.class);</span>
+    }
+
+    protected ServiciosUsuario getServiciosUsuario() {
+<span class="nc" id="L43">        return getInjector().getInstance(ServiciosUsuario.class);</span>
+    }
+
+    protected void mensajeApp(Exception e) {
+<span class="nc" id="L47">        Mensajes.mensajeAplicacion(e.getMessage());</span>
+<span class="nc" id="L48">    }</span>
+
+
+
+    public String page01(){
+<span class="nc" id="L53">        return &quot;menuAdmin?faces-redirect=true&quot;;</span>
+    }
+
+    public String page02(){
+<span class="nc" id="L57">        return &quot;menuCom?faces-redirect=true&quot;;</span>
+    }
+
+    public String page1(){
+<span class="nc" id="L61">        return &quot;iniciosesion?faces-redirect=true&quot;;</span>
+    }
+
+    public String page2(){
+<span class="nc" id="L65">        return &quot;registroRecursos?faces-redirect=true&quot;;</span>
+    }
+
+    public String page3(){
+<span class="nc" id="L69">        return &quot;recursosAdmin?faces-redirect=true&quot;;</span>
+    }
+
+
+    public String page4(){
+<span class="nc" id="L74">        return &quot;reservas?faces-redirect=true&quot;;</span>
+    }
+
+    public String page5(){
+<span class="nc" id="L78">        return &quot;registroUsuarios?faces-redirect=true&quot;;</span>
+    }
+
+    public String page6(){
+<span class="nc" id="L82">        return &quot;cerrarsesion?faces-redirect=true&quot;;</span>
+    }
+
+    public String page7(){
+<span class="nc" id="L86">        return &quot;horario?faces-redirect=true&quot;;</span>
+    }
+
+    public String page8(){
+<span class="nc" id="L90">        return &quot;recursosComunidad?faces-redirect=true&quot;;</span>
+    }
+
+    public String page9(){
+<span class="nc" id="L94">        return &quot;usuarios?faces-redirect=true&quot;;</span>
+    }
+
+    public String page10(){
+<span class="nc" id="L98">        return &quot;registroUsuarios?faces-redirect=true&quot;;</span>
+    }
+
+    public String page11(){
+<span class="nc" id="L102">        return &quot;tipos?faces-redirect=true&quot;;</span>
+    }
+
+    public String page12(){
+<span class="nc" id="L106">        return &quot;cargos?faces-redirect=true&quot;;</span>
+    }
+
+    public long getIdRec() {
+<span class="nc" id="L110">        return this.idRec;</span>
+    }
+
+    public void setIdRec(long a) {
+<span class="nc" id="L114">        this.idRec=a;</span>
+<span class="nc" id="L115">    }</span>
+
+    public String getUsuario(){
+<span class="nc" id="L118">        return this.usuario;</span>
+    }
+
+    public void setUsuario (String usuario){
+<span class="nc" id="L122">        this.usuario = usuario;</span>
+<span class="nc" id="L123">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

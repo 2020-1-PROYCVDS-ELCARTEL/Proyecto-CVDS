@@ -18,4 +18,5 @@ create table iniciativa(
 	descripcion VARCHAR(300) not null,
 	palabrasClave VARCHAR(180) not null,
 	nombreUsuario VARCHAR(120) not null,
-	correoUsuario VARCHAR(120) not null);
+	correoUsuario VARCHAR(120) not null,
+	fecha date not null);
