@@ -13,7 +13,18 @@
         <result property='tipoUser' column='tipoUser'/>
     </resultMap>
 
-    <select id="getUsers" resultMap="UserResult">
+    <select parameterType="map" id="getUsers" resultMap="UserResult">
+        SELECT
+        u.id,
+        u.nombre,
+        u.correo,
+        u.contraseña,
+        u.tipouser
+        FROM
+        usuario as u WHERE u.correo={correoUser}
+    </select>
+
+    <select parameterType="map" id="getUsers" resultMap="UserResult">
         SELECT
         u.id,
         u.nombre,

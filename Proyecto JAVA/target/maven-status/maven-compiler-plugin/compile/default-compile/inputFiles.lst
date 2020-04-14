@@ -1,5 +1,6 @@
-C:\Users\juanm\OneDrive\Documentos\prueba\src\main\java\Controller\UsuarioController.java
-C:\Users\juanm\OneDrive\Documentos\prueba\src\main\java\ejb\FachadeAbstracta.java
-C:\Users\juanm\OneDrive\Documentos\prueba\src\main\java\model\Usuario.java
-C:\Users\juanm\OneDrive\Documentos\prueba\src\main\java\ejb\UsuarioFachadaLocal.java
-C:\Users\juanm\OneDrive\Documentos\prueba\src\main\java\ejb\UsuarioFachada.java
+C:\Users\juanm\Downloads\Proyecto-CVDS\Proyecto JAVA\src\main\java\persistence\mybatisimpl\mappers\UsuarioMapper.java
+C:\Users\juanm\Downloads\Proyecto-CVDS\Proyecto JAVA\src\main\java\persistence\mybatisimpl\MyBatisUsuarioDAO.java
+C:\Users\juanm\Downloads\Proyecto-CVDS\Proyecto JAVA\src\main\java\persistence\PersistenceException.java
+C:\Users\juanm\Downloads\Proyecto-CVDS\Proyecto JAVA\src\main\java\persistence\UsuarioDAO.java
+C:\Users\juanm\Downloads\Proyecto-CVDS\Proyecto JAVA\src\main\java\entities\Usuario.java
+C:\Users\juanm\Downloads\Proyecto-CVDS\Proyecto JAVA\src\main\java\guice\GuiceContextListener.java

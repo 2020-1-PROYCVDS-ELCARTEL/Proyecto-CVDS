@@ -1,5 +1,7 @@
-ejb\UsuarioFachadaLocal.class
-ejb\UsuarioFachada.class
-ejb\FachadeAbstracta.class
-model\Usuario.class
-Controller\UsuarioController.class
+persistence\mybatisimpl\MyBatisUsuarioDAO.class
+persistence\UsuarioDAO.class
+guice\GuiceContextListener$1.class
+guice\GuiceContextListener.class
+persistence\mybatisimpl\mappers\UsuarioMapper.class
+entities\Usuario.class
+persistence\PersistenceException.class
