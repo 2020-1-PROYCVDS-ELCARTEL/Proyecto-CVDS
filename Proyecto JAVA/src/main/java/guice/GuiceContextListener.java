@@ -2,10 +2,13 @@ package guice;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+
 import entities.Usuario;
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
+import persistence.IniciativaDAO;
 import persistence.UsuarioDAO;
+import persistence.mybatisimpl.MyBatisIniciativaDAO;
 import persistence.mybatisimpl.MyBatisUsuarioDAO;
 
 import javax.servlet.ServletContext;
@@ -31,6 +34,7 @@ public class GuiceContextListener implements ServletContextListener {
                                                          //bind(BlogDAO.class).to(MyBatisBlogDAO.class);
                                                          // Users
                                                          bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
+                                                         bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
                                                      }
                                                  }
 

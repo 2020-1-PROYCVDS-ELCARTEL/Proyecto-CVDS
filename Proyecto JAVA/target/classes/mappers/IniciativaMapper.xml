@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="persistence.mybatisimpl.mappers.IniciativaMapper">
+
+    <select parameterType="map" id="getIniciativaId" resultMap="IniciativaResult">
+        SELECT
+        i.id,
+        i.nombre,
+        i.estado,
+        i.numerovotos,
+        i.descripcion,
+        i.palabrasclave,
+        i.nombreusuario
+        i.correousuario,
+        i.fecha
+        FROM
+        iniciativa as i WHERE i.=#{idIniciativa}
+    </select>
+
+    <select parameterType="map" id="getIniciativasPaClave" resultMap="IniciativaResult">
+        SELECT
+        i.id,
+        i.nombre,
+        i.estado,
+        i.numerovotos,
+        i.descripcion,
+        i.palabrasclave,
+        i.nombreusuario
+        i.correousuario,
+        i.fecha
+        FROM
+        iniciativa as i WHERE i.=#{palabraClave}
+    </select>
+
+    <select parameterType="map" id="getIniciativasAll" resultMap="IniciativaResult">
+        SELECT
+        i.id,
+        i.nombre,
+        i.estado,
+        i.numerovotos,
+        i.descripcion,
+        i.palabrasclave,
+        i.nombreusuario
+        i.correousuario,
+        i.fecha
+        FROM
+        iniciativa as i
+    </select>
+
+    <insert id="insertIniciativa">
+        insert into (id,nombre,correo,contraseña,tipoUser,dependencia) values (#{id},#{nombre},#{correo},#{contraseña},#{tipoUsuario}, #{dependencia})
+    </insert>
+
+    <resultMap type='User' id='IniciativaResult'>
+        <id property='id' column='id'/>
+        <result property='nombre' column='nombre'/>
+        <result property='estado' column='estado'/>
+        <result property='numerovotos' column='numerovotos'/>
+        <result property='descripcion' column='descripcion'/>
+        <result property='palabrasclave' column='palabrasclave'/>
+        <result property='nombreusuario' column='nombreusuario'/>
+        <result property='correousuario' column='correousuario'/>
+        <result property='fecha' column='fecha'/>
+    </resultMap>
+
+
+</mapper>
