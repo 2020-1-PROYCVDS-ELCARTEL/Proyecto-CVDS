@@ -7,7 +7,7 @@
 
 
 
-    <select parameterType="map" id="getUser" resultMap="UserResult">
+    <select parameterType="map" id="getUsuario" resultMap="UserResult">
         SELECT
         u.id,
         u.nombre,
@@ -19,7 +19,7 @@
         usuario as u WHERE u.correo=#{correoUser}
     </select>
 
-    <select parameterType="map" id="getUsers" resultMap="UserResult">
+    <select parameterType="map" id="getUsuarios" resultMap="UserResult">
         SELECT
         u.id,
         u.nombre,
@@ -31,8 +31,8 @@
         usuario as u
     </select>
 
-    <insert id="insertUser">
-        insert into usuario(id,nombre,correo,contraseña,tipoUser,dependencia) values (#{id},#{nombre},#{correo},#{contraseña},#{tipoUsuario}, #{dependencia})
+    <insert id="insertUsuario">
+        insert into usuario(nombre,correo,contraseña,tipoUser,dependencia) values (#{nombre},#{correo},#{contraseña},#{tipoUsuario}, #{dependencia})
     </insert>
 
     <delete id="deleteAll">

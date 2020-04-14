@@ -11,7 +11,7 @@ public interface IniciativaDAO {
     public List<Iniciativa> getIniciativas(String palabraClave)  throws PersistenceException;
     public Iniciativa getIniciativa(int id) throws PersistenceException;
     public List<Iniciativa> getIniciativas() throws PersistenceException;
-    public void updateIniciativa(String nombreIniciativa) throws PersistenceException;
+    public void updateIniciativa(Iniciativa iniciativa) throws PersistenceException;
 
 
 }

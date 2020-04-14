@@ -25,7 +25,7 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     @Override
     public List<Iniciativa> getIniciativas(String palabraClave) throws PersistenceException {
         try {
-            return iniciativaMapper.getIniciativas(palabraClave);
+            return iniciativaMapper.getIniciativasPaClave(palabraClave);
         }catch (Exception e){
             e.printStackTrace();
             throw new PersistenceException("Load error iniciativa str palabras clave");
@@ -35,7 +35,7 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     @Override
     public Iniciativa getIniciativa(int id) throws PersistenceException {
         try {
-            return iniciativaMapper.getIniciativa(id);
+            return iniciativaMapper.getIniciativaId(id);
         }catch (Exception e){
             e.printStackTrace();
             throw new PersistenceException("Load error iniciativa id");
@@ -45,7 +45,7 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     @Override
     public List<Iniciativa> getIniciativas() throws PersistenceException {
         try {
-            return iniciativaMapper.getIniciativas();
+            return iniciativaMapper.getIniciativasAll();
         }catch (Exception e){
             e.printStackTrace();
             throw new PersistenceException("Load error iniciativa todas, sin parametro");
@@ -53,9 +53,9 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     }
 
     @Override
-    public void updateIniciativa(String nombreIniciativa) throws PersistenceException {
+    public void updateIniciativa(Iniciativa iniciativa) throws PersistenceException {
         try {
-            iniciativaMapper.updateIniciativa(nombreIniciativa);
+            iniciativaMapper.updateIniciativa(iniciativa);
         }catch (Exception e){
             e.printStackTrace();
             throw new PersistenceException("Update error iniciativa nombre");
