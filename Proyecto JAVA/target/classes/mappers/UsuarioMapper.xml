@@ -32,7 +32,7 @@
     </select>
 
     <insert id="insertUsuario">
-        insert into usuario(id,nombre,correo,contraseña,tipoUser,dependencia) values (#{id},#{nombre},#{correo},#{contraseña},#{tipoUsuario}, #{dependencia})
+        insert into usuario(nombre,correo,contraseña,tipoUser,dependencia) values (#{nombre},#{correo},#{contraseña},#{tipoUsuario}, #{dependencia})
     </insert>
 
     <delete id="deleteAll">

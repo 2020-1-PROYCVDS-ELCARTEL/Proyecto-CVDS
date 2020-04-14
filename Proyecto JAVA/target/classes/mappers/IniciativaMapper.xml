@@ -13,11 +13,11 @@
         i.numerovotos,
         i.descripcion,
         i.palabrasclave,
-        i.nombreusuario
+        i.nombreusuario,
         i.correousuario,
         i.fecha
         FROM
-        iniciativa as i WHERE i.=#{idIniciativa}
+        iniciativa as i WHERE i.id=#{idIniciativa}
     </select>
 
     <select parameterType="map" id="getIniciativasPaClave" resultMap="IniciativaResult">
@@ -28,11 +28,12 @@
         i.numerovotos,
         i.descripcion,
         i.palabrasclave,
-        i.nombreusuario
+        i.nombreusuario,
         i.correousuario,
         i.fecha
         FROM
-        iniciativa as i WHERE i.=#{palabraClave}
+        iniciativa as i WHERE i.palabrasclave LIKE '%'+#{palabraClave}+'%'
+        <!--Preguntar si el like esta bien-->
     </select>
 
     <select parameterType="map" id="getIniciativasAll" resultMap="IniciativaResult">
@@ -43,7 +44,7 @@
         i.numerovotos,
         i.descripcion,
         i.palabrasclave,
-        i.nombreusuario
+        i.nombreusuario,
         i.correousuario,
         i.fecha
         FROM
@@ -51,8 +52,12 @@
     </select>
 
     <insert id="insertIniciativa">
-        insert into (id,nombre,correo,contraseña,tipoUser,dependencia) values (#{id},#{nombre},#{correo},#{contraseña},#{tipoUsuario}, #{dependencia})
+        insert into iniciativa (nombre,estado,numerovotos,descripcion,palabrasclave, nombreusuario, correousuario,fecha) values (#{nombre},#{estado},#{numerovotos},#{descripcion},#{palabrasclave}, #{nombreusuario}, #{correousuario}, #{fecha})
     </insert>
+
+    <update id="updateIniciativa">
+        update iniciativa set estado=#{estado}, numerovotos=#{numerovotos} where nombre = #{nombre};
+    </update>
 
     <resultMap type='User' id='IniciativaResult'>
         <id property='id' column='id'/>
