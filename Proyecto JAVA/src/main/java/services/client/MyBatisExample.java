@@ -29,12 +29,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import persistence.mybatisimpl.mappers.UsuarioMapper;
+import services.bancoIdeasServices;
 
-
-/**
- *
- * @author hcadavid
- */
 public class MyBatisExample {
 
     /**
@@ -69,6 +66,13 @@ public class MyBatisExample {
     public static void main(String args[]) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
         SqlSession sqlss = sessionfact.openSession();
+
+        
+        UsuarioMapper usuario = sqlss.getMapper(UsuarioMapper.class);
+        System.out.println(usuario.getUsuario("santiago@gmail.com"));
+
+
+        
 
 
 

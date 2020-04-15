@@ -1,0 +1,17 @@
+managedbeans\UsuarioBean.class
+managedbeans\BasePageBean.class
+persistence\mybatisimpl\MyBatisIniciativaDAO.class
+services\impl\ServiciosUsuarioImpl.class
+guice\GuiceContextListener.class
+exceptions\PersistenceException.class
+persistence\IniciativaDAO.class
+entities\Iniciativa.class
+persistence\mybatisimpl\mappers\UsuarioMapper.class
+managedbeans\Mensajes.class
+persistence\mybatisimpl\MyBatisUsuarioDAO.class
+persistence\UsuarioDAO.class
+guice\GuiceContextListener$1.class
+services\ServiciosUsuario.class
+exceptions\ServiciosUsuarioException.class
+persistence\mybatisimpl\mappers\IniciativaMapper.class
+entities\Usuario.class

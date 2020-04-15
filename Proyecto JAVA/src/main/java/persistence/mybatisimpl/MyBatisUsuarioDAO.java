@@ -16,18 +16,18 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
     UsuarioMapper usuarioMapper;
 
     @Override
-    public void insertUsuario(Usuario usuario) throws PersistenceException {
+    public void insertUsuario(final Usuario usuario) throws PersistenceException {
         try {
             usuarioMapper.insertUsuario(usuario);
-        }catch (Exception e){
+        }catch (final Exception e){
             e.printStackTrace();
             throw new PersistenceException("Save error");
         }
     }
 
     @Override
-    public Usuario getUsuario(String correo) throws PersistenceException {
-        Usuario user=usuarioMapper.getUsuario(correo);
+    public Usuario getUsuario(final String correo) throws PersistenceException {
+        final Usuario user=usuarioMapper.getUsuario(correo);
         if(user==null) throw new PersistenceException("Error al consultar cliente "+ correo+
                 " - No existe");
         else return user;
@@ -37,7 +37,7 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
     public List<Usuario> getUsuarios() throws PersistenceException {
         try {
             return usuarioMapper.getUsuarios();
-        }catch (Exception e){
+        }catch (final Exception e){
             e.printStackTrace();
             throw new PersistenceException("Load error");
         }

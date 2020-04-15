@@ -39,7 +39,7 @@
         delete from usuario
     </delete>
 
-    <resultMap type='User' id='UserResult'>
+    <resultMap type='Usuario' id='UserResult'>
         <id property='id' column='id'/>
         <result property='nombre' column='nombre'/>
         <result property='correo' column='correo'/>
