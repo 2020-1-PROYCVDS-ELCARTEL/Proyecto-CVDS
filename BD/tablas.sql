@@ -1,12 +1,12 @@
 CREATE TYPE tipoUsuario AS ENUM ('Admin', 'User', 'PMO', 'Proponente');
 
-CREATE TYPE tipoEstado AS ENUM ('En espera de revisión', 'En revisión', 'Proyecto', 'Solucionado');
+CREATE TYPE tipoEstado AS ENUM ('En espera de revision', 'En revision', 'Proyecto', 'Solucionado');
 
 create table usuario(
 	id serial,
 	nombre VARCHAR(120) not NULL,
 	correo VARCHAR(120) not NULL,
-	contraseña VARCHAR(20) not NULL,
+	contrasena VARCHAR(20) not NULL,
 	tipoUser tipoUsuario not NULL,
 	dependencia VARCHAR(100));
 

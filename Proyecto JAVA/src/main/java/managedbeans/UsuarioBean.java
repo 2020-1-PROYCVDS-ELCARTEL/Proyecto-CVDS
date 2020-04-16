@@ -56,7 +56,7 @@ public class UsuarioBean implements Serializable {
         catch (IncorrectCredentialsException e) {
             this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
+                    new FacesMessage("contrasena incorrecta", "La contrasena ingresada no es correcta"));
 
         }
     }
