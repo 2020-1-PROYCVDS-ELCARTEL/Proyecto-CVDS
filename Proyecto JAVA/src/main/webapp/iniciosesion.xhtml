@@ -25,7 +25,7 @@
     
     <h:body>
 
-		<f:event type="preRenderView" listener="#{Log.isLogged}"/>
+		<f:event type="preRenderView" listener="#{LoginBean.isLogged}"/>
 		<div class="imgContainer">
     		 <img src="img/inicio.png" alt="inicio" class="inicio"/>
   		</div>
@@ -42,7 +42,7 @@
 		                <div class="form-group">
 		    				<label for="correo"><b>Usuario</b></label><br/>
 		    				<p:inputText id ="correo" type="text" name="correo" placeholder="Enter Email" class="form-control" 
-		    				value="#{Log.userName}" required="true" requiredMessage="Please enter your Email" />
+		    				value="#{LoginBean.userName}" required="true" requiredMessage="Please enter your Email" />
 						</div> 
 		            
 		            	<br/>
@@ -50,13 +50,13 @@
 			            <div class="form-group">
 			            	<label for="passwd"><b>Contraseña</b></label><br/>
 			    			<p:inputText id ="password" type="password" name="passwd"  placeholder="Enter password" class="form-control" 
-			    			value="#{Log.password}" required="true" requiredMessage="Please enter your Password"/>
+			    			value="#{LoginBean.password}" required="true" requiredMessage="Please enter your Password"/>
 						</div>
 						
 						<br/>
 						
 						<h:panelGrid cellpadding="10" style="margin: auto;" >
-							<p:commandButton value="Ingresar" action="#{Log.login}" update="iniciosesion_form"/>
+							<p:commandButton value="Ingresar" action="#{LoginBean.login}" update="iniciosesion_form"/>
 						</h:panelGrid>
 
 					</div>

@@ -52,5 +52,14 @@ public class ServiciosUsuarioImpl implements ServiciosUsuario {
 
     }
 
+    public boolean validarLogin(String correo, String password) throws ServiciosUsuarioException {
+        Usuario usuario = consultarUsuario(correo);
+        boolean bandera = false;
+        if(password==usuario.getcontrasena()){
+            bandera = true;
+        }
+        return bandera;
+    }
+
 
 }

@@ -45,8 +45,8 @@ public class bancoIdeasServicesFactory {
 
     }
 
-    public bancoIdeasServices getIdeas(){
-        return bancoInjector.getInstance(bancoIdeasServices.class);
+    public ServiciosUsuario getIdeas(){
+        return bancoInjector.getInstance(ServiciosUsuario.class);
     }
     public ServiciosUsuario getIdeasTesting(){
         return testInjector.getInstance(ServiciosUsuario.class);

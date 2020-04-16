@@ -49,8 +49,11 @@ public class UsuarioBean implements Serializable {
 
             token.setRememberMe(true);
             */
-            serviciosUsuario.consultarUsuario(userName);
-            System.out.println("funciono");
+            if(serviciosUsuario.validarLogin(userName, password)){
+                System.out.println("funciono");
+                redirectTo("menu.xhtml");
+            }
+
 
 
         /*} catch (UnknownAccountException e) {

@@ -1,6 +1,5 @@
 managedbeans\UsuarioBean.class
 managedbeans\BasePageBean.class
-services\client\MyBatisExample.class
 persistence\IniciativaDAO.class
 entities\Iniciativa.class
 services\ServicesException.class
@@ -9,7 +8,6 @@ persistence\UsuarioDAO.class
 services\ServiciosUsuario.class
 exceptions\ServiciosUsuarioException.class
 persistence\mybatisimpl\mappers\IniciativaMapper.class
-services\bancoIdeasServices.class
 services\bancoIdeasServicesFactory$2.class
 persistence\mybatisimpl\MyBatisIniciativaDAO.class
 services\impl\ServiciosUsuarioImpl.class
