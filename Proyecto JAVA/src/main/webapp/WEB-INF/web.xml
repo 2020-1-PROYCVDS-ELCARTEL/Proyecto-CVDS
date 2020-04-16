@@ -47,11 +47,20 @@
 		<url-pattern>/faces/*</url-pattern>
 	</servlet-mapping>
 
+	<context-param>
+		<param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
 	<error-page>
 		<error-code>404</error-code>
 		<location>/iniciosesion.xhtml</location>
 	</error-page>
 
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/iniciosesion.xhtml</location>
+	</error-page>
 
 	<welcome-file-list>
 		<welcome-file>iniciosesion.xhtml</welcome-file>

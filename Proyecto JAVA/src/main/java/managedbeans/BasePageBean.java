@@ -24,7 +24,6 @@ public class BasePageBean implements Serializable {
     private Injector injector;
     private long idRec;
     private String usuario;
-    private UsuarioBean usuarioBean;
 
 
     private Injector getInjector() {
@@ -51,8 +50,6 @@ public class BasePageBean implements Serializable {
 
 
     public String page01(){
-
-
         return "menu?faces-redirect=true";
     }
 

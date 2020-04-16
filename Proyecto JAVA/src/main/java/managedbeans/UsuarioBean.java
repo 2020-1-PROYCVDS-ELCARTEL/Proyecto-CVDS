@@ -1,9 +1,7 @@
 package managedbeans;
-
 import java.io.IOException;
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -15,10 +13,8 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import exceptions.ServiciosUsuarioException;
-import entities.Usuario;
-import services.ServiciosUsuario;
 
 @Deprecated
 @ManagedBean(name = "LoginBean")
@@ -30,39 +26,30 @@ public class UsuarioBean implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-
+    @ManagedProperty(value = "#{PageBean}")
     private BasePageBean baseBean;
 
     private String userName;
     private String password;
     private boolean rememberMe;
     private boolean user, admin, noLogged;
-    private ServiciosUsuario serviciosUsuario;
 
-    /*@PostConstruct
-    public void init() {
-        serviciosUsuario=baseBean.getServiciosUsuario();
-    }*/
 
     public void login() {
         try {
-            /*Subject currentUser = SecurityUtils.getSubject();
-            UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
+            Subject currentUser = SecurityUtils.getSubject();
+            Session session = currentUser.getSession();
+            session.setAttribute("correo", "password");
+            UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
 
             currentUser.login(token);
-            currentUser.getSession().setAttribute("correo", userName);
+            //currentUser.getSession().setAttribute("correo", userName);
 
-            token.setRememberMe(true);
-            */
-            if(serviciosUsuario.validarLogin(userName, password)){
-                //redirectTo("/faces/menu.xhtml");
-                System.out.println("funciono");
-                //isLogged();
+            //token.setRememberMe(true);
+            if (currentUser.isAuthenticated()){
+                redirectToMenu();
             }
-
-
-
-        /*} catch (UnknownAccountException e) {
+        } catch (UnknownAccountException e) {
             this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
@@ -71,15 +58,12 @@ public class UsuarioBean implements Serializable {
         catch (IncorrectCredentialsException e) {
             this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage("contrasena incorrecta", "La contrasena ingresada no es correcta"));
+                    new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
 
-        }*/
-        } catch (ServiciosUsuarioException e) {
-            e.printStackTrace();
         }
     }
 
-        public boolean isNoLogged() {
+    public boolean isNoLogged() {
         return noLogged;
     }
 
@@ -92,7 +76,7 @@ public class UsuarioBean implements Serializable {
             if(getUser().isAuthenticated()) {
                 getUser().logout();
 
-                redirectTo("iniciosesion.xhtml");
+                redirectTo("/faces/iniciosesion.xhtml");
 
             }
         }
@@ -104,19 +88,29 @@ public class UsuarioBean implements Serializable {
 
     }
 
+    public void redirectToMenu(){
+        if(getUser()!=null) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/menu.xhtml");
+            } catch (IOException e) {
+                this.baseBean.mensajeApp(e);
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
     public void isLogged(){
-        System.out.println("funciono");
         Subject subject = SecurityUtils.getSubject();
         if ((subject.getSession().getAttribute("correo") != null) && subject.getSession().getAttribute("correo")!="NoRegistrado"){
-            redirectTo("/faces/menu.xhtml");
-
+            //redirectToMenu();
         }
         else{
             userName = null;
             password = null;
         }
     }
-
 
     public void redirectTo(String path){
         try {
@@ -131,10 +125,10 @@ public class UsuarioBean implements Serializable {
         this.user = false;
         this.admin = false;
         if (getUser()!=null){
-            if (getUser().hasRole("admin")){
+            if (getUser().hasRole("administrador")){
                 this.admin = true;
             }
-            else {
+            else if(getUser().hasRole("Comunidad")){
                 this.user = true;
             }
         }

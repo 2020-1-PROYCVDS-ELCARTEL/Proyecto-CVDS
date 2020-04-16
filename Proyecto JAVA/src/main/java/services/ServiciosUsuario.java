@@ -15,8 +15,5 @@ public interface ServiciosUsuario {
 
     public void insertarUsuario(Usuario user) throws ServiciosUsuarioException;
 
-    public boolean validarLogin(String correo, String password) throws ServiciosUsuarioException;
-
-
 
 }

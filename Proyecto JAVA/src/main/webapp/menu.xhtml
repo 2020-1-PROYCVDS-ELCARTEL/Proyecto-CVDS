@@ -34,28 +34,28 @@
 				<div class="contenedor">
 				
 					<div class="elemento" id="uno">
-						<p:commandLink action="#{LogBean.redirectTo('RPerfiles.xhtml')}" update="@form">
+						<p:commandLink action="#{LoginBean.redirectTo('RPerfiles.xhtml')}" update="@form">
 							<img class="icon" src="img/usu.png"/>
 						</p:commandLink>
 						<b><p class="texto">Registrar perfiles</p></b>
 					</div>
 					
 					<div class="elemento" id="dos">
-						<p:commandLink action="#{LogBean.redirectTo('RIniciativa.xhtml')}" update="@form">
+						<p:commandLink action="#{LoginBean.redirectTo('RIniciativa.xhtml')}" update="@form">
 							<img class="icon" src="img/idea.png"/>
 						</p:commandLink>
 						<b><p class="texto">Registrar iniciativa</p></b>
 					</div>
 			
 					<div class="elemento" id="tres">
-						<p:commandLink action="#{LogBean.redirectTo('VIniciativa.xhtml')}" update="@form">
+						<p:commandLink action="#{LoginBean.redirectTo('VIniciativa.xhtml')}" update="@form">
 							<img class="icon" src="img/buscar.png"/>
 						</p:commandLink>
 						<b><p class="texto">Ver iniciativas</p></b>
 					</div>
 					
 					<div class="elemento" id="cuatro">
-						<p:commandLink action="#{LogBean.logout}" update="@form">
+						<p:commandLink action="#{LoginBean.logout}" update="@form">
 							<img class="icon" src="img/icon1.png"/>
 						</p:commandLink>
 						<b><p class="texto">Salir</p></b>

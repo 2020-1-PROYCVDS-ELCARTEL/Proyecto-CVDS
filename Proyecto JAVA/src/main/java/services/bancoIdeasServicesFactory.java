@@ -45,12 +45,27 @@ public class bancoIdeasServicesFactory {
 
     }
 
-    public ServiciosUsuario getIdeas(){
+    public ServiciosUsuario getUsuario(){
         return bancoInjector.getInstance(ServiciosUsuario.class);
     }
-    public ServiciosUsuario getIdeasTesting(){
+    public ServiciosUsuario getUsuarios(){
+        return bancoInjector.getInstance(ServiciosUsuario.class);
+    }
+    public ServiciosUsuario insertUsuario(){
+        return bancoInjector.getInstance(ServiciosUsuario.class);
+    }
+
+    public ServiciosUsuario insertUsuarioTesting(){
+        return bancoInjector.getInstance(ServiciosUsuario.class);
+    }
+    public ServiciosUsuario getUsuariosTesting(){
         return testInjector.getInstance(ServiciosUsuario.class);
     }
+    public ServiciosUsuario getUsuarioTesting(){
+        return testInjector.getInstance(ServiciosUsuario.class);
+    }
+
+
 
     //     return optInjector.get().getInstance(BlogServices.class);
     // }
