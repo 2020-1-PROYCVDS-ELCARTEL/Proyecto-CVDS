@@ -45,8 +45,9 @@ public class UsuarioBean implements Serializable {
             currentUser.login(token);
             //currentUser.getSession().setAttribute("correo", userName);
 
-            //token.setRememberMe(true);
+            token.setRememberMe(true);
             if (currentUser.isAuthenticated()){
+
                 redirectToMenu();
             }
         } catch (UnknownAccountException e) {
