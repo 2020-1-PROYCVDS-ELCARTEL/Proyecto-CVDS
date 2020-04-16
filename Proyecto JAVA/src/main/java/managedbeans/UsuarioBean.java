@@ -15,6 +15,9 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.subject.Subject;
+import exceptions.ServiciosUsuarioException;
+import entities.Usuario;
+import services.ServiciosUsuario;
 
 @Deprecated
 @ManagedBean(name = "LoginBean")
@@ -33,21 +36,24 @@ public class UsuarioBean implements Serializable {
     private String password;
     private boolean rememberMe;
     private boolean user, admin, noLogged;
+    private ServiciosUsuario serviciosUsuario;
 
 
     public void login() {
         try {
-            Subject currentUser = SecurityUtils.getSubject();
+            /*Subject currentUser = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
 
             currentUser.login(token);
-            currentUser.getSession().setAttribute("Correo", userName);
+            currentUser.getSession().setAttribute("correo", userName);
 
             token.setRememberMe(true);
+            */
+            serviciosUsuario.consultarUsuario(userName);
+            System.out.println("funciono");
 
 
-
-        } catch (UnknownAccountException e) {
+        /*} catch (UnknownAccountException e) {
             this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
@@ -58,10 +64,13 @@ public class UsuarioBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("contrasena incorrecta", "La contrasena ingresada no es correcta"));
 
+        }*/
+        } catch (ServiciosUsuarioException e) {
+            e.printStackTrace();
         }
     }
 
-    public boolean isNoLogged() {
+        public boolean isNoLogged() {
         return noLogged;
     }
 
@@ -86,6 +95,18 @@ public class UsuarioBean implements Serializable {
 
     }
 
+    public void isLogged(){
+        Subject subject = SecurityUtils.getSubject();
+        if ((subject.getSession().getAttribute("correo") != null) && subject.getSession().getAttribute("correo")!="NoRegistrado"){
+            //redirectToMenu();
+            System.out.println("funciono");
+        }
+        else{
+            userName = null;
+            password = null;
+        }
+    }
+
 
     public void redirectTo(String path){
         try {
@@ -100,10 +121,10 @@ public class UsuarioBean implements Serializable {
         this.user = false;
         this.admin = false;
         if (getUser()!=null){
-            if (getUser().hasRole("administrador")){
+            if (getUser().hasRole("admin")){
                 this.admin = true;
             }
-            else if(getUser().hasRole("Comunidad")){
+            else {
                 this.user = true;
             }
         }

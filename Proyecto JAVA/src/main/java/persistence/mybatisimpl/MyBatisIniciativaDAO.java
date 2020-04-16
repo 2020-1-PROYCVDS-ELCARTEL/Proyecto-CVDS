@@ -34,12 +34,9 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
 
     @Override
     public Iniciativa getIniciativa(int id) throws PersistenceException {
-        try {
-            return iniciativaMapper.getIniciativaId(id);
-        }catch (Exception e){
-            e.printStackTrace();
-            throw new PersistenceException("Load error iniciativa id");
-        }
+        Iniciativa iniciativa = iniciativaMapper.getIniciativaId(id);
+        if(iniciativa==null) throw new PersistenceException("Error al cargar la iniciativa id:"+id+"No esxiste ninguna con ese id");
+        else return iniciativa;
     }
 
     @Override

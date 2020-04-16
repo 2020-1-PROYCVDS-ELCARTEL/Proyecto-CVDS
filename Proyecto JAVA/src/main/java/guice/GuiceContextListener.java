@@ -4,7 +4,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import persistence.*;
 import persistence.mybatisimpl.*;
-import services.bancoIdeasServices;
 import services.ServiciosUsuario;
 import services.impl.ServiciosUsuarioImpl;
 import org.mybatis.guice.XMLMyBatisModule;
@@ -39,7 +38,7 @@ public class GuiceContextListener implements ServletContextListener {
 
                 // TODO Add service class associated to Stub implementation
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
-                bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
+                //bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
 
                 //
                 bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
