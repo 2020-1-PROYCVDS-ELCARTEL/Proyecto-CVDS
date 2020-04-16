@@ -12,7 +12,7 @@
         u.id,
         u.nombre,
         u.correo,
-        u.contraseña,
+        u.contrasena,
         u.tipouser,
         u.dependencia
         FROM
@@ -24,7 +24,7 @@
         u.id,
         u.nombre,
         u.correo,
-        u.contraseña,
+        u.contrasena,
         u.tipouser,
         u.dependencia
         FROM
@@ -32,7 +32,7 @@
     </select>
 
     <insert id="insertUsuario">
-        insert into usuario(nombre,correo,contraseña,tipoUser,dependencia) values (#{nombre},#{correo},#{contraseña},#{tipoUsuario}, #{dependencia})
+        insert into usuario(nombre,correo,contrasena,tipoUser,dependencia) values (#{nombre},#{correo},#{contrasena},#{tipoUsuario}, #{dependencia})
     </insert>
 
     <delete id="deleteAll">
@@ -43,7 +43,7 @@
         <id property='id' column='id'/>
         <result property='nombre' column='nombre'/>
         <result property='correo' column='correo'/>
-        <result property='contraseña' column='contraseña'/>
+        <result property='contrasena' column='contrasena'/>
         <result property='tipoUser' column='tipoUser'/>
         <result property='dependencia' column='dependencia'/>
     </resultMap>

@@ -15,6 +15,7 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
     @Inject
     UsuarioMapper usuarioMapper;
 
+
     @Override
     public void insertUsuario(final Usuario usuario) throws PersistenceException {
         try {

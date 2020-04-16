@@ -4,17 +4,17 @@ public class Usuario {
 
     private int id;
     private String nombre;
-    private String contraseña;
+    private String contrasena;
     private String correo;
-    private String tipoUsuario;
+    private Object tipoUser;
     private String dependencia;
 
-    public Usuario(int id, String nombre, String contraseña, String correo, String tipoUsuario, String dependencia) {
+    public Usuario(int id, String nombre, String contrasena, String correo, Object tipoUser, String dependencia) {
         this.id = id;
         this.nombre = nombre;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
         this.correo = correo;
-        this.tipoUsuario = tipoUsuario;
+        this.tipoUser = tipoUser;
         this.dependencia = dependencia;
     }
 
@@ -34,12 +34,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getcontrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setcontrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getCorreo() {
@@ -50,12 +50,6 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public void setTipoUsuario(String tipoUsuario) { this.tipoUsuario = tipoUsuario; }
-
     public String getDependencia() {return dependencia; }
 
     public void setDependencia(String dependencia) { this.dependencia = dependencia; }
@@ -65,9 +59,17 @@ public class Usuario {
         return "Usuario{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", contraseña='" + contraseña + '\'' +
+                ", contrasena='" + contrasena + '\'' +
                 ", correo='" + correo + '\'' +
-                ", tipoUsuario=" + tipoUsuario +
+                ", tipoUser=" + tipoUser +
                 '}';
+    }
+
+    public Object getTipoUser() {
+        return tipoUser;
+    }
+
+    public void setTipoUser(Object tipoUser) {
+        this.tipoUser = tipoUser;
     }
 }

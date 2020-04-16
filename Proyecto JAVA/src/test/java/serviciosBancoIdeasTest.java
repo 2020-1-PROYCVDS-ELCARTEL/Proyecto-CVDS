@@ -7,11 +7,11 @@ import java.util.Optional;
 
 import static com.google.inject.Guice.createInjector;
 import entities.Usuario;
+import exceptions.ServiciosUsuarioException;
 import services.bancoIdeasServices;
 import services.bancoIdeasServicesFactory;
 import services.ServicesException;
 import services.ServiciosUsuario;
-
 import java.util.Date;
 import java.util.List;
 import static org.junit.Assert.assertTrue;
@@ -19,26 +19,30 @@ import org.junit.Test;
 
 public class serviciosBancoIdeasTest {
 
-private bancoIdeasServices bancoIdeas;
+    private ServiciosUsuario serviciosUsuario;
 
-public serviciosBancoIdeasTest() throws ServicesException {
-bancoIdeas = bancoIdeasServicesFactory.getInstance().getIdeasTesting();
-}
-/**
-* Esta prueba utiliza el servicio consultar recurso y verificamos que el objeto que asignamos no este vacio.
-* @throws ExcepcionServiciosBiblioteca
-*/
-@Test
-public void deberiaConsultarUsuario() throws ServicesException {
-
-Usuario usrPrueba = bancoIdeas.getUsuario("santiago@gmail.com");
-try {
-    assertTrue(usrPrueba != null);
-    System.out.println(usrPrueba);
-} catch (Exception e) {
-    System.out.println(e);
+    public serviciosBancoIdeasTest() throws ServicesException {
+        serviciosUsuario = bancoIdeasServicesFactory.getInstance().getIdeasTesting();
     }
-}
+
+    /**
+     * Esta prueba utiliza el servicio consultar recurso y verificamos que el objeto
+     * que asignamos no este vacio.
+     * 
+     * @throws ServiciosUsuarioException
+     * @throws ExcepcionServiciosBiblioteca
+     */
+    @Test
+    public void deberiaConsultarUsuario() throws ServicesException, ServiciosUsuarioException {
+
+        Usuario usrPrueba = serviciosUsuario.consultarUsuario("santiago@gmail.com");
+        try {
+            assertTrue(usrPrueba != null);
+            System.out.println(usrPrueba);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
 // @Test
 // public void deberiaFiltrarRecursosPorId() throws ServicesException {

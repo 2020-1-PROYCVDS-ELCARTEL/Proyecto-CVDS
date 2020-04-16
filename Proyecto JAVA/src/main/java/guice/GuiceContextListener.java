@@ -2,51 +2,49 @@ package guice;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-
-import entities.Usuario;
+import persistence.*;
+import persistence.mybatisimpl.*;
+import services.bancoIdeasServices;
+import services.ServiciosUsuario;
+import services.impl.ServiciosUsuarioImpl;
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
-import persistence.IniciativaDAO;
-import persistence.UsuarioDAO;
-import persistence.mybatisimpl.MyBatisIniciativaDAO;
-import persistence.mybatisimpl.MyBatisUsuarioDAO;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+
 public class GuiceContextListener implements ServletContextListener {
 
-    @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
-        Injector injector = Guice.createInjector(new XMLMyBatisModule() {
-                                                     @Override
-                                                     protected void initialize() {
-
-                                                         install(JdbcHelper.MySQL);
-
-                                                         setEnvironmentId("development");
-
-                                                         setClassPathResource("bd-config.xml");
-
-                                                         // Blog
-                                                         //bind(BlogServices.class).to(BlogServicesImpl.class);
-                                                         //bind(BlogDAO.class).to(MyBatisBlogDAO.class);
-                                                         // Users
-                                                         bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
-                                                         bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
-                                                     }
-                                                 }
-
-        );
-
-        ServletContext servletContext = servletContextEvent.getServletContext();
-        servletContext.setAttribute(Injector.class.getName(), injector);
-    }
-
-    @Override
+    /**
+     * Método del guice.
+     * @param servletContextEvent Argumentos del programa.
+     */
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         ServletContext servletContext = servletContextEvent.getServletContext();
         servletContext.removeAttribute(Injector.class.getName());
+    }
+
+    /**
+     * Método del guice.
+     * @param servletContextEvent Argumentos del programa.
+     */
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        Injector injector = Guice.createInjector(new XMLMyBatisModule() {
+            @Override
+            protected void initialize() {
+                install(JdbcHelper.PostgreSQL);
+                setEnvironmentId("development");
+                setClassPathResource("bd-config.xml");
+
+                // TODO Add service class associated to Stub implementation
+                bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
+                bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
+
+                //
+                bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
+            }
+        });
+        servletContextEvent.getServletContext().setAttribute(Injector.class.getName(), injector);
     }
 }
