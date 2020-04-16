@@ -15,7 +15,7 @@ import services.ServiciosUsuario;
 
 
 @SuppressWarnings("deprecation")
-@ManagedBean(name="ReservaBean")
+@ManagedBean(name="PageBean")
 @SessionScoped
 public class BasePageBean implements Serializable {
 
@@ -24,6 +24,7 @@ public class BasePageBean implements Serializable {
     private Injector injector;
     private long idRec;
     private String usuario;
+    private UsuarioBean usuarioBean;
 
 
     private Injector getInjector() {
@@ -50,7 +51,9 @@ public class BasePageBean implements Serializable {
 
 
     public String page01(){
-        return "menuAdmin?faces-redirect=true";
+
+
+        return "menu?faces-redirect=true";
     }
 
     public String page02(){

@@ -3,6 +3,7 @@ package managedbeans;
 import java.io.IOException;
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -38,6 +39,10 @@ public class UsuarioBean implements Serializable {
     private boolean user, admin, noLogged;
     private ServiciosUsuario serviciosUsuario;
 
+    /*@PostConstruct
+    public void init() {
+        serviciosUsuario=baseBean.getServiciosUsuario();
+    }*/
 
     public void login() {
         try {
@@ -50,8 +55,9 @@ public class UsuarioBean implements Serializable {
             token.setRememberMe(true);
             */
             if(serviciosUsuario.validarLogin(userName, password)){
+                //redirectTo("/faces/menu.xhtml");
                 System.out.println("funciono");
-                redirectTo("menu.xhtml");
+                //isLogged();
             }
 
 
@@ -99,10 +105,11 @@ public class UsuarioBean implements Serializable {
     }
 
     public void isLogged(){
+        System.out.println("funciono");
         Subject subject = SecurityUtils.getSubject();
         if ((subject.getSession().getAttribute("correo") != null) && subject.getSession().getAttribute("correo")!="NoRegistrado"){
-            //redirectToMenu();
-            System.out.println("funciono");
+            redirectTo("/faces/menu.xhtml");
+
         }
         else{
             userName = null;
