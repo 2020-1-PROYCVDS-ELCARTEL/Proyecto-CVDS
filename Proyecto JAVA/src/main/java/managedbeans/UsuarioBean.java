@@ -43,7 +43,6 @@ public class UsuarioBean implements Serializable {
             UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
 
             currentUser.login(token);
-            //currentUser.getSession().setAttribute("correo", userName);
 
             token.setRememberMe(true);
             if (currentUser.isAuthenticated()){

@@ -9,7 +9,7 @@ public class Usuario {
     private Object tipoUser;
     private String dependencia;
 
-    public Usuario(int id, String nombre, String contrasena, String correo, Object tipoUser, String dependencia) {
+    public Usuario(int id, String nombre, String contrasena, String correo, String tipoUser, String dependencia) {
         this.id = id;
         this.nombre = nombre;
         this.contrasena = contrasena;

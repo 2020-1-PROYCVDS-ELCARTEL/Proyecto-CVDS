@@ -48,18 +48,18 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-    @Test
-    public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
-        Usuario userpr = new Usuario(12, "laura", "laura@gamil.com", "1234567", "Admin", "Solucionado");
-
-        serviciosUsuario.insertarUsuario(userpr);
-        try {
-            assertTrue(serviciosUsuario.consultarUsuario("laura@gamil.com") != null);
-            System.out.println(serviciosUsuario.consultarUsuario("laura@gamil.com"));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+//    @Test
+//    public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
+//        Usuario userpr = new Usuario(12, "laura", "laura@gamil.com", "1234567", "Admin", "Finanzas");
+//
+//        serviciosUsuario.insertarUsuario(userpr);
+//        try {
+//            assertTrue(serviciosUsuario.consultarUsuario("laura@gamil.com") != null);
+//            System.out.println(serviciosUsuario.consultarUsuario("laura@gamil.com"));
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//    }
 
 // @Test
 // public void deberiaFiltrarRecursosPorId() throws ServicesException {
