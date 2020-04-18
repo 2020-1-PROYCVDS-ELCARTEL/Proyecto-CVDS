@@ -35,7 +35,7 @@ public class BasePageBean implements Serializable {
         return injector;
     }
 
-    protected UsuarioDAO getClientDao() {
+    protected UsuarioDAO getUsuarioDao() {
         return getInjector().getInstance(UsuarioDAO.class);
     }
 

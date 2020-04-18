@@ -23,7 +23,7 @@
 		</script>
 		
       	
-      	<title>Menu; Comunidad</title>
+      	<title>Menu</title>
       </h:head>
       
       <h:body>
@@ -32,7 +32,8 @@
 			<section>
 		
 				<div class="contenedor">
-				
+					<h:outputText value="#{LoginBean.getNombreUsuario()}"/>
+					<h:outputText value="#{LoginBean.getRolUsuario()}"/>
 					<div class="elemento" id="uno">
 						<p:commandLink action="#{LoginBean.redirectTo('RPerfiles.xhtml')}" update="@form">
 							<img class="icon" src="img/usu.png"/>

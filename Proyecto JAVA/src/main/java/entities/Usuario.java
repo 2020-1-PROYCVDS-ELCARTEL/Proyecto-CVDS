@@ -6,7 +6,7 @@ public class Usuario {
     private String nombre;
     private String contrasena;
     private String correo;
-    private Object tipoUser;
+    private String tipoUser;
     private String dependencia;
 
     public Usuario(int id, String nombre, String contrasena, String correo, String tipoUser, String dependencia) {
@@ -65,11 +65,11 @@ public class Usuario {
                 '}';
     }
 
-    public Object getTipoUser() {
+    public String getTipoUser() {
         return tipoUser;
     }
 
-    public void setTipoUser(Object tipoUser) {
+    public void setTipoUser(String tipoUser) {
         this.tipoUser = tipoUser;
     }
 }
