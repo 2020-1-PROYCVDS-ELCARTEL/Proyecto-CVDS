@@ -2,7 +2,7 @@ import static com.google.inject.Guice.createInjector;
 import entities.Usuario;
 import exceptions.ServiciosUsuarioException;
 import services.bancoIdeasServicesFactory;
-import services.ServicesException;
+import exceptions.ServicesException;
 import services.ServiciosUsuario;
 
 import static org.junit.Assert.assertTrue;

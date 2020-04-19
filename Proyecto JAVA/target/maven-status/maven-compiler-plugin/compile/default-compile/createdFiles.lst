@@ -2,7 +2,7 @@ managedbeans\UsuarioBean.class
 managedbeans\BasePageBean.class
 persistence\IniciativaDAO.class
 entities\Iniciativa.class
-services\ServicesException.class
+services\ServiciosIniciativa.class
 persistence\mybatisimpl\MyBatisUsuarioDAO.class
 persistence\UsuarioDAO.class
 persistence\ComentarioDAO.class
@@ -17,6 +17,7 @@ persistence\mybatisimpl\MyBatisIniciativaDAO.class
 services\impl\ServiciosUsuarioImpl.class
 guice\GuiceContextListener.class
 exceptions\PersistenceException.class
+exceptions\ServicesException.class
 persistence\mybatisimpl\mappers\UsuarioMapper.class
 managedbeans\Mensajes.class
 guice\GuiceContextListener$1.class

@@ -11,7 +11,7 @@ public class Iniciativa {
     private String nombreUsuario;
     private String correoUsuario;
     private Date fecha;
-    //private List<Comentario> comentarioList;
+    private List<Comentario> comentarioList;
 
     public Iniciativa(int id, String nombreIniciativa, String estado, int numeroVotos, String palabrasClave, String nombreUsuario, String correoUsuario, Date fecha) {
         this.id = id;
@@ -86,6 +86,14 @@ public class Iniciativa {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public List<Comentario> getComentarioList() {
+        return comentarioList;
+    }
+
+    public void setComentarioList(List<Comentario> comentarioList) {
+        this.comentarioList = comentarioList;
     }
 
     @Override
