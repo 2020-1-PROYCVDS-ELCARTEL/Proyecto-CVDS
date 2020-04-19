@@ -45,3 +45,12 @@ UNIQUE (nombre);
 ALTER TABLE iniciativa 
 ADD CONSTRAINT CK_iniciativaEstado
 CHECK (estado IN ('En espera de revisión', 'En revisión', 'Proyecto', 'Solucionado'));
+
+CREATE TABLE comentario(
+	id serial,
+	textoComentario VARCHAR(200) NOT NULL,
+	idIniciativa int NOT NULL);
+
+ALTER TABLE comentario
+ADD CONSTRAINT PK_Comentario
+PRIMARY KEY (id);

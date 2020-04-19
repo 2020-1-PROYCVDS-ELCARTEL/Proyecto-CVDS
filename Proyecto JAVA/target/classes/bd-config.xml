@@ -9,6 +9,7 @@
     <typeAliases>
         <typeAlias type='entities.Usuario' alias='Usuario'/>
         <typeAlias type='entities.Iniciativa' alias='Iniciativa'/>
+        <typeAlias type='entities.Comentario' alias='Comentario'/>
     </typeAliases>
 
     <environments default="development">
@@ -25,7 +26,8 @@
 
     <mappers>
         <mapper resource="mappers/UsuarioMapper.xml"></mapper>
-         <mapper resource="mappers/IniciativaMapper.xml"></mapper>
+        <mapper resource="mappers/IniciativaMapper.xml"></mapper>
+        <mapper resource="mappers/ComentarioMapper.xml"></mapper>
     </mappers>
 
 

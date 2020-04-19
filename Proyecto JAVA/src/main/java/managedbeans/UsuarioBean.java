@@ -74,10 +74,6 @@ public class UsuarioBean implements Serializable {
         }
     }
 
-   /* public String getUsuarioName(){
-        return variable;
-    }*/
-
     public boolean isNoLogged() {
         return noLogged;
     }

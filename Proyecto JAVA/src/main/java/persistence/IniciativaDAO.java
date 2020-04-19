@@ -2,8 +2,6 @@ package persistence;
 
 import entities.Iniciativa;
 import exceptions.PersistenceException;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 public interface IniciativaDAO {

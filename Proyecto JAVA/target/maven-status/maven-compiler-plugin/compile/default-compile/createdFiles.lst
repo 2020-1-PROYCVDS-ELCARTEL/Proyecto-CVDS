@@ -5,10 +5,14 @@ entities\Iniciativa.class
 services\ServicesException.class
 persistence\mybatisimpl\MyBatisUsuarioDAO.class
 persistence\UsuarioDAO.class
+persistence\ComentarioDAO.class
+entities\Comentario.class
 services\ServiciosUsuario.class
 exceptions\ServiciosUsuarioException.class
 persistence\mybatisimpl\mappers\IniciativaMapper.class
 services\bancoIdeasServicesFactory$2.class
+persistence\mybatisimpl\mappers\ComentarioMapper.class
+persistence\mybatisimpl\MyBatisComentarioDAO.class
 persistence\mybatisimpl\MyBatisIniciativaDAO.class
 services\impl\ServiciosUsuarioImpl.class
 guice\GuiceContextListener.class

@@ -6,8 +6,10 @@ import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Injector;
 
+import persistence.ComentarioDAO;
 import persistence.IniciativaDAO;
 import persistence.UsuarioDAO;
+import persistence.mybatisimpl.MyBatisComentarioDAO;
 import persistence.mybatisimpl.MyBatisIniciativaDAO;
 import persistence.mybatisimpl.MyBatisUsuarioDAO;
 import services.impl.ServiciosUsuarioImpl;
@@ -30,6 +32,7 @@ public class bancoIdeasServicesFactory {
                 //bind(BlogServices.class).to(BlogServicesImpl.class);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
+                bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
             }
         });
         testInjector = Guice.createInjector(new XMLMyBatisModule(){
