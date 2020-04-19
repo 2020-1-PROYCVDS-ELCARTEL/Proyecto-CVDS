@@ -1,0 +1,15 @@
+127.0.0.1 - - [18/Apr/2020:17:01:22 -0500] "GET / HTTP/1.1" 200 3797 http-bio-8080-exec-1 507
+127.0.0.1 - - [18/Apr/2020:17:01:22 -0500] "GET /css/iniciosesion.css HTTP/1.1" 304 - http-bio-8080-exec-2 16
+127.0.0.1 - - [18/Apr/2020:17:01:22 -0500] "GET /img/inicio.png HTTP/1.1" 304 - http-bio-8080-exec-3 15
+127.0.0.1 - - [18/Apr/2020:17:01:50 -0500] "POST /iniciosesion.xhtml HTTP/1.1" 200 143 http-bio-8080-exec-5 1664
+127.0.0.1 - - [18/Apr/2020:17:01:51 -0500] "GET /faces/menu.xhtml HTTP/1.1" 200 3047 http-bio-8080-exec-7 104
+127.0.0.1 - - [18/Apr/2020:17:01:51 -0500] "GET /faces/css/efectos.css HTTP/1.1" 304 - http-bio-8080-exec-6 17
+127.0.0.1 - - [18/Apr/2020:17:01:51 -0500] "GET /faces/css/menu.css HTTP/1.1" 304 - http-bio-8080-exec-8 19
+127.0.0.1 - - [18/Apr/2020:17:01:51 -0500] "GET /faces/img/icon1.png HTTP/1.1" 304 - http-bio-8080-exec-1 4
+127.0.0.1 - - [18/Apr/2020:17:01:51 -0500] "GET /faces/img/buscar.png HTTP/1.1" 304 - http-bio-8080-exec-10 5
+127.0.0.1 - - [18/Apr/2020:17:01:51 -0500] "GET /faces/img/usu.png HTTP/1.1" 304 - http-bio-8080-exec-2 12
+127.0.0.1 - - [18/Apr/2020:17:01:51 -0500] "GET /faces/img/idea.png HTTP/1.1" 304 - http-bio-8080-exec-9 14
+127.0.0.1 - - [18/Apr/2020:17:01:57 -0500] "POST /faces/menu.xhtml HTTP/1.1" 200 151 http-bio-8080-exec-8 8
+127.0.0.1 - - [18/Apr/2020:17:01:57 -0500] "GET /faces/iniciosesion.xhtml HTTP/1.1" 200 3803 http-bio-8080-exec-8 11
+127.0.0.1 - - [18/Apr/2020:17:01:57 -0500] "GET /faces/css/iniciosesion.css HTTP/1.1" 304 - http-bio-8080-exec-8 6
+127.0.0.1 - - [18/Apr/2020:17:01:57 -0500] "GET /faces/img/inicio.png HTTP/1.1" 304 - http-bio-8080-exec-6 6

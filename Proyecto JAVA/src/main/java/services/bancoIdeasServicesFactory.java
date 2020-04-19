@@ -6,7 +6,9 @@ import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Injector;
 
+import persistence.IniciativaDAO;
 import persistence.UsuarioDAO;
+import persistence.mybatisimpl.MyBatisIniciativaDAO;
 import persistence.mybatisimpl.MyBatisUsuarioDAO;
 import services.impl.ServiciosUsuarioImpl;
 
@@ -27,7 +29,7 @@ public class bancoIdeasServicesFactory {
 
                 //bind(BlogServices.class).to(BlogServicesImpl.class);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
-                //bind(BlogDAO.class).to(MyBatisBlogDAO.class);
+                bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
             }
         });
         testInjector = Guice.createInjector(new XMLMyBatisModule(){
@@ -36,7 +38,7 @@ public class bancoIdeasServicesFactory {
                 install(JdbcHelper.PostgreSQL);
                 setClassPathResource("bd-config.xml");
                 bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
-
+                bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
                 //bind(BlogServices.class).to(BlogServicesImpl.class);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 //bind(BlogDAO.class).to(MyBatisBlogDAO.class);

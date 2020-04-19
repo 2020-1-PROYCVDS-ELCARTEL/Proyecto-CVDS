@@ -8,6 +8,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import entities.Usuario;
+import exceptions.ServiciosUsuarioException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -15,6 +17,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import services.ServiciosUsuario;
 
 @Deprecated
 @ManagedBean(name = "LoginBean")
@@ -29,24 +32,30 @@ public class UsuarioBean implements Serializable {
     @ManagedProperty(value = "#{PageBean}")
     private BasePageBean baseBean;
 
-    private String userName;
+    private String usuarioCorreo;
     private String password;
     private boolean rememberMe;
-    private boolean user, admin, noLogged;
-
+    private boolean noLogged;
+    private ServiciosUsuario serviciosUsuario;
+    private Usuario usuario;
+    private String rolUsuario;
+    private String nombreUsuario;
 
     public void login() {
         try {
             Subject currentUser = SecurityUtils.getSubject();
             Session session = currentUser.getSession();
             session.setAttribute("correo", "password");
-            UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+            UsernamePasswordToken token = new UsernamePasswordToken(usuarioCorreo, password);
 
             currentUser.login(token);
 
             token.setRememberMe(true);
             if (currentUser.isAuthenticated()){
-
+                serviciosUsuario = baseBean.getServiciosUsuario();
+                setUsuario(serviciosUsuario.consultarUsuario(usuarioCorreo));
+                setNombreUsuario(usuario.getNombre());
+                setRolUsuario(usuario.getTipoUser());
                 redirectToMenu();
             }
         } catch (UnknownAccountException e) {
@@ -60,8 +69,14 @@ public class UsuarioBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
 
+        } catch (ServiciosUsuarioException e) {
+            e.printStackTrace();
         }
     }
+
+   /* public String getUsuarioName(){
+        return variable;
+    }*/
 
     public boolean isNoLogged() {
         return noLogged;
@@ -107,7 +122,7 @@ public class UsuarioBean implements Serializable {
             //redirectToMenu();
         }
         else{
-            userName = null;
+            usuarioCorreo = null;
             password = null;
         }
     }
@@ -118,19 +133,6 @@ public class UsuarioBean implements Serializable {
         } catch (IOException e) {
             this.baseBean.mensajeApp(e);
             e.printStackTrace();
-        }
-    }
-
-    public void inSession(){
-        this.user = false;
-        this.admin = false;
-        if (getUser()!=null){
-            if (getUser().hasRole("administrador")){
-                this.admin = true;
-            }
-            else if(getUser().hasRole("Comunidad")){
-                this.user = true;
-            }
         }
     }
 
@@ -153,27 +155,11 @@ public class UsuarioBean implements Serializable {
     }
 
     public String getUserName() {
-        return this.userName;
+        return this.usuarioCorreo;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
-    public boolean isUser() {
-        return user;
-    }
-
-    public void setUser(boolean user) {
-        this.user = user;
+        this.usuarioCorreo = userName;
     }
 
     private Subject getUser() {
@@ -186,5 +172,29 @@ public class UsuarioBean implements Serializable {
 
     public void setBaseBean(BasePageBean bs){
         this.baseBean = bs;
+    }
+
+    public String getRolUsuario() {
+        return rolUsuario;
+    }
+
+    public void setRolUsuario(String rolUsuario) {
+        this.rolUsuario = rolUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
