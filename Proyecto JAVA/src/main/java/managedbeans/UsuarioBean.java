@@ -50,7 +50,7 @@ public class UsuarioBean implements Serializable {
                 redirectToMenu();
             }
         } catch (UnknownAccountException e) {
-            this.baseBean.mensajeApp(e);
+           this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         }
