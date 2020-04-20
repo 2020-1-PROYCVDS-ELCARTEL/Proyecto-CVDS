@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="persistence.mybatisimpl.mappers.ComentarioMapper">
+
+    <select parameterType="map" id="getComentarios" resultMap="ComentarioResult">
+        SELECT i.nombre, c.textoComentario FROM iniciativa as i
+        JOIN comentario c on (#{idIniciativa}=c.idiniciativa);
+    </select>
+
+    <insert id="insertUsuario">
+        insert into comentario (textoComentario, idIniciativa) values (#{textoComentario},#{idIniciativa})
+    </insert>
+
+    <resultMap type='Comentario' id='ComentarioResult'>
+        <id property='id' column='id'/>
+        <result property='textoComentario' column='textoComentario'/>
+        <result property='idIniciativa' column='idIniciativa'/>
+    </resultMap>
+
+
+</mapper>

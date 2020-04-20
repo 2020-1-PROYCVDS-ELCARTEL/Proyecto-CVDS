@@ -21,7 +21,7 @@ public class serviciosBancoIdeasTest {
     /**
      * Esta prueba utiliza el servicio consultar recurso y verificamos que el objeto
      * que asignamos no este vacio.
-     * 
+     *
      * @throws ServiciosUsuarioException
      */
     @Test

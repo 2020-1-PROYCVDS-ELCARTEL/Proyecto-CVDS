@@ -67,9 +67,9 @@ public class Usuario {
         return "Usuario{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", contrasena='" + contrasena + '\'' +
                 ", correo='" + correo + '\'' +
-                ", tipoUser=" + tipoUser +
+                ", tipoUser='" + tipoUser + '\'' +
+                ", dependencia='" + dependencia + '\'' +
                 '}';
     }
 
