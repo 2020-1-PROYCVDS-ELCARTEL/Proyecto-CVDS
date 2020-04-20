@@ -49,7 +49,15 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    
+    public String getTipoUser() {
+        return tipoUser;
+    }
 
+    public void setTipoUser(String tipoUser) {
+        this.tipoUser = tipoUser;
+    }
+    
     public String getDependencia() {return dependencia; }
 
     public void setDependencia(String dependencia) { this.dependencia = dependencia; }
@@ -65,11 +73,4 @@ public class Usuario {
                 '}';
     }
 
-    public String getTipoUser() {
-        return tipoUser;
-    }
-
-    public void setTipoUser(String tipoUser) {
-        this.tipoUser = tipoUser;
-    }
 }

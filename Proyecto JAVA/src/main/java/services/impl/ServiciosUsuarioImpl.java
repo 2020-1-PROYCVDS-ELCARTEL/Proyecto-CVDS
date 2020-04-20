@@ -52,5 +52,14 @@ public class ServiciosUsuarioImpl implements ServiciosUsuario {
 
     }
 
+    @Override
+    public int updateRolUsuario(int idUsuario, String tipoUser) throws ServiciosUsuarioException {
+        try{
+            return userDAO.updateRolUsuario(idUsuario, tipoUser);
+        } catch (PersistenceException e) {
+            throw new ServiciosUsuarioException("Error al actualizar el rol del usuario", e);
+        }
+    }
+
 
 }

@@ -43,4 +43,14 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
             throw new PersistenceException("Load error");
         }
     }
+
+    @Override
+    public int updateRolUsuario(final int idUsuario, final String tipoUser) throws PersistenceException {
+        try {
+            return usuarioMapper.updateRolUsuario(idUsuario, tipoUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new PersistenceException("Actualizacion error");
+        }
+    }
 }

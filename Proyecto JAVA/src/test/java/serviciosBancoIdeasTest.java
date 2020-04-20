@@ -2,8 +2,8 @@ import static com.google.inject.Guice.createInjector;
 import entities.Usuario;
 import exceptions.ServiciosUsuarioException;
 import services.bancoIdeasServicesFactory;
-import services.ServicesException;
 import services.ServiciosUsuario;
+import services.ServicesException;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
@@ -48,14 +48,26 @@ public class serviciosBancoIdeasTest {
         }
     }
 
+    @Test
+public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuarioException {
+    Usuario userpr = new Usuario(8, "laura", "laura@gmail.com", "1234567", "Admin", "Finanzas");
+    serviciosUsuario.updateRolUsuario(userpr.getId(), "Admin");
+    try {
+        Usuario user = serviciosUsuario.consultarUsuario("laura@gmail.com");
+        assertTrue("Admin".equals(user.getTipoUser()));
+        System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+}
 //    @Test
 //    public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
-//        Usuario userpr = new Usuario(12, "laura", "laura@gamil.com", "1234567", "Admin", "Finanzas");
+//        Usuario userpr = new Usuario(12, "laura", "laura@gmail.com", "1234567", "Admin", "Finanzas");
 //
 //        serviciosUsuario.insertarUsuario(userpr);
 //        try {
-//            assertTrue(serviciosUsuario.consultarUsuario("laura@gamil.com") != null);
-//            System.out.println(serviciosUsuario.consultarUsuario("laura@gamil.com"));
+//            assertTrue(serviciosUsuario.consultarUsuario("laura@gmail.com") != null);
+//            System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
 //        } catch (Exception e) {
 //            System.out.println(e);
 //        }

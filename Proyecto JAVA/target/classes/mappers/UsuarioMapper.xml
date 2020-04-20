@@ -35,6 +35,10 @@
         insert into usuario(nombre,correo,contrasena,tipoUser,dependencia) values (#{nombre},#{correo},#{contrasena},#{tipoUser}, #{dependencia})
     </insert>
 
+    <update id="updateRolUsuario">
+        update usuario set tipoUser = #{tipouser} where id= #{id};
+    </update>
+    
     <delete id="deleteAll">
         delete from usuario
     </delete>

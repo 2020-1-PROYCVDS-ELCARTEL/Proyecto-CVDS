@@ -14,6 +14,9 @@ public interface ServiciosUsuario {
     public List<Usuario>consultarUsuarios() throws ServiciosUsuarioException;
 
     public void insertarUsuario(Usuario user) throws ServiciosUsuarioException;
+    
+    public int updateRolUsuario(int id, String tipoUser) throws ServiciosUsuarioException;
+
 
 
 }

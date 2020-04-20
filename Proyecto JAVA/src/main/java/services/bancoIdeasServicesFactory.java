@@ -56,7 +56,11 @@ public class bancoIdeasServicesFactory {
     public ServiciosUsuario insertUsuario(){
         return bancoInjector.getInstance(ServiciosUsuario.class);
     }
-
+    public ServiciosUsuario updateRolUsuario(){
+        return bancoInjector.getInstance(ServiciosUsuario.class);
+    }
+    
+    
     public ServiciosUsuario insertUsuarioTesting(){
         return bancoInjector.getInstance(ServiciosUsuario.class);
     }
