@@ -56,7 +56,18 @@ public class UsuarioBean implements Serializable {
                 setUsuario(serviciosUsuario.consultarUsuario(usuarioCorreo));
                 setNombreUsuario(usuario.getNombre());
                 setRolUsuario(usuario.getTipoUser());
-                redirectToMenu();
+                if (RolUsuario == 'Admin'){
+					redirectToAdmin();
+				}
+				else if (RolUsuario == 'PMO'){
+					redirectToPMO();
+				}
+				else if (RolUsuario == 'Proponente'){
+					redirectToPro();
+				}
+				else{
+					redirectToUser();
+				}
             }
         } catch (UnknownAccountException e) {
            this.baseBean.mensajeApp(e);
@@ -110,7 +121,51 @@ public class UsuarioBean implements Serializable {
         }
 
     }
+	
+	public void redirectToAdmin(){
+        if(getUser()!=null) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Admin.xhtml");
+            } catch (IOException e) {
+                this.baseBean.mensajeApp(e);
+                e.printStackTrace();
+            }
+        }
 
+    }
+	public void redirectToPMO(){
+        if(getUser()!=null) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/PMO.xhtml");
+            } catch (IOException e) {
+                this.baseBean.mensajeApp(e);
+                e.printStackTrace();
+            }
+        }
+
+    }
+	public void redirectToPro(){
+        if(getUser()!=null) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Pro.xhtml");
+            } catch (IOException e) {
+                this.baseBean.mensajeApp(e);
+                e.printStackTrace();
+            }
+        }
+
+    }
+	public void redirectToUser(){
+        if(getUser()!=null) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/user.xhtml");
+            } catch (IOException e) {
+                this.baseBean.mensajeApp(e);
+                e.printStackTrace();
+            }
+        }
+
+    }
 
     public void isLogged(){
         Subject subject = SecurityUtils.getSubject();
