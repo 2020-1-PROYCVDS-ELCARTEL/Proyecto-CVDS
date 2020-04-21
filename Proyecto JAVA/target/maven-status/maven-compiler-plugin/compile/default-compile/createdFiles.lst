@@ -3,6 +3,7 @@ managedbeans\BasePageBean.class
 services\impl\ServiciosIniciativaImpl.class
 persistence\IniciativaDAO.class
 entities\Iniciativa.class
+managedbeans\IniciativaBean.class
 services\ServiciosIniciativa.class
 persistence\mybatisimpl\MyBatisUsuarioDAO.class
 persistence\UsuarioDAO.class

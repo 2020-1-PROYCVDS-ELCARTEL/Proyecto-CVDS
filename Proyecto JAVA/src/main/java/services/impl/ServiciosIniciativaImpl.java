@@ -16,48 +16,80 @@ import java.util.List;
 public class ServiciosIniciativaImpl implements ServiciosIniciativa {
 
     @Inject
-    private List<ComentarioDAO> comentarioDAOList;
+    private ComentarioDAO comentarioDAO;
     private IniciativaDAO iniciativaDAO;
 
     @Override
     public List<Comentario> consultarComentarios(int idIniciativa) throws ServicesException {
-        return null;
+        try {
+            return comentarioDAO.getComentarios(idIniciativa);
+        } catch (PersistenceException e) {
+            throw new ServicesException("Error al consultar los comentarios de la iniciativa con id: "+idIniciativa, e);
+        }
     }
 
     @Override
     public void insertarComentario(Comentario comentario) throws ServicesException {
-
+        try {
+            comentarioDAO.insertComentario(comentario);
+        }
+        catch (PersistenceException e) {
+            throw new ServicesException("Error al insertar comentario", e);
+        }
     }
 
     @Override
     public void insertIniciativa(Iniciativa iniciativa) throws ServicesException {
-
+        try {
+            iniciativaDAO.insertIniciativa(iniciativa);
+        }
+        catch (PersistenceException e) {
+            throw new ServicesException("Error al insertar iniciativa", e);
+        }
     }
 
     @Override
     public List<Iniciativa> getIniciativas(String palabraClave) throws ServicesException {
         List<Iniciativa> iniciativas;
         try {
-            iniciativas = iniciativaDAO.getIniciativas();
+            iniciativas = iniciativaDAO.getIniciativas(palabraClave);
         }
         catch (PersistenceException e) {
-            throw new ServicesException("Error al consultar a los usuarios", e);
+            throw new ServicesException("Error al consultar a las iniciativas", e);
         }
         return iniciativas;
     }
 
     @Override
     public Iniciativa getIniciativa(int id) throws ServicesException {
-        return null;
+        Iniciativa iniciativa=null;
+        try {
+            iniciativa = iniciativaDAO.getIniciativa(id);
+        }
+        catch (PersistenceException e) {
+            throw new ServicesException("Error al consultar la iniciativa con id: "+id, e);
+        }
+        return iniciativa;
     }
 
     @Override
     public List<Iniciativa> getIniciativas() throws ServicesException {
-        return null;
+        List<Iniciativa> iniciativas;
+        try {
+            iniciativas = iniciativaDAO.getIniciativas();
+        }
+        catch (PersistenceException e) {
+            throw new ServicesException("Error al consultar a las iniciativas", e);
+        }
+        return iniciativas;
     }
 
     @Override
     public void updateIniciativa(Iniciativa iniciativa) throws ServicesException {
-
+        try{
+            iniciativaDAO.updateIniciativa(iniciativa);
+        } catch (PersistenceException e) {
+            throw new ServicesException("Error al actualizar la iniciativa:"+iniciativa.toString(), e);
+        }
     }
 }
