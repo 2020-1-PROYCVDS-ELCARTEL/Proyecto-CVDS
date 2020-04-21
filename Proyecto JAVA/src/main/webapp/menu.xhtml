@@ -24,13 +24,13 @@
 		
       	
       	<title>Menu</title>
-      </h:head>
       
+	</h:head>
       <h:body>
 		  <h:form>
 		  <div id="efecto">
+		  
 			<section>
-		
 				<div class="contenedor">
 					<h:outputText value="#{LoginBean.getNombreUsuario()}"/>
 					<h:outputText value="#{LoginBean.getRolUsuario()}"/>
@@ -40,22 +40,15 @@
 						</p:commandLink>
 						<b><p class="texto">Registrar perfiles</p></b>
 					</div>
-					
-					<div class="elemento" id="dos">
-						<p:commandLink action="#{LoginBean.redirectTo('RIniciativa.xhtml')}" update="@form">
-							<img class="icon" src="img/idea.png"/>
-						</p:commandLink>
-						<b><p class="texto">Registrar iniciativa</p></b>
-					</div>
 			
-					<div class="elemento" id="tres">
+					<div class="elemento" id="dos">
 						<p:commandLink action="#{LoginBean.redirectTo('VIniciativa.xhtml')}" update="@form">
 							<img class="icon" src="img/buscar.png"/>
 						</p:commandLink>
 						<b><p class="texto">Ver iniciativas</p></b>
 					</div>
 					
-					<div class="elemento" id="cuatro">
+					<div class="elemento" id="tres">
 						<p:commandLink action="#{LoginBean.logout}" update="@form">
 							<img class="icon" src="img/icon1.png"/>
 						</p:commandLink>
@@ -63,10 +56,8 @@
 					</div>
 				</div>
 			</section>
+			
 		</div>
-		</h:form>
-		            
+		</h:form>           
       </h:body>
-      
-	
 </html>

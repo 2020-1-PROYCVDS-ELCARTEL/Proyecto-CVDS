@@ -1,22 +1,45 @@
-html {
-	height:100%;
-	width:100%;
+body {
+  background-color:#fffffa;
 }
 
-*{
-	margin: 0px;
-    padding: 0px;
+h1{
+	 color: firebrick;
+	 text-align: center;
+	 font-size:2.5vw;
+	 font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
 }
 
-#header{
-	text-align: center;
-	font-size: 2.5em;
-	color:#9a9a9a;
+h2{
+	color: firebrick;
+  	font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+  	font-size:1.5vw;
+  	text-align:center;
+	margin: 1vw 1vw 0;
+
 }
 
-section{
-	width: 90%;
-	height: auto;	
+table {
+   width: 80%;
+   border: 1px solid #000;
+}
+
+th, td {
+   width: 25%;
+   text-align: center;
+   vertical-align: top;
+   border: 1px solid #000;
+}
+
+div#uno{
+	float:left;
+	width:200px;
+	height:1000px;
+	margin-left:50px;
+}
+div#dos{
+	float:right;
+	width:1050px;
+	height:1000px;
 }
 
 .contenedor{
@@ -48,23 +71,11 @@ section{
  background-color: rgba(255,255,255,.20);
 }
 
-.icon{
-	display: text-align:center;
-	margin:2.1vw auto;
-	background-color: rgba(255,255,255,.40);
-	opacity: 0.80;
-	width:8vw;
-	padding:3vw;
-	margin-left: 11%;
-	-webkit-border-radius: 50%;
-	-webkit-box-shadow: 0px 0px 0px 30px rgba(255,255,255,0);
-	-webkit-transition:box-shadow .4s;
-}
 .texto{
   	font-family: "Calibri", "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
 	font-size: 1.2em;
 	color:black;
-	text-align: center;
+	text-align: rigth;
 	padding-top:2vw;
 	opacity:0.6;
 	-webkit-transition: padding-top .4s;
@@ -72,16 +83,4 @@ section{
 
 .contenedor:hover .icon{
 	-webkit-box-shadow:0px 0px 0px 0px rgba(255,255,255,.0);
-}
-
-#uno{
-	background-color:#b22222;
-}
-
-#dos{
-	background-color:#b22222;
-}
-
-#tres{
-	background-color:#b22222;
 }
