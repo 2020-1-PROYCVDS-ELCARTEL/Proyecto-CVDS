@@ -25,12 +25,13 @@
       
 	</h:head>
       <h:body>
-	  
-	      <h:outputText value="Prueba" align ="right"/>
-		  <h:outputText value="#{LoginBean.getRolUsuario()}" align ="right"/>
-		  <p align="right">
+
+		  <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
+	      <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
+
+		  <p:commandLink action="#{LoginBean.logout}" align="left">
 			<button class="boton" align="right">Cerrar sesión</button>
-		  </p>
+		  </p:commandLink>
 		  
 		  <p> <br/>
 		  <br/>

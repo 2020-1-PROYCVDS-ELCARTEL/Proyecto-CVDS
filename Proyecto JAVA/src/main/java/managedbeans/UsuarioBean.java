@@ -56,18 +56,25 @@ public class UsuarioBean implements Serializable {
                 setUsuario(serviciosUsuario.consultarUsuario(usuarioCorreo));
                 setNombreUsuario(usuario.getNombre());
                 setRolUsuario(usuario.getTipoUser());
-                if (RolUsuario == 'Admin'){
-					redirectToAdmin();
+                if (rolUsuario.equals("Admin")){
+                    redirectTo("/faces/Admin.xhtml");
+                    //redirectToAdmin();
 				}
-				else if (RolUsuario == 'PMO'){
-					redirectToPMO();
+				else if (rolUsuario.equals("PMO")){
+                    redirectTo("/faces/PMO.xhtml");
+					//redirectToPMO();
 				}
-				else if (RolUsuario == 'Proponente'){
-					redirectToPro();
+				else if (rolUsuario.equals("Proponente")){
+
+                    redirectTo("/faces/Pro.xhtml");
+					//redirectToPro();
 				}
-				else{
-					redirectToUser();
-				}
+				else if (rolUsuario.equals("User")){
+                    redirectTo("/faces/User.xhtml");
+					//redirectToUser();
+				}/*else {
+				    System.out.println("bye");
+                }*/
             }
         } catch (UnknownAccountException e) {
            this.baseBean.mensajeApp(e);
@@ -158,7 +165,7 @@ public class UsuarioBean implements Serializable {
 	public void redirectToUser(){
         if(getUser()!=null) {
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/user.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("user?faces-redirect=true");
             } catch (IOException e) {
                 this.baseBean.mensajeApp(e);
                 e.printStackTrace();

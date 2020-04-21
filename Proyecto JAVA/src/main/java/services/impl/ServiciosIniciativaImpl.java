@@ -5,7 +5,6 @@ import entities.Comentario;
 import entities.Iniciativa;
 import exceptions.PersistenceException;
 import exceptions.ServicesException;
-import org.apache.shiro.config.Ini;
 import services.ServiciosIniciativa;
 
 import java.util.List;

@@ -3,7 +3,7 @@ import entities.Usuario;
 import exceptions.ServiciosUsuarioException;
 import services.bancoIdeasServicesFactory;
 import services.ServiciosUsuario;
-import services.ServicesException;
+import exceptions.ServicesException;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
