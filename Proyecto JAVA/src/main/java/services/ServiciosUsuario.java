@@ -2,6 +2,7 @@ package services;
 
 import java.util.List;
 
+import entities.Iniciativa;
 import exceptions.ServiciosUsuarioException;
 import entities.Usuario;
 
@@ -16,7 +17,6 @@ public interface ServiciosUsuario {
     public void insertarUsuario(Usuario user) throws ServiciosUsuarioException;
     
     public int updateRolUsuario(int id, String tipoUser) throws ServiciosUsuarioException;
-
 
 
 }

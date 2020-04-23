@@ -12,7 +12,7 @@ public interface ServiciosIniciativa {
 
     public List<Comentario> consultarComentarios(int idIniciativa) throws ServicesException;
     public void insertarComentario(Comentario comentario) throws ServicesException;
-    public void insertIniciativa(Iniciativa iniciativa) throws ServicesException;
+    public int insertIniciativa(Iniciativa iniciativa) throws ServicesException;
     public List<Iniciativa> getIniciativas(String palabraClave) throws ServicesException;
     public Iniciativa getIniciativa(int id) throws ServicesException;
     public List<Iniciativa> getIniciativas() throws ServicesException;

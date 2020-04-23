@@ -5,7 +5,7 @@ import exceptions.PersistenceException;
 import java.util.List;
 
 public interface IniciativaDAO {
-    public void insertIniciativa(Iniciativa iniciativa) throws PersistenceException;
+    public int insertIniciativa(Iniciativa iniciativa) throws PersistenceException;
     public List<Iniciativa> getIniciativas(String palabraClave)  throws PersistenceException;
     public Iniciativa getIniciativa(int id) throws PersistenceException;
     public List<Iniciativa> getIniciativas() throws PersistenceException;

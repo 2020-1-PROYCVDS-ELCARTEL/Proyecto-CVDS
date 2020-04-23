@@ -16,37 +16,48 @@ import java.util.List;
 public class ServiciosIniciativaImpl implements ServiciosIniciativa {
 
     @Inject
-    private ComentarioDAO comentarioDAO;
+    //private ComentarioDAO comentarioDAO;
     private IniciativaDAO iniciativaDAO;
 
     @Override
     public List<Comentario> consultarComentarios(int idIniciativa) throws ServicesException {
-        try {
-            return comentarioDAO.getComentarios(idIniciativa);
-        } catch (PersistenceException e) {
-            throw new ServicesException("Error al consultar los comentarios de la iniciativa con id: "+idIniciativa, e);
-        }
+        return null;
     }
 
     @Override
     public void insertarComentario(Comentario comentario) throws ServicesException {
-        try {
-            comentarioDAO.insertComentario(comentario);
-        }
-        catch (PersistenceException e) {
-            throw new ServicesException("Error al insertar comentario", e);
-        }
+
     }
 
+    /*@Override
+        public List<Comentario> consultarComentarios(int idIniciativa) throws ServicesException {
+            try {
+                return comentarioDAO.getComentarios(idIniciativa);
+            } catch (PersistenceException e) {
+                throw new ServicesException("Error al consultar los comentarios de la iniciativa con id: "+idIniciativa, e);
+            }
+        }
+
+        @Override
+        public void insertarComentario(Comentario comentario) throws ServicesException {
+            try {
+                comentarioDAO.insertComentario(comentario);
+            }
+            catch (PersistenceException e) {
+                throw new ServicesException("Error al insertar comentario", e);
+            }
+        }
+    */
     @Override
-    public void insertIniciativa(Iniciativa iniciativa) throws ServicesException {
+    public int insertIniciativa(Iniciativa iniciativa) throws ServicesException {
         try {
-            iniciativaDAO.insertIniciativa(iniciativa);
+            return iniciativaDAO.insertIniciativa(iniciativa);
         }
         catch (PersistenceException e) {
             throw new ServicesException("Error al insertar iniciativa", e);
         }
     }
+
 
     @Override
     public List<Iniciativa> getIniciativas(String palabraClave) throws ServicesException {

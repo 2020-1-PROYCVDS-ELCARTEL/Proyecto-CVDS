@@ -13,9 +13,9 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     @Inject
     IniciativaMapper iniciativaMapper;
     @Override
-    public void insertIniciativa(Iniciativa iniciativa) throws PersistenceException {
+    public int insertIniciativa(Iniciativa iniciativa) throws PersistenceException {
         try {
-            iniciativaMapper.insertIniciativa(iniciativa);
+            return iniciativaMapper.insertIniciativa(iniciativa);
         }catch (Exception e){
             e.printStackTrace();
             throw new PersistenceException("Save error iniciativa");

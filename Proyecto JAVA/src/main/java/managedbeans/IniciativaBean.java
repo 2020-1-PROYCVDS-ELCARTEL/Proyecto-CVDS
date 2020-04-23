@@ -1,6 +1,7 @@
 package managedbeans;
 
 import entities.Iniciativa;
+import entities.Usuario;
 import exceptions.ServicesException;
 import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
@@ -20,9 +21,16 @@ public class IniciativaBean implements Serializable {
     private BasePageBean baseBean;
     private ServiciosUsuario serviciosUsuario;
     private ServiciosIniciativa serviciosIniciativa;
+    private Iniciativa iniciativa;
+    private int checkUpdate;
 
     public List<Iniciativa> getIniciativas() throws ServicesException {
         return serviciosIniciativa.getIniciativas();
+    }
+
+    public void AgregarIniciativa() throws ServicesException {
+        serviciosUsuario = baseBean.getServiciosUsuario();
+        checkUpdate = serviciosIniciativa.insertIniciativa(iniciativa);
     }
 
 }

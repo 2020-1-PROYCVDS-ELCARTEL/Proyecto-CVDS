@@ -1,6 +1,9 @@
 import static com.google.inject.Guice.createInjector;
+
+import entities.Iniciativa;
 import entities.Usuario;
 import exceptions.ServiciosUsuarioException;
+import services.ServiciosIniciativa;
 import services.bancoIdeasServicesFactory;
 import services.ServiciosUsuario;
 import exceptions.ServicesException;
@@ -11,11 +14,13 @@ import org.junit.Test;
 import java.util.List;
 
 public class serviciosBancoIdeasTest {
-
     private ServiciosUsuario serviciosUsuario;
+    private ServiciosIniciativa serviciosIniciativa;
 
     public serviciosBancoIdeasTest() throws ServicesException {
         serviciosUsuario = bancoIdeasServicesFactory.getInstance().getUsuarioTesting();
+        serviciosIniciativa = bancoIdeasServicesFactory.getInstance().InsertarIniciativaTesting();
+
     }
 
     /**
@@ -73,6 +78,31 @@ public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuar
 //        }
 //    }
 
+
+    @Test
+    public void deberiaConsultarIniciativas() throws ServicesException, ServiciosUsuarioException {
+
+        List<Iniciativa> iniciativasPrueba = serviciosIniciativa.getIniciativas();
+        try {
+            assertTrue(iniciativasPrueba != null);
+            System.out.println(iniciativasPrueba);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /*@Test
+    public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
+
+        Iniciativa iniciativaPrr = new Iniciativa(8,"Prueba", "En espera de revisión", 1, "Iniciativa", "laura", "laura@gmail.com", "" );
+
+        try {
+            assertTrue(serviciosIniciativa.getIniciativa());
+            System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }*/
 // @Test
 // public void deberiaFiltrarRecursosPorId() throws ServicesException {
 
