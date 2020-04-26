@@ -91,18 +91,18 @@ public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuar
         }
     }
 
-    /*@Test
+    @Test
     public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
 
-        Iniciativa iniciativaPrr = new Iniciativa(8,"Prueba", "En espera de revisión", 1, "Iniciativa", "laura", "laura@gmail.com", "" );
-
+        Iniciativa iniciativaPrr = new Iniciativa("pruebaSeisoBien","En espera de revisión",1,"prueba de que funciona","prueba","santi","san@gmail.com");
+        serviciosIniciativa.insertIniciativa(iniciativaPrr);
         try {
-            assertTrue(serviciosIniciativa.getIniciativa());
-            System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
+            assertTrue(serviciosIniciativa.getIniciativas()!=null);
+            System.out.println(serviciosIniciativa.getIniciativas());
         } catch (Exception e) {
             System.out.println(e);
         }
-    }*/
+    }
 // @Test
 // public void deberiaFiltrarRecursosPorId() throws ServicesException {
 
