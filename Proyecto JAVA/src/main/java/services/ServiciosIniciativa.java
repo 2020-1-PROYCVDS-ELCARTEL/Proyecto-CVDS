@@ -16,6 +16,6 @@ public interface ServiciosIniciativa {
     public List<Iniciativa> getIniciativas(String palabraClave) throws ServicesException;
     public Iniciativa getIniciativa(int id) throws ServicesException;
     public List<Iniciativa> getIniciativas() throws ServicesException;
-    public void updateIniciativa(Iniciativa iniciativa) throws ServicesException;
+    public int updateIniciativa(Iniciativa iniciativa) throws ServicesException;
 
 }

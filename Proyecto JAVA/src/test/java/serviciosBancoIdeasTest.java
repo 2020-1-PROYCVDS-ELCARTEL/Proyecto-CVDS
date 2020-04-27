@@ -29,17 +29,17 @@ public class serviciosBancoIdeasTest {
      *
      * @throws ServiciosUsuarioException
      */
-    @Test
-    public void deberiaConsultarUsuario() throws ServicesException, ServiciosUsuarioException {
+    // @Test
+    // public void deberiaConsultarUsuario() throws ServicesException, ServiciosUsuarioException {
 
-        Usuario usrPrueba = serviciosUsuario.consultarUsuario("santiago@gmail.com");
-        try {
-            assertTrue(usrPrueba != null);
-            System.out.println(usrPrueba);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+    //     Usuario usrPrueba = serviciosUsuario.consultarUsuario("santiago@gmail.com");
+    //     try {
+    //         assertTrue(usrPrueba != null);
+    //         System.out.println(usrPrueba);
+    //     } catch (Exception e) {
+    //         System.out.println(e);
+    //     }
+    // }
 
     @Test
     public void deberiaConsultarUsuarios() throws ServicesException, ServiciosUsuarioException {
@@ -53,30 +53,30 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-    @Test
-public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuarioException {
-    Usuario userpr = new Usuario(8, "laura", "laura@gmail.com", "1234567", "Admin", "Finanzas");
-    serviciosUsuario.updateRolUsuario(userpr.getId(), "Admin");
-    try {
-        Usuario user = serviciosUsuario.consultarUsuario("laura@gmail.com");
-        assertTrue("Admin".equals(user.getTipoUser()));
-        System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
-    } catch (Exception e) {
-        System.out.println(e);
-    }
-}
-//    @Test
-//    public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
-//        Usuario userpr = new Usuario(12, "laura", "laura@gmail.com", "1234567", "Admin", "Finanzas");
-//
-//        serviciosUsuario.insertarUsuario(userpr);
-//        try {
-//            assertTrue(serviciosUsuario.consultarUsuario("laura@gmail.com") != null);
-//            System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//    }
+//     @Test
+// public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuarioException {
+//     Usuario userpr = new Usuario(8, "laura", "laura@gmail.com", "1234567", "Admin", "Finanzas");
+//     serviciosUsuario.updateRolUsuario(userpr.getId(), "Admin");
+//     try {
+//         Usuario user = serviciosUsuario.consultarUsuario("laura@gmail.com");
+//         assertTrue("Admin".equals(user.getTipoUser()));
+//         System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
+//     } catch (Exception e) {
+//         System.out.println(e);
+//     }
+// }
+   @Test
+   public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
+       Usuario userpr = new Usuario("laura", "1234567", "laura2@gmail.com", "Admin", "Finanzas");
+
+       serviciosUsuario.insertarUsuario(userpr);
+       try {
+           assertTrue(serviciosUsuario.consultarUsuario("laura2@gmail.com") != null);
+           System.out.println(serviciosUsuario.consultarUsuario("laura2@gmail.com"));
+       } catch (Exception e) {
+           System.out.println(e);
+       }
+   }
 
 
     @Test
@@ -91,18 +91,18 @@ public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuar
         }
     }
 
-    @Test
-    public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
+    // @Test
+    // public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
 
-        Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien","En espera de revisión",1,"prueba de que funciona","prueba","santi","san@gmail.com");
-        serviciosIniciativa.insertIniciativa(iniciativaPrr);
-        try {
-            assertTrue(serviciosIniciativa.getIniciativas()!=null);
-            System.out.println(serviciosIniciativa.getIniciativas());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+    //     Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien","En espera de revisión",1,"prueba de que funciona","prueba","santi","san@gmail.com");
+    //     serviciosIniciativa.insertIniciativa(iniciativaPrr);
+    //     try {
+    //         assertTrue(serviciosIniciativa.getIniciativas()!=null);
+    //         System.out.println(serviciosIniciativa.getIniciativas());
+    //     } catch (Exception e) {
+    //         System.out.println(e);
+    //     }
+    // }
 // @Test
 // public void deberiaFiltrarRecursosPorId() throws ServicesException {
 

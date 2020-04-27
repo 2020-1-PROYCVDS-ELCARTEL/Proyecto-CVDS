@@ -17,6 +17,14 @@ public class Usuario {
         this.tipoUser = tipoUser;
         this.dependencia = dependencia;
     }
+    
+    public Usuario(String nombre, String contrasena, String correo, String tipoUser, String dependencia) {
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+        this.correo = correo;
+        this.tipoUser = tipoUser;
+        this.dependencia = dependencia;
+    }
 
     public int getId() {
         return id;

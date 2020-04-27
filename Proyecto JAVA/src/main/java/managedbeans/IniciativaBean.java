@@ -40,6 +40,7 @@ public class IniciativaBean implements Serializable {
         return serviciosIniciativa.getIniciativas();
     }
 
+<<<<<<< HEAD
     public void configBasica() {
         setServiciosIniciativa(baseBean.getServiciosIniciativa());
         setServiciosUsuario(baseBean.getServiciosUsuario());
@@ -113,6 +114,11 @@ public class IniciativaBean implements Serializable {
 
     public void setPalabrasClave(String palabrasClave) {
         this.palabrasClave = palabrasClave;
+=======
+    public void AgregarIniciativa() throws ServicesException {
+        serviciosIniciativa = baseBean.getServiciosIniciativa();
+        checkUpdate = serviciosIniciativa.insertIniciativa(iniciativa);
+>>>>>>> 0442498a3fbac33ab5135171f91c6952aa980675
     }
 
     public void setNombreUsuario(String nombreUsuario){

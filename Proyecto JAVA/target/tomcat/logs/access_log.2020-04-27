@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [27/Apr/2020:16:30:53 -0500] "GET / HTTP/1.1" 200 3798 http-bio-8080-exec-2 480
+0:0:0:0:0:0:0:1 - - [27/Apr/2020:16:30:58 -0500] "POST /iniciosesion.xhtml HTTP/1.1" 200 142 http-bio-8080-exec-4 2940
+0:0:0:0:0:0:0:1 - - [27/Apr/2020:16:30:59 -0500] "GET /faces/Pro.xhtml HTTP/1.1" 200 9197 http-bio-8080-exec-5 655
+0:0:0:0:0:0:0:1 - - [27/Apr/2020:16:31:03 -0500] "POST /faces/Pro.xhtml HTTP/1.1" 200 158 http-bio-8080-exec-6 1569
+0:0:0:0:0:0:0:1 - - [27/Apr/2020:16:31:03 -0500] "GET /faces/RegistrarIniciativa.xhtml HTTP/1.1" 200 6118 http-bio-8080-exec-7 68
+0:0:0:0:0:0:0:1 - - [27/Apr/2020:16:31:23 -0500] "POST /faces/RegistrarIniciativa.xhtml HTTP/1.1" 200 142 http-bio-8080-exec-8 420
+0:0:0:0:0:0:0:1 - - [27/Apr/2020:16:31:23 -0500] "GET /faces/Pro.xhtml HTTP/1.1" 200 9431 http-bio-8080-exec-9 423

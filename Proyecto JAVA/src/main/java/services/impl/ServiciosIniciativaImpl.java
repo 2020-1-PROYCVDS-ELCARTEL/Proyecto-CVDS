@@ -96,9 +96,9 @@ public class ServiciosIniciativaImpl implements ServiciosIniciativa {
     }
 
     @Override
-    public void updateIniciativa(Iniciativa iniciativa) throws ServicesException {
+    public int updateIniciativa(Iniciativa iniciativa) throws ServicesException {
         try{
-            iniciativaDAO.updateIniciativa(iniciativa);
+            return iniciativaDAO.updateIniciativa(iniciativa);
         } catch (PersistenceException e) {
             throw new ServicesException("Error al actualizar la iniciativa:"+iniciativa.toString(), e);
         }

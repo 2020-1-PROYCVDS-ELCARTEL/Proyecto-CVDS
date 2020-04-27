@@ -10,7 +10,7 @@ public interface IniciativaMapper {
     public List<Iniciativa> getIniciativasPaClave(@Param("palabraClave")String palabraClave);
     public Iniciativa getIniciativaId(@Param("idIniciativa")int id);
     public List<Iniciativa> getIniciativasAll();
-    public void updateIniciativa(Iniciativa iniciativa);
+    public int updateIniciativa(Iniciativa iniciativa);
     //public void deleteAll();
 }
 
