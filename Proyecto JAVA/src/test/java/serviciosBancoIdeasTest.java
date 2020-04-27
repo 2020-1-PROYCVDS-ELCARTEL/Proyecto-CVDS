@@ -94,7 +94,7 @@ public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuar
     @Test
     public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
 
-        Iniciativa iniciativaPrr = new Iniciativa("pruebaSeisoBien","En espera de revisión",1,"prueba de que funciona","prueba","santi","san@gmail.com");
+        Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien","En espera de revisión",1,"prueba de que funciona","prueba","santi","san@gmail.com");
         serviciosIniciativa.insertIniciativa(iniciativaPrr);
         try {
             assertTrue(serviciosIniciativa.getIniciativas()!=null);
