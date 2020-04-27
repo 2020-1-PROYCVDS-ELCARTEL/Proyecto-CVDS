@@ -42,7 +42,7 @@
 		  <br/>
 		  </p>
 		  
-		  <h:form>
+		  <h:form id="registroIniciativa_form">
 		 
 		  
 			<section>
@@ -55,14 +55,14 @@
 						<div class="form-group">
     						<p>
 								<span class="label nombre"><b> Nombres </b></span>
-    							<p:inputText id ="nombre" value="#{IniciativaBean.nombreusuario}" placeholder="Introduce tu nombre completo" class="form-control"/>
+    							<p:inputText id ="nombre" value="#{IniciativaBean.nombreUsuario}" placeholder="Introduce tu nombre completo" class="form-control"/>
 							</p>
 						</div>
 					
 						<div class="form-group">
     						<p>
 								<span class="label ubicacion"><b> Correo </b></span>
-    							<p:inputText id ="ubicacion" value="#{IniciativaBean.correousuario}" placeholder="Introduce tu correo" class="form-control"/>
+    							<p:inputText id ="ubicacion" value="#{IniciativaBean.correoUsuario}" placeholder="Introduce tu correo" class="form-control"/>
 							</p>
 						</div>
 					
@@ -71,17 +71,24 @@
 		                <div class="form-group">
     						<p>
 								<span class="label capacidad"><b> Nombre </b></span>
-    							<p:inputText id ="capacidad" value="#{IniciativaBean.nombre}" placeholder="Introduce el nombre de tu iniciativa" class="form-control"/>
+    							<p:inputText id ="capacidad" value="#{IniciativaBean.nombreIniciativa}" placeholder="Introduce el nombre de tu iniciativa" class="form-control"/>
 							</p>
 						</div>
            			
             			<div class="form-group">
     						<p>
 								<span class="label idTipo"><b> Descripción </b></span>
-    							<p:inputText id ="idTipo" value="#{IniciativaBean.descripción}" placeholder="Introduce una descripción de tu iniciativa" class="form-control"/>
+    							<p:inputText id ="idTipo" value="#{IniciativaBean.descripcionIniciativa}" placeholder="Introduce una descripción de tu iniciativa separadas por un espacio" class="form-control"/>
 							</p>
-						</div>	
-	
+						</div>
+
+						<div class="form-group">
+							<p>
+								<span class="label palclave"><b> Palabras clave </b></span>
+								<p:inputText id ="idpalClave" value="#{IniciativaBean.palabrasClave}" placeholder="Introduce palabras clave de tu iniciativa" class="form-control"/>
+							</p>
+						</div>
+
 
 					</div>
 				

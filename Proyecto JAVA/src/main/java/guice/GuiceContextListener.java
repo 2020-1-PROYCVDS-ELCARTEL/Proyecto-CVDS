@@ -4,7 +4,9 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import persistence.*;
 import persistence.mybatisimpl.*;
+import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
+import services.impl.ServiciosIniciativaImpl;
 import services.impl.ServiciosUsuarioImpl;
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
@@ -42,6 +44,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
                 //
                 bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
+                bind(ServiciosIniciativa.class).to(ServiciosIniciativaImpl.class);
             }
         });
         servletContextEvent.getServletContext().setAttribute(Injector.class.getName(), injector);

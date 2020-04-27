@@ -56,6 +56,8 @@ public class UsuarioBean implements Serializable {
                 setUsuario(serviciosUsuario.consultarUsuario(usuarioCorreo));
                 setNombreUsuario(usuario.getNombre());
                 setRolUsuario(usuario.getTipoUser());
+                setUsuarioCorreo(usuario.getCorreo());
+                baseBean.setUser(usuario);
                 if (rolUsuario.equals("Admin")){
                     redirectTo("/faces/Admin.xhtml");
                     //redirectToAdmin();
@@ -254,5 +256,13 @@ public class UsuarioBean implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getUsuarioCorreo() {
+        return usuarioCorreo;
+    }
+
+    public void setUsuarioCorreo(String usuarioCorreo) {
+        this.usuarioCorreo = usuarioCorreo;
     }
 }

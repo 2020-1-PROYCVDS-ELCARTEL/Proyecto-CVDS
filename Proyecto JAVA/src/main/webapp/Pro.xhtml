@@ -47,15 +47,18 @@
 		  
 			<section>
 				<div id="uno">
-					<ul>
-					<li><a href="#">Registrar iniciativa</a></li>
-					</ul>
+					<p:commandLink action="#{PageBean.page2}" align="left">
+						<button class="boton" align="right">Registrar iniciativa</button>
+
+
+					</p:commandLink>
+
 				</div>
 				
 				<div id="dos">
 					<a align="center">
 					
-					<p:dataTable class="iniciativas" value="#{IniciativaBean.getIniciativas}" var = "iniciativa" style="margin: 0 auto;"
+					<p:dataTable class="iniciativas" value="#{IniciativaBean.getIniciativas()}" var = "iniciativa" style="margin: 0 auto;"
                     rows="6" paginator="true" 
     				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
     				rowsPerPageTemplate="6, 12, 18">

@@ -10,7 +10,9 @@ import javax.servlet.ServletContext;
 import com.google.inject.Injector;
 
 
+import entities.Usuario;
 import persistence.UsuarioDAO;
+import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 
 
@@ -24,6 +26,8 @@ public class BasePageBean implements Serializable {
     private Injector injector;
     private long idRec;
     private String usuario;
+    private Usuario user;
+
 
 
     private Injector getInjector() {
@@ -43,6 +47,10 @@ public class BasePageBean implements Serializable {
         return getInjector().getInstance(ServiciosUsuario.class);
     }
 
+    protected ServiciosIniciativa getServiciosIniciativa() {
+        return getInjector().getInstance(ServiciosIniciativa.class);
+    }
+
     protected void mensajeApp(Exception e) {
         Mensajes.mensajeAplicacion(e.getMessage());
     }
@@ -54,7 +62,7 @@ public class BasePageBean implements Serializable {
     }
 
     public String page02(){
-        return "menuCom?faces-redirect=true";
+        return "Pro?faces-redirect=true";
     }
 
     public String page1(){
@@ -62,7 +70,7 @@ public class BasePageBean implements Serializable {
     }
 
     public String page2(){
-        return "registroRecursos?faces-redirect=true";
+        return "RegistrarIniciativa?faces-redirect=true";
     }
 
     public String page3(){
@@ -120,5 +128,13 @@ public class BasePageBean implements Serializable {
 
     public void setUsuario (String usuario){
         this.usuario = usuario;
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 }

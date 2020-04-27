@@ -56,7 +56,7 @@
 				<div id="dos">
 					<a align="center">
 					
-					<p:dataTable class="iniciativas" value="#{IniciativaBean.getIniciativas}" var = "iniciativa" style="margin: 0 auto;"
+					<p:dataTable class="iniciativas" value="#{IniciativaBean.getIniciativas()}" var = "iniciativa" style="margin: 0 auto;"
                     rows="6" paginator="true" 
     				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
     				rowsPerPageTemplate="6, 12, 18">
