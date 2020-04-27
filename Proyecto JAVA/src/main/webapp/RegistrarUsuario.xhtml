@@ -1,4 +1,4 @@
-xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -21,9 +21,9 @@ xml version="1.0" encoding="UTF-8"?>
 		</script>
 		
       	
-      	<title>Registrar iniciativa</title>
+      	<title>Registrar Usuario</title>
       
-	</h:head>
+	  </h:head>
       <h:body>
 
 		  <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
@@ -42,7 +42,7 @@ xml version="1.0" encoding="UTF-8"?>
 		  <br/>
 		  </p>
 		  
-		  <h:form>
+		  <h:form id="registroUsuario_form">
 		 
 		  
 			<section>
@@ -55,21 +55,21 @@ xml version="1.0" encoding="UTF-8"?>
 						<div class="form-group">
     						<p>
 								<span class="label nombre"><b> Nombres </b></span>
-    							<p:inputText id ="nombre" value="#{LoginBean.nombreusuario}" placeholder="Introduce tu nombre completo" class="form-control"/>
+    							<p:inputText id ="nombre" value="#{LoginBean.nuevoUsuarioNombre}" placeholder="Introduce tu nombre completo" class="form-control"/>
 							</p>
 						</div>
 						
 						<div class="form-group">
     						<p>
 								<span class="label ubicacion"><b> Contraseña </b></span>
-    							<p:inputText id ="ubicacion" value="#{LoginBean.correousuario}" placeholder="Introduce una contraseña" class="form-control"/>
+    							<p:inputText id ="ubicacion" value="#{LoginBean.nuevoUsuarioCorreo}" placeholder="Introduce una contraseña" class="form-control"/>
 							</p>
 						</div>
 					
 						<div class="form-group">
     						<p>
 								<span class="label ubicacion"><b> Correo </b></span>
-    							<p:inputText id ="ubicacion" value="#{LoginBean.correousuario}" placeholder="Introduce tu correo" class="form-control"/>
+    							<p:inputText id ="ubicacion" value="#{LoginBean.nuevoUsuarioContraseña}" placeholder="Introduce tu correo" class="form-control"/>
 							</p>
 						</div>
 						
@@ -77,14 +77,14 @@ xml version="1.0" encoding="UTF-8"?>
 		                <div class="form-group">
     						<p>
 								<span class="label capacidad"><b> Tipo usuario </b></span>
-    							<p:inputText id ="capacidad" value="#{LoginBean.nombre}" placeholder="Selecciona el tipo de usuario" class="form-control"/>
+    							<p:inputText id ="capacidad" value="#{LoginBean.nuevoUsuarioTipoUser}" placeholder="Selecciona el tipo de usuario" class="form-control"/>
 							</p>
 						</div>
            			
             			<div class="form-group">
     						<p>
 								<span class="label idTipo"><b> Dependencia </b></span>
-    							<p:inputText id ="idTipo" value="#{LoginBean.descripcion}" placeholder="Selecciona su dependencia" class="form-control"/>
+    							<p:inputText id ="idTipo" value="#{LoginBean.nuevoUsuarioDependencia}" placeholder="Selecciona su dependencia" class="form-control"/>
 							</p>
 						</div>	
 	
@@ -93,11 +93,11 @@ xml version="1.0" encoding="UTF-8"?>
 				
 				</div>
 				<div id="botones" style="text-align: center">
-    				<p:commandButton value="Registrar" action="#{LoginBean.agregarUsuario}" update="registroUsuario_form"/>	
+    				<p:commandButton value="Registrar" action="#{LoginBean.agregarUsuario}" update="registroUsuario_form"/>
 				</div>
 				
 			</section>
 			
-		</h:form>           
+		</h:form>
       </h:body>
 </html>

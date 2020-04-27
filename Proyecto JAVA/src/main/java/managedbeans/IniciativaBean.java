@@ -48,10 +48,18 @@ public class IniciativaBean implements Serializable {
         setNombreUsuario(usuario.getNombre());
         setCorreoUsuario(usuario.getCorreo());
     }
+
+    public void borrarForm() {
+        setDescripcionIniciativa("");
+        setNombreIniciativa("");
+        setPalabrasClave("");
+    }
+
     public void agregarIniciativa() throws ServicesException {
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Pro.xhtml");
             checkUpdate = serviciosIniciativa.insertIniciativa(new Iniciativa(nombreIniciativa, "En espera de revisión", 0, descripcionIniciativa, palabrasClave, nombreUsuario, correoUsuario));
+            borrarForm();
         } catch (IOException e) {
             this.baseBean.mensajeApp(e);
             e.printStackTrace();

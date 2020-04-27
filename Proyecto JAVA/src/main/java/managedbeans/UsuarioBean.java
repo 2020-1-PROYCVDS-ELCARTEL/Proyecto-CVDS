@@ -40,6 +40,11 @@ public class UsuarioBean implements Serializable {
     private Usuario usuario;
     private String rolUsuario;
     private String nombreUsuario;
+    private String nuevoUsuarioNombre;
+    private String nuevoUsuarioContraseña;
+    private String nuevoUsuarioCorreo;
+    private String nuevoUsuarioTipoUser;
+    private String nuevoUsuarioDependencia;
 
     public void login() {
         try {
@@ -196,6 +201,10 @@ public class UsuarioBean implements Serializable {
         }
     }
 
+    public void agregarUsuario(){
+
+    }
+
 
     //Gets and Sets
     public boolean isRememberMe() {
@@ -264,5 +273,45 @@ public class UsuarioBean implements Serializable {
 
     public void setUsuarioCorreo(String usuarioCorreo) {
         this.usuarioCorreo = usuarioCorreo;
+    }
+
+    public String getNuevoUsuarioNombre() {
+        return nuevoUsuarioNombre;
+    }
+
+    public void setNuevoUsuarioNombre(String nuevoUsuarioNombre) {
+        this.nuevoUsuarioNombre = nuevoUsuarioNombre;
+    }
+
+    public String getNuevoUsuarioContraseña() {
+        return nuevoUsuarioContraseña;
+    }
+
+    public void setNuevoUsuarioContraseña(String nuevoUsuarioContraseña) {
+        this.nuevoUsuarioContraseña = nuevoUsuarioContraseña;
+    }
+
+    public String getNuevoUsuarioCorreo() {
+        return nuevoUsuarioCorreo;
+    }
+
+    public void setNuevoUsuarioCorreo(String nuevoUsuarioCorreo) {
+        this.nuevoUsuarioCorreo = nuevoUsuarioCorreo;
+    }
+
+    public String getNuevoUsuarioTipoUser() {
+        return nuevoUsuarioTipoUser;
+    }
+
+    public void setNuevoUsuarioTipoUser(String nuevoUsuarioTipoUser) {
+        this.nuevoUsuarioTipoUser = nuevoUsuarioTipoUser;
+    }
+
+    public String getNuevoUsuarioDependencia() {
+        return nuevoUsuarioDependencia;
+    }
+
+    public void setNuevoUsuarioDependencia(String nuevoUsuarioDependencia) {
+        this.nuevoUsuarioDependencia = nuevoUsuarioDependencia;
     }
 }

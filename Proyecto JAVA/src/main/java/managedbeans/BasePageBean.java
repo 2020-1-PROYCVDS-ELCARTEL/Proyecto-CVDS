@@ -75,44 +75,15 @@ public class BasePageBean implements Serializable {
     }
 
     public String page3(){
-        return "recursosAdmin?faces-redirect=true";
+        return "RegistrarUsuario?faces-redirect=true";
     }
 
-
     public String page4(){
-        return "reservas?faces-redirect=true";
+        return "RegistrarUsuario?faces-redirect=true";
     }
 
     public String page5(){
-        return "registroUsuarios?faces-redirect=true";
-    }
-
-    public String page6(){
-        return "cerrarsesion?faces-redirect=true";
-    }
-
-    public String page7(){
-        return "horario?faces-redirect=true";
-    }
-
-    public String page8(){
-        return "recursosComunidad?faces-redirect=true";
-    }
-
-    public String page9(){
-        return "usuarios?faces-redirect=true";
-    }
-
-    public String page10(){
-        return "registroUsuarios?faces-redirect=true";
-    }
-
-    public String page11(){
-        return "tipos?faces-redirect=true";
-    }
-
-    public String page12(){
-        return "cargos?faces-redirect=true";
+        return "RegistrarUsuario?faces-redirect=true";
     }
 
     public long getIdRec() {
