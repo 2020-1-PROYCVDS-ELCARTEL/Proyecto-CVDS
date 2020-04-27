@@ -9,7 +9,7 @@
       
       <h:head>
       	<meta charset="UTF-8"></meta>
-      	<link rel="stylesheet" type="text/css" href="css/admin.css" />
+      	<link rel="stylesheet" type="text/css" href="css/pro.css" />
       	
       	<meta http-equiv="Expires" content="0" />
 		<meta http-equiv="Pragma" content="no-cache" />
@@ -21,7 +21,7 @@
 		</script>
 		
       	
-      	<title>General-Admin</title>
+      	<title>General-Proponente</title>
       
 	</h:head>
       <h:body>
@@ -53,22 +53,31 @@
 				</div>
 				
 				<div id="dos">
-					<p align="center">
-						<table class="tabla">
-						<tr>
-							<td>Nombre</td>
-							<td>Descripción</td>
-							<td>Ver</td>
-						</tr>
+					<a align="center">
+					
+					<p:dataTable class="iniciativas" value="#{IniciativaBean.getIniciativas}" var = "iniciativa" style="margin: 0 auto;"
+                    rows="6" paginator="true" 
+    				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
+    				rowsPerPageTemplate="6, 12, 18">
+    				
+    					<p:column headerText="Id" filterBy="#{iniciativa.id}">
+                        	<h:outputText value="#{iniciativa.id}"></h:outputText>
+                        </p:column>            
 						
-						<tr>
-							<td>Ejemplo</td>
-							<td>Este es un ejemplo de iniciativa</td>
-							<td> <button class="boton">Ver</button> </td>
-						</tr>
+                        <p:column headerText="Nombre" filterBy="#{iniciativa.nombre}">
+                        	<h:outputText value="#{iniciativa.nombre}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Descripción" filterBy="#{iniciativa.descripcion}">
+                        	<h:outputText value="#{iniciativa.descripcion}"></h:outputText>
+                        </p:column>
 						
-						</table>	
-					</p>
+						<p:column headerText="Ver"> <button class="boton">Ver</button> </p:column>
+						
+					
+                    </p:dataTable>
+	
+					</a>
 				</div>		
 				
 			</section>
