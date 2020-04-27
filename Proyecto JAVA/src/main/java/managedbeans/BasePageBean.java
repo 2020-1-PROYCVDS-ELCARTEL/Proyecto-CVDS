@@ -11,6 +11,7 @@ import com.google.inject.Injector;
 
 
 import persistence.UsuarioDAO;
+import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 
 
@@ -42,7 +43,11 @@ public class BasePageBean implements Serializable {
     protected ServiciosUsuario getServiciosUsuario() {
         return getInjector().getInstance(ServiciosUsuario.class);
     }
-
+    
+    protected ServiciosIniciativa getServiciosIniciativa() {
+        return getInjector().getInstance(ServiciosIniciativa.class);
+    }
+    
     protected void mensajeApp(Exception e) {
         Mensajes.mensajeAplicacion(e.getMessage());
     }

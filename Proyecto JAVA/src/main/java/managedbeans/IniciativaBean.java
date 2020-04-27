@@ -29,7 +29,7 @@ public class IniciativaBean implements Serializable {
     }
 
     public void AgregarIniciativa() throws ServicesException {
-        serviciosUsuario = baseBean.getServiciosUsuario();
+        serviciosIniciativa = baseBean.getServiciosIniciativa();
         checkUpdate = serviciosIniciativa.insertIniciativa(iniciativa);
     }
 
