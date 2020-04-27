@@ -46,11 +46,15 @@
 		  
 			<section>
 				<div id="uno">
-					<ul>
-					<li><a href="#">Registrar usuarios</a></li>
-					<li><a href="#">Ver usuarios</a></li>
-					<li><a href="#">Informes</a></li>
-					</ul>
+					<p:commandLink action="#{PageBean.page3()}" align="left">
+						<button class="boton" align="right">Registrar usuarios</button>
+					</p:commandLink>
+					<p:commandLink action="#{PageBean.page4()}" align="left">
+						<button class="boton" align="right">Ver usuarios</button>
+					</p:commandLink>
+					<p:commandLink action="#{PageBean.page5()}" align="left">
+						<button class="boton" align="right">Informes</button>
+					</p:commandLink>
 				</div>
 				
 				<div id="dos">
