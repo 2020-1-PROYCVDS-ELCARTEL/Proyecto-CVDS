@@ -36,7 +36,7 @@ public class AdminBean implements Serializable {
     private ServiciosUsuario serviciosUsuario;
     private ServiciosIniciativa serviciosIniciativa;
     private int idUser;
-    private String tipoUser;
+    private String tipoUser, estado, nombre;
     private Usuario usuario;
     private int checkUpdate;
     private Iniciativa iniciativa;
@@ -53,7 +53,7 @@ public class AdminBean implements Serializable {
 
     public void modificarIniciativa() throws ServiciosUsuarioException, ServicesException {
         serviciosIniciativa = baseBean.getServiciosIniciativa();
-        checkUpdate = serviciosIniciativa.updateIniciativa(iniciativa);
+        checkUpdate = serviciosIniciativa.updateIniciativa(nombre, estado);
     }
 
     public Usuario getUsuario() {

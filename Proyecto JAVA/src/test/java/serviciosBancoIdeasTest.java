@@ -29,19 +29,19 @@ public class serviciosBancoIdeasTest {
      *
      * @throws ServiciosUsuarioException
      */
-    // @Test
-    // public void deberiaConsultarUsuario() throws ServicesException, ServiciosUsuarioException {
+//    @Test
+    public void deberiaConsultarUsuario() throws ServicesException, ServiciosUsuarioException {
 
-    //     Usuario usrPrueba = serviciosUsuario.consultarUsuario("santiago@gmail.com");
-    //     try {
-    //         assertTrue(usrPrueba != null);
-    //         System.out.println(usrPrueba);
-    //     } catch (Exception e) {
-    //         System.out.println(e);
-    //     }
-    // }
+        Usuario usrPrueba = serviciosUsuario.consultarUsuario("santiago@gmail.com");
+        try {
+            assertTrue(usrPrueba != null);
+            System.out.println(usrPrueba);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
-    @Test
+    //@Test
     public void deberiaConsultarUsuarios() throws ServicesException, ServiciosUsuarioException {
 
         List<Usuario> usrPrueba = serviciosUsuario.consultarUsuarios();
@@ -53,33 +53,33 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-//     @Test
-// public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuarioException {
-//     Usuario userpr = new Usuario(8, "laura", "laura@gmail.com", "1234567", "Admin", "Finanzas");
-//     serviciosUsuario.updateRolUsuario(userpr.getId(), "Admin");
-//     try {
-//         Usuario user = serviciosUsuario.consultarUsuario("laura@gmail.com");
-//         assertTrue("Admin".equals(user.getTipoUser()));
-//         System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
-//     } catch (Exception e) {
-//         System.out.println(e);
-//     }
-// }
-   @Test
-   public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
-       Usuario userpr = new Usuario("laura", "1234567", "laura2@gmail.com", "Admin", "Finanzas");
+    // @Test
+    public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuarioException {
+        Usuario userpr = new Usuario(8, "laura", "laura@gmail.com", "123456789", "Admin", "Finanzas");
+        serviciosUsuario.updateRolUsuario(userpr.getId(), "Admin");
+        try {
+            Usuario user = serviciosUsuario.consultarUsuario("laura@gmail.com");
+            assertTrue("Admin".equals(user.getTipoUser()));
+            System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
-       serviciosUsuario.insertarUsuario(userpr);
-       try {
-           assertTrue(serviciosUsuario.consultarUsuario("laura2@gmail.com") != null);
-           System.out.println(serviciosUsuario.consultarUsuario("laura2@gmail.com"));
-       } catch (Exception e) {
-           System.out.println(e);
-       }
-   }
+    //@Test
+    public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
+        Usuario userpr = new Usuario("laura", "1234567", "laura2@gmail.com", "Admin", "Finanzas");
 
+        serviciosUsuario.insertarUsuario(userpr);
+        try {
+            assertTrue(serviciosUsuario.consultarUsuario("laura2@gmail.com") != null);
+            System.out.println(serviciosUsuario.consultarUsuario("laura2@gmail.com"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
-    @Test
+    //@Test
     public void deberiaConsultarIniciativas() throws ServicesException, ServiciosUsuarioException {
 
         List<Iniciativa> iniciativasPrueba = serviciosIniciativa.getIniciativas();
@@ -91,90 +91,98 @@ public class serviciosBancoIdeasTest {
         }
     }
 
+//    @Test
+    public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
+
+        Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien", "En espera de revisión", 1,"prueba de que funciona", "prueba", "santi", "san@gmail.com");
+
+        serviciosIniciativa.insertIniciativa(iniciativaPrr);
+        try {
+            assertTrue(serviciosIniciativa.getIniciativas() != null);
+            System.out.println(serviciosIniciativa.getIniciativas());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+//    @Test
+    public void deberiaActualizarIniciativa() throws ServicesException, ServiciosUsuarioException {
+        Iniciativa iniciativapr = new Iniciativa("pruebaSietesoBien", "En espera derevisión", 1,"prueba de que funciona", "prueba", "santi", "san@gmail.com");
+        serviciosIniciativa.updateIniciativa(iniciativapr.getNombre(), "En revisión");
+        try {
+            Iniciativa ini = serviciosIniciativa.getIniciativa(iniciativapr.getId());
+            assertTrue("En revisión".equals(ini.getEstado()));
+            System.out.println(iniciativapr);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     // @Test
-    // public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
+    // public void deberiaFiltrarRecursosPorId() throws ServicesException {
 
-    //     Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien","En espera de revisión",1,"prueba de que funciona","prueba","santi","san@gmail.com");
-    //     serviciosIniciativa.insertIniciativa(iniciativaPrr);
-    //     try {
-    //         assertTrue(serviciosIniciativa.getIniciativas()!=null);
-    //         System.out.println(serviciosIniciativa.getIniciativas());
-    //     } catch (Exception e) {
-    //         System.out.println(e);
-    //     }
+    // List<Recurso> recurPrueba = bibliotecaS.recursoPorId(116);
+
+    // assertTrue (recurPrueba !=null);
     // }
-// @Test
-// public void deberiaFiltrarRecursosPorId() throws ServicesException {
 
-// List<Recurso> recurPrueba = bibliotecaS.recursoPorId(116);
+    // @Test
+    // public void deberiaFiltrarRecursosDisponibles() throws ServicesException {
 
-// assertTrue (recurPrueba !=null);
-// }
+    // List<Recurso> recurPrueba = bibliotecaS.recursosDisponibles();
 
-// @Test
-// public void deberiaFiltrarRecursosDisponibles() throws ServicesException {
+    // assertTrue (recurPrueba !=null);
+    // }
 
-// List<Recurso> recurPrueba = bibliotecaS.recursosDisponibles();
+    // @Test
+    // public void deberiaFiltrarRecursosPorNombre() throws ServicesException {
 
-// assertTrue (recurPrueba !=null);
-// }
+    // List<Recurso> recurPrueba = bibliotecaS.filtrarNombre("e");
 
-// @Test
-// public void deberiaFiltrarRecursosPorNombre() throws ServicesException {
+    // //for(Recurso r: recurPrueba) System.out.println(r);
 
-// List<Recurso> recurPrueba = bibliotecaS.filtrarNombre("e");
+    // assertTrue (recurPrueba !=null);
+    // }
 
-// //for(Recurso r: recurPrueba) System.out.println(r);
+    // @Test
+    // public void deberiaFiltrarRecursosPorUbicacion() throws ServicesException {
 
-// assertTrue (recurPrueba !=null);
-// }
+    // List<Recurso> recurPrueba = bibliotecaS.filtrarUbicacion("e");
 
-// @Test
-// public void deberiaFiltrarRecursosPorUbicacion() throws ServicesException {
+    // //for(Recurso r: recurPrueba) System.out.println(r);
 
-// List<Recurso> recurPrueba = bibliotecaS.filtrarUbicacion("e");
+    // assertTrue (recurPrueba !=null);
+    // }
 
-// //for(Recurso r: recurPrueba) System.out.println(r);
+    // @Test
+    // public void cambiarEstadoMatenimiento() throws ServicesException {
 
-// assertTrue (recurPrueba !=null);
-// }
+    // List<Recurso> recurPrueba = bibliotecaS.recursoPorId(102);
 
-// @Test
-// public void cambiarEstadoMatenimiento() throws ServicesException {
+    // boolean testigo = recurPrueba.get(0).isAveriado();
 
-// List<Recurso> recurPrueba = bibliotecaS.recursoPorId(102);
+    // bibliotecaS.cambiarEstadoMatenimiento(recurPrueba.get(0).getId());
 
-// boolean testigo = recurPrueba.get(0).isAveriado();
+    // recurPrueba = bibliotecaS.recursoPorId(102);
 
-// bibliotecaS.cambiarEstadoMatenimiento(recurPrueba.get(0).getId());
+    // boolean testigo2 = recurPrueba.get(0).isAveriado();
 
-// recurPrueba = bibliotecaS.recursoPorId(102);
+    // assertTrue (testigo != testigo2);
+    // }
 
-// boolean testigo2 = recurPrueba.get(0).isAveriado();
+    // @Test
+    // public void deberiaFiltrarRecursosPorCapacidad() throws ServicesException {
 
+    // List<Recurso> recurPrueba = bibliotecaS.filtrarCapacidad(5);
+    // //for(Recurso r:recurPrueba) System.out.println(r);
+    // assertTrue (recurPrueba !=null);
+    // }
 
-// assertTrue (testigo != testigo2);
-// }
+    // @Test
+    // public void deberiaFiltrarRecursosPorTipo() throws ServicesException {
 
-// @Test
-// public void deberiaFiltrarRecursosPorCapacidad() throws ServicesException {
-
-// List<Recurso> recurPrueba = bibliotecaS.filtrarCapacidad(5);
-// //for(Recurso r:recurPrueba) System.out.println(r);
-// assertTrue (recurPrueba !=null);
-// }
-
-
-
-// @Test
-// public void deberiaFiltrarRecursosPorTipo() throws ServicesException {
-
-// List<Recurso> recurPrueba = bibliotecaS.filtrarTipo("l");
-// //for(Recurso r:recurPrueba) System.out.println(r);
-// assertTrue (recurPrueba !=null);
-// }
-
-
-
+    // List<Recurso> recurPrueba = bibliotecaS.filtrarTipo("l");
+    // //for(Recurso r:recurPrueba) System.out.println(r);
+    // assertTrue (recurPrueba !=null);
+    // }
 
 }

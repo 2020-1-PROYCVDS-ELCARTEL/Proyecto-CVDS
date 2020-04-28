@@ -55,7 +55,7 @@
     </insert>
 
     <update id="updateIniciativa">
-        update iniciativa set estado=#{estado}, numerovotos=#{numerovotos} where nombre = #{nombre};
+        update iniciativa set estado=#{estado} where nombre = #{nombre};
     </update>
 
     <resultMap type='Iniciativa' id='IniciativaResult'>

@@ -50,9 +50,9 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     }
 
     @Override
-    public int updateIniciativa(Iniciativa iniciativa) throws PersistenceException {
+    public int updateIniciativa(String nombre, String estado) throws PersistenceException {
         try {
-             return iniciativaMapper.updateIniciativa(iniciativa);
+             return iniciativaMapper.updateIniciativa(nombre, estado);
         }catch (Exception e){
             e.printStackTrace();
             throw new PersistenceException("Update error iniciativa nombre");
