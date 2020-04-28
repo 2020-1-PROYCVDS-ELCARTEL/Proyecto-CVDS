@@ -14,8 +14,7 @@
         i.descripcion,
         i.palabrasclave,
         i.nombreusuario,
-        i.correousuario,
-        i.fecha
+        i.correousuario
         FROM
         iniciativa as i WHERE i.id=#{idIniciativa}
     </select>
@@ -29,10 +28,9 @@
         i.descripcion,
         i.palabrasclave,
         i.nombreusuario,
-        i.correousuario,
-        i.fecha
+        i.correousuario
         FROM
-        iniciativa as i WHERE i.palabrasclave LIKE '%'+#{palabraClave}+'%'
+        iniciativa as i WHERE i.palabrasclave LIKE concat('%',#{palabraClave},'%')
         <!--Preguntar si el like esta bien-->
     </select>
 

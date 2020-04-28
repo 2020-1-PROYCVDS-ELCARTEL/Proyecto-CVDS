@@ -91,6 +91,30 @@ public class serviciosBancoIdeasTest {
         }
     }
 
+    @Test
+    public void deberiaConsultarIniciativasPalabraclave() throws ServicesException, ServiciosUsuarioException {
+
+        List<Iniciativa> iniciativasPrueba = serviciosIniciativa.getIniciativas("k");
+        try {
+            assertTrue(iniciativasPrueba != null);
+            System.out.println(iniciativasPrueba);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void deberiaConsultarIniciativaId() throws ServicesException, ServiciosUsuarioException {
+
+        Iniciativa iniciativasPrueba = serviciosIniciativa.getIniciativa(14);
+        try {
+            assertTrue(iniciativasPrueba != null);
+            System.out.println(iniciativasPrueba);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     // @Test
     // public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
 
