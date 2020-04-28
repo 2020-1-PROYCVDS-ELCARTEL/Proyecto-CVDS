@@ -31,7 +31,6 @@ public class UsuarioBean implements Serializable {
 
     @ManagedProperty(value = "#{PageBean}")
     private BasePageBean baseBean;
-
     private String usuarioCorreo;
     private String password;
     private boolean rememberMe;
@@ -46,7 +45,35 @@ public class UsuarioBean implements Serializable {
     private String nuevoUsuarioTipoUser;
     private String nuevoUsuarioDependencia;
     private String actualizarUsuarioCorreo;
-    private String actualizarUsuarioTipo;
+
+    private void convertir(String tipo){
+        try {
+            Usuario temp = serviciosUsuario.consultarUsuario(actualizarUsuarioCorreo);
+            serviciosUsuario.updateRolUsuario(temp.getId(), tipo);
+            actualizarUsuarioCorreo="";
+            redirectTo("/faces/Admin.xhtml");
+        } catch (ServiciosUsuarioException e) {
+            this.baseBean.mensajeApp(e);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
+        }
+    }
+
+    public void convertirAdmin(){
+        convertir("Admin");
+    }
+
+    public void convertirPMO(){
+        convertir("PMO");
+    }
+
+    public void convertirUser(){
+        convertir("User");
+    }
+
+    public void convertirProponente(){
+        convertir("Proponente");
+    }
 
     public void login() {
         try {
@@ -67,23 +94,16 @@ public class UsuarioBean implements Serializable {
                 baseBean.setUser(usuario);
                 if (rolUsuario.equals("Admin")){
                     redirectTo("/faces/Admin.xhtml");
-                    //redirectToAdmin();
 				}
 				else if (rolUsuario.equals("PMO")){
                     redirectTo("/faces/PMO.xhtml");
-					//redirectToPMO();
 				}
 				else if (rolUsuario.equals("Proponente")){
-
                     redirectTo("/faces/Pro.xhtml");
-					//redirectToPro();
 				}
 				else if (rolUsuario.equals("User")){
                     redirectTo("/faces/User.xhtml");
-					//redirectToUser();
-				}/*else {
-				    System.out.println("bye");
-                }*/
+				}
             }
         } catch (UnknownAccountException e) {
            this.baseBean.mensajeApp(e);
@@ -325,11 +345,4 @@ public class UsuarioBean implements Serializable {
         this.actualizarUsuarioCorreo = actualizarUsuarioCorreo;
     }
 
-    public String getActualizarUsuarioTipo() {
-        return actualizarUsuarioTipo;
-    }
-
-    public void setActualizarUsuarioTipo(String actualizarUsuarioTipo) {
-        this.actualizarUsuarioTipo = actualizarUsuarioTipo;
-    }
 }

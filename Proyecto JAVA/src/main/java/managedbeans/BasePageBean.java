@@ -66,6 +66,16 @@ public class BasePageBean implements Serializable {
         return "Pro?faces-redirect=true";
     }
 
+    public String page03(){ return "Admin?faces-redirect=true"; }
+
+    public String page04(){
+        return "PMO?faces-redirect=true";
+    }
+
+    public String page05(){
+        return "User?faces-redirect=true";
+    }
+
     public String page1(){
         return "iniciosesion?faces-redirect=true";
     }

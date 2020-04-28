@@ -52,17 +52,17 @@
 							<p:panelGrid columns="2" rendered="#{not empty IniciativaBean.selected}" columnClasses="label,value">
 					
 								<h:outputText value="Nombre:"/>
-								<h:inputText value="#{IniciativaBean.selected.iniciativa.nombre}"/>
-								
+								<h:outputText value="#{IniciativaBean.selected.iniciativa.nombre}"/>
+
 								<h:outputText value="Descripción:"/>
 								<h:outputText value="#{IniciativaBean.selected.iniciativa.descripcion}"/>
-								
+
 								<h:outputText value="Palabras clave:"/>
 								<h:outputText value="#{IniciativaBean.selected.iniciativa.palabrasclave}"/>
-								
+
 								<h:outputText value="Nombres proponente:"/>
 								<h:outputText value="#{IniciativaBean.selected.iniciativa.nombreusuario}"/>
-								
+
 								<h:outputText value="Correo proponente:"/>
 								<h:outputText value="#{IniciativaBean.selected.iniciativa.correousuario}"/>
 								
@@ -75,7 +75,7 @@
 									<option name="Solucionado" value="#{IniciativaBean.estado}"/>
 								</select>
 								</form>
-								
+
 								<h:outputText value="Fecha de registro:"/>
 								<h:outputText value="#{IniciativaBean.selected.iniciativa.fecha}"/>
 							</p:panelGrid>

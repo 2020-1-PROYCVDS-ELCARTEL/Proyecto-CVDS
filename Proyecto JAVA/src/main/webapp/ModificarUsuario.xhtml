@@ -40,39 +40,25 @@
 		  <p> <br/>
 		  <br/>
 		  </p>
-		  
 		  <h:form>
-
-		  
-			<section>
-
-				<a align="center">
-					<p:dialog header="usuario" widgetVar="userDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-						<p:outputPanel style="text-align: center;">
-							<p:panelGrid columns="2" rendered="#{not empty LoginBean.actualizarUsuarioTipo}" columnClasses="label,value">
-					
-								<h:outputText value="Correo:"/>
-								<h:inputText value="#{LoginBean.actualizarUsuarioCorreo}"/>
-								
-								<h:outputText value="Tipo Usuario:"/>
-								<form>
-								<select id = "tipoUser">
-									<option name="Admin" value="#{LoginBean.actualizarUsuarioTipo}"/>
-									<option name="User" value="#{LoginBean.actualizarUsuarioTipo}"/>
-									<option name="PMO" value="#{LoginBean.actualizarUsuarioTipo}"/>
-									<option name="Proponente" value="#{LoginBean.actualizarUsuarioTipo}"/>
-								</select>
-								</form>
-								
-								<h:outputText value="Dependencia:"/>
-								<h:outputText value="#{LoginBean.selected.usuario.dependencia}"/>
-							</p:panelGrid>
-						</p:outputPanel>
-					</p:dialog>
-				</a>	
-				
-			</section>
-			
-		</h:form>           
+			  <div id="uno">
+			  <h:outputText value="Correo:"/>
+			  <h:inputText value="#{LoginBean.actualizarUsuarioCorreo}"/><br></br>
+			  </div>
+			  <div id="dos">
+				  <p:commandLink action="#{LoginBean.convertirAdmin}" align="right">
+					  <button class="boton" align="right">Convertir en Admin</button>
+				  </p:commandLink><br></br><br></br>
+				  <p:commandLink action="#{LoginBean.convertirPMO}" align="right">
+					  <button class="boton" align="right">Convertir en PMO</button>
+				  </p:commandLink><br></br><br></br>
+				  <p:commandLink action="#{LoginBean.convertirProponente}" align="right">
+					  <button class="boton" align="right">Convertir en Proponente</button>
+				  </p:commandLink><br></br><br></br>
+				  <p:commandLink action="#{LoginBean.convertirUser}" align="right">
+					  <button class="boton" align="right">Convertir en User</button>
+				  </p:commandLink><br></br><br></br>
+			  </div>
+		  </h:form>
       </h:body>
 </html>

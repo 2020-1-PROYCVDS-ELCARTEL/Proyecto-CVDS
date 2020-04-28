@@ -30,6 +30,7 @@ public class IniciativaBean implements Serializable {
     private String nombreIniciativa;
     private String descripcionIniciativa;
     private String palabrasClave;
+    private String estado;
     private String nombreUsuario;
     private String correoUsuario;
     private Usuario usuario;
@@ -39,6 +40,10 @@ public class IniciativaBean implements Serializable {
     public List<Iniciativa> getIniciativas() throws ServicesException {
         configBasica();
         return serviciosIniciativa.getIniciativas();
+    }
+
+    public void actualizarIniciativa() throws ServicesException {
+        serviciosIniciativa.updateIniciativa(nombreIniciativa, estado);
     }
 
 
@@ -147,5 +152,13 @@ public class IniciativaBean implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

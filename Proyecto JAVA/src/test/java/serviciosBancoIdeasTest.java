@@ -29,7 +29,7 @@ public class serviciosBancoIdeasTest {
      *
      * @throws ServiciosUsuarioException
      */
-//    @Test
+    @Test
     public void deberiaConsultarUsuario() throws ServicesException, ServiciosUsuarioException {
 
         Usuario usrPrueba = serviciosUsuario.consultarUsuario("santiago@gmail.com");
@@ -53,7 +53,7 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-    // @Test
+    @Test
     public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuarioException {
         Usuario userpr = new Usuario(8, "laura", "laura@gmail.com", "123456789", "Admin", "Finanzas");
         serviciosUsuario.updateRolUsuario(userpr.getId(), "Admin");
@@ -66,7 +66,7 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-    //@Test
+    @Test
     public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
         Usuario userpr = new Usuario("laura", "1234567", "laura2@gmail.com", "Admin", "Finanzas");
 
@@ -79,7 +79,7 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-    //@Test
+    @Test
     public void deberiaConsultarIniciativas() throws ServicesException, ServiciosUsuarioException {
 
         List<Iniciativa> iniciativasPrueba = serviciosIniciativa.getIniciativas();
@@ -91,7 +91,7 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-//    @Test
+    @Test
     public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
 
         Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien", "En espera de revisión", 1,"prueba de que funciona", "prueba", "santi", "san@gmail.com");
@@ -105,7 +105,7 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-//    @Test
+    @Test
     public void deberiaActualizarIniciativa() throws ServicesException, ServiciosUsuarioException {
         Iniciativa iniciativapr = new Iniciativa("pruebaSietesoBien", "En espera derevisión", 1,"prueba de que funciona", "prueba", "santi", "san@gmail.com");
         serviciosIniciativa.updateIniciativa(iniciativapr.getNombre(), "En revisión");
