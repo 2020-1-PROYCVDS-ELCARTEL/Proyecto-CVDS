@@ -107,6 +107,7 @@ public class Iniciativa {
     @Override
     public String toString() {
         return "Iniciativa{" +
+                "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", estado='" + estado + '\'' +
                 ", numeroVotos=" + numerovotos +
