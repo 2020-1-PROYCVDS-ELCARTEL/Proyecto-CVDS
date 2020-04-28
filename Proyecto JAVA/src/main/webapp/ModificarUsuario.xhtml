@@ -35,35 +35,32 @@
 		  <p> <br/>
 		  <br/>
 		  </p>
-		  <h1>Modificar estado de iniciativas</h1>
+		  <h1>Modificar Usuarios</h1>
 		  <h2>Unidad de proyectos</h2>
 		  <p> <br/>
 		  <br/>
 		  </p>
 		  
 		  <h:form>
-		 
+
 		  
 			<section>
 
 				<a align="center">
 					<p:dialog header="usuario" widgetVar="userDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 						<p:outputPanel style="text-align: center;">
-							<p:panelGrid columns="2" rendered="#{not empty LoginBean.selected}" columnClasses="label,value">
+							<p:panelGrid columns="2" rendered="#{not empty LoginBean.actualizarUsuarioTipo}" columnClasses="label,value">
 					
-								<h:outputText value="Nombre:"/>
-								<h:outputText value="#{LoginBean.selected.usuario.nombre}"/>
-								
 								<h:outputText value="Correo:"/>
-								<h:outputText value="#{LoginBean.selected.usuario.correo}"/>
+								<h:inputText value="#{LoginBean.actualizarUsuarioCorreo}"/>
 								
 								<h:outputText value="Tipo Usuario:"/>
 								<form>
-								<select name = "tipoUser">
-									<h:option name="Admin" value="#{LoginBean.estado}"/>
-									<h:option name="User" value="#{LoginBean.estado}"/>
-									<h:option name="PMO" value="#{LoginBean.estado}"/>
-									<h:option name="Proponente" value="#{LoginBean.estado}"/>
+								<select id = "tipoUser">
+									<option name="Admin" value="#{LoginBean.actualizarUsuarioTipo}"/>
+									<option name="User" value="#{LoginBean.actualizarUsuarioTipo}"/>
+									<option name="PMO" value="#{LoginBean.actualizarUsuarioTipo}"/>
+									<option name="Proponente" value="#{LoginBean.actualizarUsuarioTipo}"/>
 								</select>
 								</form>
 								

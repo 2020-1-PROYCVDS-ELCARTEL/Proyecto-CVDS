@@ -35,6 +35,7 @@ public class IniciativaBean implements Serializable {
     private Usuario usuario;
 
 
+
     public List<Iniciativa> getIniciativas() throws ServicesException {
         configBasica();
         return serviciosIniciativa.getIniciativas();

@@ -45,6 +45,8 @@ public class UsuarioBean implements Serializable {
     private String nuevoUsuarioCorreo;
     private String nuevoUsuarioTipoUser;
     private String nuevoUsuarioDependencia;
+    private String actualizarUsuarioCorreo;
+    private String actualizarUsuarioTipo;
 
     public void login() {
         try {
@@ -313,5 +315,21 @@ public class UsuarioBean implements Serializable {
 
     public void setNuevoUsuarioDependencia(String nuevoUsuarioDependencia) {
         this.nuevoUsuarioDependencia = nuevoUsuarioDependencia;
+    }
+
+    public String getActualizarUsuarioCorreo() {
+        return actualizarUsuarioCorreo;
+    }
+
+    public void setActualizarUsuarioCorreo(String actualizarUsuarioCorreo) {
+        this.actualizarUsuarioCorreo = actualizarUsuarioCorreo;
+    }
+
+    public String getActualizarUsuarioTipo() {
+        return actualizarUsuarioTipo;
+    }
+
+    public void setActualizarUsuarioTipo(String actualizarUsuarioTipo) {
+        this.actualizarUsuarioTipo = actualizarUsuarioTipo;
     }
 }

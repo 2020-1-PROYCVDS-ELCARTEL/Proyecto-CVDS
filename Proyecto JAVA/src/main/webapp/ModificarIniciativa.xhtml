@@ -52,7 +52,7 @@
 							<p:panelGrid columns="2" rendered="#{not empty IniciativaBean.selected}" columnClasses="label,value">
 					
 								<h:outputText value="Nombre:"/>
-								<h:outputText value="#{IniciativaBean.selected.iniciativa.nombre}"/>
+								<h:inputText value="#{IniciativaBean.selected.iniciativa.nombre}"/>
 								
 								<h:outputText value="Descripción:"/>
 								<h:outputText value="#{IniciativaBean.selected.iniciativa.descripcion}"/>
@@ -69,10 +69,10 @@
 								<h:outputText value="Estado:"/>
 								<form>
 								<select name = "estado">
-									<h:option name="En espera de revisión" value="#{IniciativaBean.estado}"/>
-									<h:option name="En revisión" value="#{IniciativaBean.estado}"/>
-									<h:option name="Proyecto" value="#{IniciativaBean.estado}"/>
-									<h:option name="Solucionado" value="#{IniciativaBean.estado}"/>
+									<option name="En espera de revisión" value="#{IniciativaBean.estado}"/>
+									<option name="En revisión" value="#{IniciativaBean.estado}"/>
+									<option name="Proyecto" value="#{IniciativaBean.estado}"/>
+									<option name="Solucionado" value="#{IniciativaBean.estado}"/>
 								</select>
 								</form>
 								

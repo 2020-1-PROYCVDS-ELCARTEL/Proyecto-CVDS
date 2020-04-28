@@ -86,6 +86,14 @@ public class BasePageBean implements Serializable {
         return "RegistrarUsuario?faces-redirect=true";
     }
 
+    public String page6(){
+        return "ModificarUsuario?faces-redirect=true";
+    }
+
+    public String page7(){
+        return "ModificarIniciativa?faces-redirect=true";
+    }
+
     public long getIdRec() {
         return this.idRec;
     }
