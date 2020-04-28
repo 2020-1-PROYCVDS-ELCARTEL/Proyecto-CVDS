@@ -41,11 +41,19 @@
 		  <br/>
 		  </p>
 		  
-		  <h:form>
-		 
 		  
+		  
+		  <h:form>
+
 			<section>
+				<div id="uno">
+					
+					<p:commandLink action="#{PageBean.page5()}" align="left">
+						<button class="boton" align="right">Ver informes</button>
+					</p:commandLink>
+				</div>
 				
+				<div id="dos">
 					<a align="center">
 					
 					<p:dataTable class="iniciativas" value="#{IniciativaBean.getIniciativas()}" var = "iniciativa" style="margin: 0 auto;"
@@ -71,6 +79,7 @@
                     </p:dataTable>
 	
 					</a>
+				</div>
 				
 			</section>
 			

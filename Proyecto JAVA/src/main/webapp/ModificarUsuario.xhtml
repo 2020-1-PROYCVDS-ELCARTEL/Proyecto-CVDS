@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui">
+      
+      <h:head>
+      	<meta charset="UTF-8"></meta>
+      	<link rel="stylesheet" type="text/css" href="css/admin.css"/>
+      	
+      	<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		
+		<script type="text/javascript">
+		  if(history.forward(1)){
+		    location.replace( history.forward(1) );
+		  }
+		</script>
+		
+      	
+      	<title>Admin-Iniciativas</title>
+      
+	</h:head>
+      <h:body>
+
+		  <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
+		  <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
+		  <p:commandLink action="#{LoginBean.logout}" align="right">
+			  <button class="boton" align="right">Cerrar sesión</button>
+		  </p:commandLink>
+		  
+		  <p> <br/>
+		  <br/>
+		  </p>
+		  <h1>Modificar estado de iniciativas</h1>
+		  <h2>Unidad de proyectos</h2>
+		  <p> <br/>
+		  <br/>
+		  </p>
+		  
+		  <h:form>
+		 
+		  
+			<section>
+
+				<a align="center">
+					<p:dialog header="usuario" widgetVar="userDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel style="text-align: center;">
+							<p:panelGrid columns="2" rendered="#{not empty LoginBean.selected}" columnClasses="label,value">
+					
+								<h:outputText value="Nombre:"/>
+								<h:outputText value="#{LoginBean.selected.usuario.nombre}"/>
+								
+								<h:outputText value="Correo:"/>
+								<h:outputText value="#{LoginBean.selected.usuario.correo}"/>
+								
+								<h:outputText value="Tipo Usuario:"/>
+								<form>
+								<select name = "tipoUser">
+									<h:option name="Admin" value="#{LoginBean.estado}"/>
+									<h:option name="User" value="#{LoginBean.estado}"/>
+									<h:option name="PMO" value="#{LoginBean.estado}"/>
+									<h:option name="Proponente" value="#{LoginBean.estado}"/>
+								</select>
+								</form>
+								
+								<h:outputText value="Dependencia:"/>
+								<h:outputText value="#{LoginBean.selected.usuario.dependencia}"/>
+							</p:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+				</a>	
+				
+			</section>
+			
+		</h:form>           
+      </h:body>
+</html>
