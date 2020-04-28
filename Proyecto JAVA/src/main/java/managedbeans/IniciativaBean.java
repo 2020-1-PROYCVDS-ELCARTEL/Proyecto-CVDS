@@ -3,6 +3,7 @@ package managedbeans;
 import entities.Iniciativa;
 import entities.Usuario;
 import exceptions.ServicesException;
+import exceptions.ServiciosUsuarioException;
 import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 
@@ -12,6 +13,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Deprecated
@@ -46,6 +48,42 @@ public class IniciativaBean implements Serializable {
         serviciosIniciativa.updateIniciativa(nombreIniciativa, estado);
     }
 
+    public List<Integer> iniciativaPorArea(){
+        List<Integer> estadistica = new ArrayList<Integer>();
+        try {
+
+            int finanzas =0;
+            int administrativo=0;
+            int recursosHumanos=0;
+            int TI=0;
+            int unidadDeProyectos = 0;
+            List<Iniciativa> iniciativas = serviciosIniciativa.getIniciativas();
+            List<Usuario> usuarios = serviciosUsuario.consultarUsuarios();
+            for(int i=0; i<iniciativas.size(); i++){
+                for(int j=0; j<usuarios.size(); j++){
+                    if(iniciativas.get(i).getCorreoUsuario().equals(usuarios.get(j).getCorreo())){
+                        if(usuarios.get(j).getDependencia().equals("Finanzas")){ finanzas+=1; }
+                        else if(usuarios.get(j).getDependencia().equals("Administrativo")){ administrativo+=1; }
+                        else if(usuarios.get(j).getDependencia().equals("Recursos Humanos")){ recursosHumanos+=1; }
+                        else if(usuarios.get(j).getDependencia().equals("TI")){ TI+=1; }
+                        else if(usuarios.get(j).getDependencia().equals("Unidad de proyectos")){ unidadDeProyectos+=1; }
+                    }
+                }
+            }
+            estadistica.add(finanzas);
+            estadistica.add(administrativo);
+            estadistica.add(recursosHumanos);
+            estadistica.add(TI);
+            estadistica.add(unidadDeProyectos);
+
+
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        } catch (ServiciosUsuarioException e) {
+            this.baseBean.mensajeApp(e);
+        }
+        return estadistica;
+    }
 
     public void configBasica() {
         setServiciosIniciativa(baseBean.getServiciosIniciativa());
