@@ -7,7 +7,8 @@ import java.util.List;
 public interface IniciativaDAO {
     public int insertIniciativa(Iniciativa iniciativa) throws PersistenceException;
     public List<Iniciativa> getIniciativas(String palabraClave)  throws PersistenceException;
-    public Iniciativa getIniciativa(int id) throws PersistenceException;
+    public Iniciativa getIniciativaId(int id) throws PersistenceException;
+    public Iniciativa getIniciativaNombre(String nombreIniciativa) throws PersistenceException;
     public List<Iniciativa> getIniciativas() throws PersistenceException;
     public int updateIniciativa(String nombre, String estado) throws PersistenceException;
 

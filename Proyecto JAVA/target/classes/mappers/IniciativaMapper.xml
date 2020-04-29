@@ -19,6 +19,20 @@
         iniciativa as i WHERE i.id=#{idIniciativa}
     </select>
 
+    <select parameterType="map" id="getIniciativaNombre" resultMap="IniciativaResult">
+        SELECT
+        i.id,
+        i.nombre,
+        i.estado,
+        i.numerovotos,
+        i.descripcion,
+        i.palabrasclave,
+        i.nombreusuario,
+        i.correousuario
+        FROM
+        iniciativa as i WHERE i.nombre=#{nombreIniciativa}
+    </select>
+
     <select parameterType="map" id="getIniciativasPaClave" resultMap="IniciativaResult">
         SELECT
         i.id,

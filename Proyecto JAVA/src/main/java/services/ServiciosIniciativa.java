@@ -14,7 +14,8 @@ public interface ServiciosIniciativa {
     public void insertarComentario(Comentario comentario) throws ServicesException;
     public int insertIniciativa(Iniciativa iniciativa) throws ServicesException;
     public List<Iniciativa> getIniciativas(String palabraClave) throws ServicesException;
-    public Iniciativa getIniciativa(int id) throws ServicesException;
+    public Iniciativa getIniciativaId(int id) throws ServicesException;
+    public Iniciativa getIniciativaNombre(String nombre) throws ServicesException;
     public List<Iniciativa> getIniciativas() throws ServicesException;
     public int updateIniciativa(String nombre, String estado) throws ServicesException;
 

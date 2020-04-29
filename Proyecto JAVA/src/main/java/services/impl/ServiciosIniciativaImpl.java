@@ -72,13 +72,25 @@ public class ServiciosIniciativaImpl implements ServiciosIniciativa {
     }
 
     @Override
-    public Iniciativa getIniciativa(int id) throws ServicesException {
+    public Iniciativa getIniciativaId(int id) throws ServicesException {
         Iniciativa iniciativa=null;
         try {
-            iniciativa = iniciativaDAO.getIniciativa(id);
+            iniciativa = iniciativaDAO.getIniciativaId(id);
         }
         catch (PersistenceException e) {
             throw new ServicesException("Error al consultar la iniciativa con id: "+id, e);
+        }
+        return iniciativa;
+    }
+
+    @Override
+    public Iniciativa getIniciativaNombre(String nombreIniciativa) throws ServicesException {
+        Iniciativa iniciativa=null;
+        try {
+            iniciativa = iniciativaDAO.getIniciativaNombre(nombreIniciativa);
+        }
+        catch (PersistenceException e) {
+            throw new ServicesException("Error al consultar la iniciativa con nombre: "+nombreIniciativa, e);
         }
         return iniciativa;
     }

@@ -69,9 +69,13 @@
                         	<h:outputText value="#{iniciativa.nombre}"></h:outputText>
                         </p:column>
 
-                        <p:column headerText="Descripción" filterBy="#{iniciativa.descripcion}">
-                        	<h:outputText value="#{iniciativa.descripcion}"></h:outputText>
-                        </p:column>
+						<p:column headerText="Descripción" filterBy="#{iniciativa.descripcion}">
+							<h:outputText value="#{iniciativa.descripcion}"></h:outputText>
+						</p:column>
+
+						<p:column headerText="Estado" filterBy="#{iniciativa.estado}">
+							<h:outputText value="#{iniciativa.estado}"></h:outputText>
+						</p:column>
 						
 						<p:column headerText="Ver"> <button class="boton">Ver</button> </p:column>
 						

@@ -36,20 +36,33 @@ public class IniciativaBean implements Serializable {
     private String nombreUsuario;
     private String correoUsuario;
     private Usuario usuario;
+    private Iniciativa iniciativaConsultadaNombre;
+    private List<Integer> estadistica;
 
 
 
-    public List<Iniciativa> getIniciativas() throws ServicesException {
+
+    public List<Iniciativa> getIniciativas(){
         configBasica();
-        return serviciosIniciativa.getIniciativas();
+        List<Iniciativa> iniciativas = null;
+        try {
+            iniciativas = serviciosIniciativa.getIniciativas();
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+        return iniciativas;
     }
 
-    public void actualizarIniciativa() throws ServicesException {
-        serviciosIniciativa.updateIniciativa(nombreIniciativa, estado);
+    public void actualizarIniciativa() {
+        try {
+            serviciosIniciativa.updateIniciativa(nombreIniciativa, estado);
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
     }
 
-    public List<Integer> iniciativaPorArea(){
-        List<Integer> estadistica = new ArrayList<Integer>();
+    public void iniciativaPorArea(){
+        estadistica = new ArrayList<Integer>();
         try {
 
             int finanzas =0;
@@ -75,15 +88,21 @@ public class IniciativaBean implements Serializable {
             estadistica.add(recursosHumanos);
             estadistica.add(TI);
             estadistica.add(unidadDeProyectos);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/informes.xhtml");
 
 
         } catch (ServicesException e) {
             this.baseBean.mensajeApp(e);
         } catch (ServiciosUsuarioException e) {
             this.baseBean.mensajeApp(e);
+        } catch (IOException e) {
+            this.baseBean.mensajeApp(e);
         }
-        return estadistica;
     }
+
+    /*public int getFinanzas(){
+
+    }*/
 
     public void configBasica() {
         setServiciosIniciativa(baseBean.getServiciosIniciativa());
@@ -97,19 +116,51 @@ public class IniciativaBean implements Serializable {
         setDescripcionIniciativa("");
         setNombreIniciativa("");
         setPalabrasClave("");
+        setPalabrasClave("");
+        setEstado("");
     }
 
-    public void agregarIniciativa() throws ServicesException {
+    public void agregarIniciativa() {
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Pro.xhtml");
             checkUpdate = serviciosIniciativa.insertIniciativa(new Iniciativa(nombreIniciativa, "En espera de revisión", 0, descripcionIniciativa, palabrasClave, nombreUsuario, correoUsuario));
             borrarForm();
-        } catch (IOException e) {
+        } catch (IOException | ServicesException e) {
             this.baseBean.mensajeApp(e);
             e.printStackTrace();
         }
 
 
+    }
+
+    public void consultarIniciativa(){
+        try {
+            iniciativaConsultadaNombre = serviciosIniciativa.getIniciativaNombre(nombreIniciativa);
+
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+
+    }
+
+    private void cambiarEstado(String nuevoEstado){
+        try {
+            serviciosIniciativa.updateIniciativa(iniciativaConsultadaNombre.getNombre(), nuevoEstado);
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
+    public void revision(){
+        cambiarEstado("En revisión");
+    }
+
+    public void proyecto(){
+        cambiarEstado("Proyecto");
+    }
+
+    public void solucionado(){
+        cambiarEstado("Solucionado");
     }
 
     public BasePageBean getBaseBean() {
@@ -198,5 +249,21 @@ public class IniciativaBean implements Serializable {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Iniciativa getIniciativaConsultadaNombre() {
+        return iniciativaConsultadaNombre;
+    }
+
+    public void setIniciativaConsultadaNombre(Iniciativa iniciativaConsultadaNombre) {
+        this.iniciativaConsultadaNombre = iniciativaConsultadaNombre;
+    }
+
+    public List<Integer> getEstadistica() {
+        return estadistica;
+    }
+
+    public void setEstadistica(List<Integer> estadistica) {
+        this.estadistica = estadistica;
     }
 }
