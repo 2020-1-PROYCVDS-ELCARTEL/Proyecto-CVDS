@@ -46,14 +46,7 @@
 
 			  <section>
 
-				  <div id="uno">
-					  <p:commandLink action="#{PageBean.page7}" align="left">
-						  <button class="boton" align="right">Modificar iniciativa</button>
-					  </p:commandLink>
 
-				  </div>
-
-				  <div id="dos">
 					  <a align="center">
 
 						  <p:dataTable class="iniciativas" value="#{IniciativaBean.getIniciativas()}" var = "iniciativa" style="margin: 0 auto;"
@@ -77,13 +70,14 @@
 								  <h:outputText value="#{iniciativa.estado}"></h:outputText>
 							  </p:column>
 
-							  <p:column headerText="Ver"> <button class="boton">Ver</button> </p:column>
+							  <p:column headerText="Ver">
+								  <p:commandButton value="Cambiar Estado" id="ver" action="#{IniciativaBean.verIniciativa(iniciativa.id)}"/>
+							  </p:column>
 
 
 						  </p:dataTable>
 
 					  </a>
-				  </div>
 
 
 			  </section>

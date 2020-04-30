@@ -1,6 +1,7 @@
 package managedbeans;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -8,7 +9,9 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import entities.Iniciativa;
 import entities.Usuario;
+import exceptions.ServicesException;
 import exceptions.ServiciosUsuarioException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -37,6 +40,7 @@ public class UsuarioBean implements Serializable {
     private boolean noLogged;
     private ServiciosUsuario serviciosUsuario;
     private Usuario usuario;
+    private Usuario usuarioConsultado;
     private String rolUsuario;
     private String nombreUsuario;
     private String nuevoUsuarioNombre;
@@ -48,14 +52,32 @@ public class UsuarioBean implements Serializable {
 
     private void convertir(String tipo){
         try {
-            Usuario temp = serviciosUsuario.consultarUsuario(actualizarUsuarioCorreo);
-            serviciosUsuario.updateRolUsuario(temp.getId(), tipo);
+            serviciosUsuario.updateRolUsuario(usuarioConsultado.getId(), tipo);
             actualizarUsuarioCorreo="";
-            redirectTo("/faces/Admin.xhtml");
+            redirectTo("/faces/verUsuarios.xhtml");
         } catch (ServiciosUsuarioException e) {
             this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
+        }
+    }
+
+    public List<Usuario> getUsuarios(){
+        List<Usuario> usuarios = null;
+        try {
+            usuarios = serviciosUsuario.consultarUsuarios();
+        } catch (ServiciosUsuarioException e) {
+            this.baseBean.mensajeApp(e);
+        }
+        return usuarios;
+    }
+
+    public void verUsuario(String correoUsuario){
+        try {
+            usuarioConsultado = serviciosUsuario.consultarUsuario(correoUsuario);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/ModificarUsuario.xhtml");
+        } catch (IOException | ServiciosUsuarioException e) {
+            this.baseBean.mensajeApp(e);
         }
     }
 
@@ -81,7 +103,6 @@ public class UsuarioBean implements Serializable {
             Session session = currentUser.getSession();
             session.setAttribute("correo", "password");
             UsernamePasswordToken token = new UsernamePasswordToken(usuarioCorreo, password);
-
             currentUser.login(token);
 
             token.setRememberMe(true);
@@ -227,9 +248,6 @@ public class UsuarioBean implements Serializable {
         }
     }
 
-    public void agregarUsuario(){
-
-    }
 
 
     //Gets and Sets
@@ -349,4 +367,11 @@ public class UsuarioBean implements Serializable {
         this.actualizarUsuarioCorreo = actualizarUsuarioCorreo;
     }
 
+    public Usuario getUsuarioConsultado() {
+        return usuarioConsultado;
+    }
+
+    public void setUsuarioConsultado(Usuario usuarioConsultado) {
+        this.usuarioConsultado = usuarioConsultado;
+    }
 }

@@ -41,7 +41,7 @@ public class IniciativaBean implements Serializable {
     private String nombreUsuario;
     private String correoUsuario;
     private Usuario usuario;
-    private Iniciativa iniciativaConsultadaNombre;
+    private Iniciativa iniciativaConsultadaId;
     private List<Integer> estadistica;
 	private BarChartModel model;
 
@@ -92,6 +92,19 @@ public class IniciativaBean implements Serializable {
         }
     }
 
+    public void verIniciativa(int idIniciativa){
+        try {
+            iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(idIniciativa);
+            if(usuario.getTipoUser().equals("PMO")) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/ModificarIniciativa.xhtml");
+            }else {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/verIniciativa.xhtml");
+            }
+        } catch (IOException | ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
     public void iniciativaPorArea(){
         estadistica = new ArrayList<Integer>();
         try {
@@ -129,10 +142,6 @@ public class IniciativaBean implements Serializable {
         }
     }
 
-    /*public int getFinanzas(){
-
-    }*/
-
     public void configBasica() {
         setServiciosIniciativa(baseBean.getServiciosIniciativa());
         setServiciosUsuario(baseBean.getServiciosUsuario());
@@ -162,19 +171,9 @@ public class IniciativaBean implements Serializable {
 
     }
 
-    public void consultarIniciativa(){
-        try {
-            iniciativaConsultadaNombre = serviciosIniciativa.getIniciativaNombre(nombreIniciativa);
-
-        } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
-        }
-
-    }
-
     private void cambiarEstado(String nuevoEstado){
         try {
-            serviciosIniciativa.updateIniciativa(iniciativaConsultadaNombre.getNombre(), nuevoEstado);
+            serviciosIniciativa.updateIniciativa(iniciativaConsultadaId.getNombre(), nuevoEstado);
         } catch (ServicesException e) {
             this.baseBean.mensajeApp(e);
         }
@@ -280,19 +279,19 @@ public class IniciativaBean implements Serializable {
         this.estado = estado;
     }
 
-    public Iniciativa getIniciativaConsultadaNombre() {
-        return iniciativaConsultadaNombre;
-    }
-
-    public void setIniciativaConsultadaNombre(Iniciativa iniciativaConsultadaNombre) {
-        this.iniciativaConsultadaNombre = iniciativaConsultadaNombre;
-    }
-
     public List<Integer> getEstadistica() {
         return estadistica;
     }
 
     public void setEstadistica(List<Integer> estadistica) {
         this.estadistica = estadistica;
+    }
+
+    public Iniciativa getIniciativaConsultadaId() {
+        return iniciativaConsultadaId;
+    }
+
+    public void setIniciativaConsultadaId(Iniciativa iniciativaConsultadaId) {
+        this.iniciativaConsultadaId = iniciativaConsultadaId;
     }
 }

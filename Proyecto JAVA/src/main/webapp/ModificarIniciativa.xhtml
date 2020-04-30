@@ -47,11 +47,7 @@
 
 
 					<div id="uno">
-						<h:outputText value="Nombre de la iniciativa:"/>
-						<h:inputText value="#{IniciativaBean.nombreIniciativa}"/><br></br><br></br>
-						<p:commandLink action="#{IniciativaBean.consultarIniciativa}" align="right" update="form">
-							<button class="boton" align="right">Consultar Iniciativa</button>
-						</p:commandLink><br></br><br></br>
+
 						<p:commandLink action="#{PageBean.page04}" align="right" update="form">
 							<button class="boton" align="right">Volver</button>
 						</p:commandLink>
@@ -60,22 +56,22 @@
 
 					<div id="dos">
 						<h:outputText value="Nombre: "/>
-						<h:outputText value="#{IniciativaBean.iniciativaConsultadaNombre.getNombre()}"/><br></br><br></br>
+						<h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNombre()}"/><br></br><br></br>
 
 						<h:outputText value="Descripción: "/>
-						<h:outputText value="#{IniciativaBean.iniciativaConsultadaNombre.getDescripcion()}"/><br></br><br></br>
+						<h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getDescripcion()}"/><br></br><br></br>
 
 						<h:outputText value="Palabras clave: "/>
-						<h:outputText value="#{IniciativaBean.iniciativaConsultadaNombre.getPalabrasClave()}"/><br></br><br></br>
+						<h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getPalabrasClave()}"/><br></br><br></br>
 
 						<h:outputText value="Nombres proponente: "/>
-						<h:outputText value="#{IniciativaBean.iniciativaConsultadaNombre.getNombreUsuario()}"/><br></br><br></br>
+						<h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNombreUsuario()}"/><br></br><br></br>
 
 						<h:outputText value="Correo proponente: "/>
-						<h:outputText value="#{IniciativaBean.iniciativaConsultadaNombre.getCorreoUsuario()}"/><br></br><br></br>
+						<h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getCorreoUsuario()}"/><br></br><br></br>
 
 						<h:outputText value="Estado: "/>
-						<h:outputText value="#{IniciativaBean.iniciativaConsultadaNombre.getEstado()}"/><br></br><br></br>
+						<h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getEstado()}"/><br></br><br></br>
 
 						<h:outputText value="Cambiar estado a: "/><br></br><br></br>
 						<p:commandLink action="#{IniciativaBean.revision}" align="right" update="form">

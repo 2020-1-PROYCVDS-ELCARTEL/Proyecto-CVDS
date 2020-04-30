@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <link rel="stylesheet" type="text/css" href="css/admin.css"/>
+
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="Pragma" content="no-cache" />
+
+        <script type="text/javascript">
+              if(history.forward(1)){
+                location.replace( history.forward(1) );
+              }
+            </script>
+
+
+        <title>Admin-Iniciativas</title>
+
+    </h:head>
+    <h:body>
+
+        <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
+        <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
+        <p:commandLink action="#{LoginBean.logout}" align="right">
+            <button class="boton" align="right">Cerrar sesión</button>
+        </p:commandLink>
+
+        <p> <br/>
+            <br/>
+        </p>
+        <h1>Modificar estado de iniciativas</h1>
+        <h2>Unidad de proyectos</h2>
+        <p> <br/>
+            <br/>
+        </p>
+
+        <h:form id="form">
+
+
+
+
+            <div id="uno">
+
+                <p:commandLink action="#{LoginBean.direccionarPorPerfil}" align="right" update="form">
+                    <button class="boton" align="right">Volver</button>
+                </p:commandLink>
+            </div>
+
+
+            <div id="dos">
+                <h:outputText value="Nombre: "/>
+                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNombre()}"/><br></br><br></br>
+
+                <h:outputText value="Descripción: "/>
+                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getDescripcion()}"/><br></br><br></br>
+
+                <h:outputText value="Palabras clave: "/>
+                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getPalabrasClave()}"/><br></br><br></br>
+
+                <h:outputText value="Nombres proponente: "/>
+                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNombreUsuario()}"/><br></br><br></br>
+
+                <h:outputText value="Correo proponente: "/>
+                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getCorreoUsuario()}"/><br></br><br></br>
+
+                <h:outputText value="Estado: "/>
+                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getEstado()}"/><br></br><br></br>
+
+            </div>
+
+
+
+        </h:form>
+    </h:body>
+</html>

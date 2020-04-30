@@ -76,8 +76,9 @@
 						<p:column headerText="Estado" filterBy="#{iniciativa.estado}">
 							<h:outputText value="#{iniciativa.estado}"></h:outputText>
 						</p:column>
-						
-						<p:column headerText="Ver"> <button class="boton">Ver</button> </p:column>
+						<p:column headerText="Ver">
+							<p:commandButton value="Ver" id="ver" action="#{IniciativaBean.verIniciativa(iniciativa.id)}"/>
+						</p:column>
 						
 					
                     </p:dataTable>
