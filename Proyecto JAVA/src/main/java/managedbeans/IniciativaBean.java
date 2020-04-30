@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import org.primefaces.model.chart.BarChartModel;
+
 
 @Deprecated
 @ManagedBean(name = "IniciativaBean")
@@ -38,9 +40,32 @@ public class IniciativaBean implements Serializable {
     private Usuario usuario;
     private Iniciativa iniciativaConsultadaNombre;
     private List<Integer> estadistica;
+	private BarChartModel model;
 
 
-
+	public Bean() {
+        model = new BarChartModel();
+        ChartSeries e= new ChartSeries();
+        e.setLabel("Estadisticas");
+        e.set("Finanzas", estadistica.get(0));
+		e.set("Administrativo", estadistica.get(1));
+		e.set("Recursos humanos", estadistica.get(2));
+		e.set("TI", estadistica.get(3));
+		e.set("Unidad de proyectos", estadistica.get(4));
+		model.addSeries(e);
+		model.setTitle("Estadísticas");
+        model.setLegendPosition("ne");
+        Axis xAxis = model.getAxis(AxisType.X);
+        xAxis.setLabel("Dependencias");
+        Axis yAxis = model.getAxis(AxisType.Y);
+        yAxis.setLabel("Iniciativas registradas");
+        yAxis.setMin(0);
+        yAxis.setMax(15);
+	}
+	
+	public BarChartModel getModel() {
+        return model;
+    }
 
     public List<Iniciativa> getIniciativas(){
         configBasica();
