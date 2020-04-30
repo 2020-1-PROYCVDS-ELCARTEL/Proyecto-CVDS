@@ -92,18 +92,7 @@ public class UsuarioBean implements Serializable {
                 setRolUsuario(usuario.getTipoUser());
                 setUsuarioCorreo(usuario.getCorreo());
                 baseBean.setUser(usuario);
-                if (rolUsuario.equals("Admin")){
-                    redirectTo("/faces/Admin.xhtml");
-				}
-				else if (rolUsuario.equals("PMO")){
-                    redirectTo("/faces/PMO.xhtml");
-				}
-				else if (rolUsuario.equals("Proponente")){
-                    redirectTo("/faces/Pro.xhtml");
-				}
-				else if (rolUsuario.equals("User")){
-                    redirectTo("/faces/User.xhtml");
-				}
+                direccionarPorPerfil();
             }
         } catch (UnknownAccountException e) {
            this.baseBean.mensajeApp(e);
@@ -117,7 +106,22 @@ public class UsuarioBean implements Serializable {
                     new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
 
         } catch (ServiciosUsuarioException e) {
-            e.printStackTrace();
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
+    public void direccionarPorPerfil(){
+        if (rolUsuario.equals("Admin")){
+            redirectTo("/faces/Admin.xhtml");
+        }
+        else if (rolUsuario.equals("PMO")){
+            redirectTo("/faces/PMO.xhtml");
+        }
+        else if (rolUsuario.equals("Proponente")){
+            redirectTo("/faces/Pro.xhtml");
+        }
+        else if (rolUsuario.equals("User")){
+            redirectTo("/faces/User.xhtml");
         }
     }
 
