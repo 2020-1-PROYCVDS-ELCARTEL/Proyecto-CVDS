@@ -4,6 +4,9 @@ import entities.Iniciativa;
 import entities.Usuario;
 import exceptions.ServicesException;
 import exceptions.ServiciosUsuarioException;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.ChartSeries;
 import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 
@@ -42,8 +45,7 @@ public class IniciativaBean implements Serializable {
     private List<Integer> estadistica;
 	private BarChartModel model;
 
-
-	public Bean() {
+    public void Bean() {
         model = new BarChartModel();
         ChartSeries e= new ChartSeries();
         e.setLabel("Estadisticas");
@@ -62,9 +64,13 @@ public class IniciativaBean implements Serializable {
         yAxis.setMin(0);
         yAxis.setMax(15);
 	}
-	
+
 	public BarChartModel getModel() {
         return model;
+    }
+
+    public void setModel(BarChartModel model) {
+        this.model = model;
     }
 
     public List<Iniciativa> getIniciativas(){
@@ -114,8 +120,6 @@ public class IniciativaBean implements Serializable {
             estadistica.add(TI);
             estadistica.add(unidadDeProyectos);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/informes.xhtml");
-
-
         } catch (ServicesException e) {
             this.baseBean.mensajeApp(e);
         } catch (ServiciosUsuarioException e) {
