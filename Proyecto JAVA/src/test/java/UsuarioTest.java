@@ -13,7 +13,7 @@ import static com.google.inject.Guice.createInjector;
 public class UsuarioTest {
 
 
-    private Usuario usuario;
+   /* private Usuario usuario;
     @Inject
     private UsuarioDAO usuarioDAO;
 
@@ -28,5 +28,5 @@ public class UsuarioTest {
             e.printStackTrace();
 
         }
-    }
+    }*/
 }

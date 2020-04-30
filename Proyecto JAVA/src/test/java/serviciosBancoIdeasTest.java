@@ -110,7 +110,7 @@ public class serviciosBancoIdeasTest {
         Iniciativa iniciativapr = new Iniciativa("pruebaSietesoBien", "En espera derevisión", 1,"prueba de que funciona", "prueba", "santi", "san@gmail.com");
         serviciosIniciativa.updateIniciativa(iniciativapr.getNombre(), "En revisión");
         try {
-            Iniciativa ini = serviciosIniciativa.getIniciativa(iniciativapr.getId());
+            Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
             assertTrue("En revisión".equals(ini.getEstado()));
             System.out.println(iniciativapr);
         } catch (Exception e) {
