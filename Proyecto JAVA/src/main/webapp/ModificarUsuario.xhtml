@@ -21,16 +21,14 @@
 		</script>
 
 
-      	<title>Admin-Iniciativas</title>
+      	<title>Modificar Usuario</title>
 
 	</h:head>
       <h:body>
 
 		  <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
 		  <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-		  <p:commandLink action="#{LoginBean.logout}" align="right">
-			  <button class="boton" align="right">Cerrar sesión</button>
-		  </p:commandLink>
+		  <p:commandButton value="Cerrar sesión" action="#{LoginBean.logout}" align="center" />
 
 		  <p> <br/>
 		  <br/>
@@ -41,9 +39,8 @@
 		  <br/>
 		  </p>
 		  <h:form>
-			  <p:commandLink action="#{PageBean.page4}" align="left">
-				  <button class="boton" align="right">Volver</button>
-			  </p:commandLink><br></br><br></br>
+			  <p:commandButton value="Volver" action="#{PageBean.page4}" align="center" />
+			  <br></br><br></br>
 			<section>
 			  <div id="dos">
 				  <h:outputText value="Nombre: "/>
@@ -61,22 +58,38 @@
 			  </div>
 			</section>
 
+			  <p:messages>
+				  <p:autoUpdate />
+			  </p:messages>
+			  <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+				  <p:outputLabel for="@next" value="Tipo de usuario:" />
+				  <p:selectOneMenu id="console" value="#{LoginBean.changeTipoUser}" style="width:125px">
+					  <f:selectItem itemLabel="Select One" itemValue="" />
+					  <f:selectItem itemLabel="Admin" itemValue="Admin" />
+					  <f:selectItem itemLabel="PMO" itemValue="PMO" />
+					  <f:selectItem itemLabel="User" itemValue="User" />
+					  <f:selectItem itemLabel="Proponente" itemValue="Proponente" />
+				  </p:selectOneMenu>
+				  <p:commandButton value="Guardar" action="#{LoginBean.convertirTipoUser}" align="center" oncomplete="PF('dlg').show()" />
+
+			  </h:panelGrid>
+
+			  <p:dialog header="Usuario actualizado" modal="true" showEffect="bounce" widgetVar="dlg" resizable="false">
+				  <p:panelGrid columns="2" id="display" columnClasses="label,value">
+					  <h:outputText value="Nombre: "/>
+					  <h:outputText value="#{LoginBean.usuarioConsultado.getNombre()}"/>
+
+					  <h:outputText value="Correo: "/>
+					  <h:outputText value="#{LoginBean.usuarioConsultado.getCorreo()}"/>
+
+					  <h:outputText value="Tipo de usuario: "/>
+					  <h:outputText value="#{LoginBean.usuarioConsultado.getTipoUser()}"/>
+
+					  <h:outputText value="Dependencia: "/>
+					  <h:outputText value="#{LoginBean.usuarioConsultado.getDependencia()}"/>
+				  </p:panelGrid>
+				  <br></br><br></br><p:commandButton value="Volver" action="#{PageBean.page4}" align="center" />
+			  </p:dialog>
 		  </h:form>
-		  <section>
-			  <div id="tres">
-				  <p:commandLink action="#{LoginBean.convertirAdmin}" align="right">
-					  <button class="boton" align="right">Convertir en Admin</button>
-				  </p:commandLink><br></br><br></br>
-				  <p:commandLink action="#{LoginBean.convertirPMO}" align="right">
-					  <button class="boton" align="right">Convertir en PMO</button>
-				  </p:commandLink><br></br><br></br>
-				  <p:commandLink action="#{LoginBean.convertirProponente}" align="right">
-					  <button class="boton" align="right">Convertir en Proponente</button>
-				  </p:commandLink><br></br><br></br>
-				  <p:commandLink action="#{LoginBean.convertirUser}" align="right">
-					  <button class="boton" align="right">Convertir en User</button>
-				  </p:commandLink><br></br><br></br>
-			  </div>
-		  </section>
       </h:body>
 </html>

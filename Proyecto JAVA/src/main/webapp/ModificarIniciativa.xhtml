@@ -28,9 +28,7 @@
 
 		  <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
 		  <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-		  <p:commandLink action="#{LoginBean.logout}" align="right">
-			  <button class="boton" align="right">Cerrar sesión</button>
-		  </p:commandLink>
+		  <p:commandButton value="Cerrar sesión" action="#{LoginBean.logout}" align="center" />
 		  
 		  <p> <br/>
 		  <br/>
@@ -47,10 +45,7 @@
 
 
 					<div id="uno">
-
-						<p:commandLink action="#{PageBean.page04}" align="right" update="form">
-							<button class="boton" align="right">Volver</button>
-						</p:commandLink>
+						<p:commandButton value="Volver" action="#{PageBean.page04}" align="center" update="form"/>
 					</div>
 
 
@@ -73,21 +68,45 @@
 						<h:outputText value="Estado: "/>
 						<h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getEstado()}"/><br></br><br></br>
 
-						<h:outputText value="Cambiar estado a: "/><br></br><br></br>
-						<p:commandLink action="#{IniciativaBean.revision}" align="right" update="form">
-							<button class="boton" align="right">En revisión</button>
-						</p:commandLink><br></br><br></br>
-						<p:commandLink action="#{IniciativaBean.proyecto}" align="right" update="form">
-							<button class="boton" align="right">Proyecto</button>
-						</p:commandLink><br></br><br></br>
-						<p:commandLink action="#{IniciativaBean.solucionado}" align="right" update="form">
-							<button class="boton" align="right">Solucionado</button>
-						</p:commandLink>
+						<p:messages>
+							<p:autoUpdate />
+						</p:messages>
+						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+							<p:outputLabel for="@next" value="Cambiar estado a:" />
+							<p:selectOneMenu id="console" value="#{IniciativaBean.estado}" style="width:125px">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="En espera de revisión" itemValue="En espera de revisión" />
+								<f:selectItem itemLabel="En revisión" itemValue="En revisión" />
+								<f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
+								<f:selectItem itemLabel="Solucionado" itemValue="Solucionado" />
+							</p:selectOneMenu>
+							<p:commandButton value="Guardar" action="#{IniciativaBean.cambiarEstado}" oncomplete="PF('dlg').show()" align="center" update="form"/>
+						</h:panelGrid>
 
 					</div>
+			  <p:dialog header="Iniciativa actualizada" modal="true" showEffect="bounce" widgetVar="dlg" resizable="false">
+				  <p:panelGrid columns="2" id="display" columnClasses="label,value">
+					  <h:outputText value="Nombre: "/>
+					  <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNombre()}"/>
 
+					  <h:outputText value="Descripción: "/>
+					  <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getDescripcion()}"/>
 
-			
+					  <h:outputText value="Palabras clave: "/>
+					  <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getPalabrasClave()}"/>
+
+					  <h:outputText value="Nombres proponente: "/>
+					  <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNombreUsuario()}"/>
+
+					  <h:outputText value="Correo proponente: "/>
+					  <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getCorreoUsuario()}"/>
+
+					  <h:outputText value="Estado: "/>
+					  <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getEstado()}"/>
+
+				  </p:panelGrid>
+				  <br></br><br></br><p:commandButton value="Volver" action="#{PageBean.page04}" align="center" update="form"/>
+			  </p:dialog>
 		</h:form>
       </h:body>
 </html>

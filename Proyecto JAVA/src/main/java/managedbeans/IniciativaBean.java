@@ -167,28 +167,23 @@ public class IniciativaBean implements Serializable {
             this.baseBean.mensajeApp(e);
             e.printStackTrace();
         }
-
-
     }
 
     private void cambiarEstado(String nuevoEstado){
         try {
-            serviciosIniciativa.updateIniciativa(iniciativaConsultadaId.getNombre(), nuevoEstado);
+            serviciosIniciativa.updateIniciativa(iniciativaConsultadaId.getNombre(), estado);
+            iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(iniciativaConsultadaId.getId());
         } catch (ServicesException e) {
             this.baseBean.mensajeApp(e);
         }
     }
 
-    public void revision(){
-        cambiarEstado("En revisión");
-    }
-
-    public void proyecto(){
-        cambiarEstado("Proyecto");
-    }
-
-    public void solucionado(){
-        cambiarEstado("Solucionado");
+    public void cambiarEstado() throws ServicesException {
+        if(estado !=null && !estado.equals("")) {
+            cambiarEstado(estado);
+        }else {
+            throw new ServicesException("Fallo al actualizar el estado de la iniciativa");
+        }
     }
 
     public BasePageBean getBaseBean() {

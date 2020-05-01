@@ -21,16 +21,14 @@
 		</script>
 
 
-    <title>General-PMO</title>
+    <title>Usuarios</title>
 
 </h:head>
 <h:body>
 
     <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
     <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-    <p:commandLink action="#{LoginBean.logout}" align="left">
-        <button class="boton" align="right">Cerrar sesión</button>
-    </p:commandLink>
+    <p:commandButton value="Cerrar sesión" action="#{LoginBean.logout}" align="center" />
 
     <p> <br/>
         <br/>

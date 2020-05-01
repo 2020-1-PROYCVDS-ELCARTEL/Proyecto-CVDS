@@ -1,6 +1,7 @@
 package managedbeans;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -8,16 +9,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
-import entities.Iniciativa;
 import entities.Usuario;
-import exceptions.ServicesException;
 import exceptions.ServiciosUsuarioException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import services.ServiciosUsuario;
@@ -49,12 +46,13 @@ public class UsuarioBean implements Serializable {
     private String nuevoUsuarioTipoUser;
     private String nuevoUsuarioDependencia;
     private String actualizarUsuarioCorreo;
+    private String changeTipoUser;
 
     private void convertir(String tipo){
         try {
             serviciosUsuario.updateRolUsuario(usuarioConsultado.getId(), tipo);
+            usuarioConsultado = serviciosUsuario.consultarUsuario(usuarioConsultado.getCorreo());
             actualizarUsuarioCorreo="";
-            redirectTo("/faces/verUsuarios.xhtml");
         } catch (ServiciosUsuarioException e) {
             this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
@@ -81,20 +79,12 @@ public class UsuarioBean implements Serializable {
         }
     }
 
-    public void convertirAdmin(){
-        convertir("Admin");
-    }
-
-    public void convertirPMO(){
-        convertir("PMO");
-    }
-
-    public void convertirUser(){
-        convertir("User");
-    }
-
-    public void convertirProponente(){
-        convertir("Proponente");
+    public void convertirTipoUser() throws ServiciosUsuarioException{
+        if(changeTipoUser !=null && !changeTipoUser.equals("")) {
+            convertir(changeTipoUser);
+        }else {
+            throw new ServiciosUsuarioException("Fallo al cambiar tipo de usuario");
+        }
     }
 
     public void login() {
@@ -104,7 +94,6 @@ public class UsuarioBean implements Serializable {
             session.setAttribute("correo", "password");
             UsernamePasswordToken token = new UsernamePasswordToken(usuarioCorreo, password);
             currentUser.login(token);
-
             token.setRememberMe(true);
             if (currentUser.isAuthenticated()){
                 serviciosUsuario = baseBean.getServiciosUsuario();
@@ -373,5 +362,13 @@ public class UsuarioBean implements Serializable {
 
     public void setUsuarioConsultado(Usuario usuarioConsultado) {
         this.usuarioConsultado = usuarioConsultado;
+    }
+
+    public String getChangeTipoUser() {
+        return changeTipoUser;
+    }
+
+    public void setChangeTipoUser(String changeTipoUser) {
+        this.changeTipoUser = changeTipoUser;
     }
 }
