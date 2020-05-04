@@ -9,11 +9,14 @@ import com.google.inject.Injector;
 import persistence.ComentarioDAO;
 import persistence.IniciativaDAO;
 import persistence.UsuarioDAO;
+import persistence.VotoDAO;
 import persistence.mybatisimpl.MyBatisComentarioDAO;
 import persistence.mybatisimpl.MyBatisIniciativaDAO;
 import persistence.mybatisimpl.MyBatisUsuarioDAO;
+import persistence.mybatisimpl.MyBatisVotoDAO;
 import services.impl.ServiciosIniciativaImpl;
 import services.impl.ServiciosUsuarioImpl;
+import services.impl.ServiciosVotoImpl;
 
 public class bancoIdeasServicesFactory {
 
@@ -28,13 +31,16 @@ public class bancoIdeasServicesFactory {
             protected void initialize() {
                 install(JdbcHelper.PostgreSQL);
                 setClassPathResource("bd-config.xml");
-                bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
-
-                //bind(BlogServices.class).to(BlogServicesImpl.class);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
                 bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
+
+                //bind(VotoDAO.class).to(MyBatisVotoDAO.class);
+
                 bind(ServiciosIniciativa.class).to(ServiciosIniciativaImpl.class);
+                bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
+
+                //bind(ServiciosVoto.class).to(ServiciosVotoImpl.class);
             }
         });
         testInjector = Guice.createInjector(new XMLMyBatisModule(){
@@ -72,6 +78,15 @@ public class bancoIdeasServicesFactory {
     public ServiciosIniciativa getIniciativas(){
         return bancoInjector.getInstance(ServiciosIniciativa.class);
     }
+    /*public ServiciosVoto getVoto(){
+        return bancoInjector.getInstance(ServiciosVoto.class);
+    }
+    public ServiciosVoto insertVoto(){
+        return bancoInjector.getInstance(ServiciosVoto.class);
+    }
+    public ServiciosVoto deleteVoto(){
+        return bancoInjector.getInstance(ServiciosVoto.class);
+    }*/
     public ServiciosUsuario insertUsuarioTesting(){
         return bancoInjector.getInstance(ServiciosUsuario.class);
     }

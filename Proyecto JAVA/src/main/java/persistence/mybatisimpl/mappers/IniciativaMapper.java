@@ -12,6 +12,7 @@ public interface IniciativaMapper {
     public Iniciativa getIniciativaNombre(@Param("nombreIniciativa")String nombreIniciativa);
     public List<Iniciativa> getIniciativasAll();
     public int updateIniciativa(@Param("nombre") String nombre, @Param("estado")String estado);
+    public int updateVotosIniciativa(@Param("nombre") String nombre, @Param("numerovotos")int numerovotos);
     //public void deleteAll();
 }
 

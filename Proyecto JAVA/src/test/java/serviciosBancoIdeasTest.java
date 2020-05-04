@@ -35,19 +35,18 @@ public class serviciosBancoIdeasTest {
         Usuario usrPrueba = serviciosUsuario.consultarUsuario("santiago@gmail.com");
         try {
             assertTrue(usrPrueba != null);
-            System.out.println(usrPrueba);
+            System.out.println("funciona 1");
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    //@Test
+    @Test
     public void deberiaConsultarUsuarios() throws ServicesException, ServiciosUsuarioException {
-
         List<Usuario> usrPrueba = serviciosUsuario.consultarUsuarios();
         try {
             assertTrue(usrPrueba != null);
-            System.out.println(usrPrueba);
+            System.out.println("funciona 2");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -55,12 +54,14 @@ public class serviciosBancoIdeasTest {
 
     @Test
     public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuarioException {
-        Usuario userpr = new Usuario(8, "laura", "laura@gmail.com", "123456789", "Admin", "Finanzas");
-        serviciosUsuario.updateRolUsuario(userpr.getId(), "Admin");
+        Usuario userpr = new Usuario(8, "laura", "123456789", "laura@gmail.com", "Admin", "Finanzas");
         try {
+            serviciosUsuario.insertarUsuario(userpr);
+            serviciosUsuario.updateRolUsuario(userpr.getId(), "Admin");
             Usuario user = serviciosUsuario.consultarUsuario("laura@gmail.com");
             assertTrue("Admin".equals(user.getTipoUser()));
-            System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
+            //System.out.println(serviciosUsuario.consultarUsuario("laura@gmail.com"));
+            System.out.println("funciona 3");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -69,11 +70,11 @@ public class serviciosBancoIdeasTest {
     @Test
     public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
         Usuario userpr = new Usuario("laura", "1234567", "laura2@gmail.com", "Admin", "Finanzas");
-
         serviciosUsuario.insertarUsuario(userpr);
         try {
             assertTrue(serviciosUsuario.consultarUsuario("laura2@gmail.com") != null);
-            System.out.println(serviciosUsuario.consultarUsuario("laura2@gmail.com"));
+            //System.out.println(serviciosUsuario.consultarUsuario("laura2@gmail.com"));
+            System.out.println("funciona 4");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -85,7 +86,8 @@ public class serviciosBancoIdeasTest {
         List<Iniciativa> iniciativasPrueba = serviciosIniciativa.getIniciativas();
         try {
             assertTrue(iniciativasPrueba != null);
-            System.out.println(iniciativasPrueba);
+            //System.out.println(iniciativasPrueba);
+            System.out.println("funciona 5");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -93,28 +95,43 @@ public class serviciosBancoIdeasTest {
 
     @Test
     public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
-
         Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien", "En espera de revisión", 1,"prueba de que funciona", "prueba", "santi", "san@gmail.com");
-
         serviciosIniciativa.insertIniciativa(iniciativaPrr);
         try {
             assertTrue(serviciosIniciativa.getIniciativas() != null);
-            System.out.println(serviciosIniciativa.getIniciativas());
+            //System.out.println(serviciosIniciativa.getIniciativas());
+            System.out.println("funciona 6");
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
     @Test
-    public void deberiaActualizarIniciativa() throws ServicesException, ServiciosUsuarioException {
-        Iniciativa iniciativapr = new Iniciativa("pruebaSietesoBien", "En espera derevisión", 1,"prueba de que funciona", "prueba", "santi", "san@gmail.com");
+    public void deberiaActualizarIniciativa() throws ServicesException {
+        Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
         serviciosIniciativa.updateIniciativa(iniciativapr.getNombre(), "En revisión");
         try {
             Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
             assertTrue("En revisión".equals(ini.getEstado()));
-            System.out.println(iniciativapr);
+            //System.out.println(iniciativapr);
+            System.out.println("funciona 7");
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    @Test
+    public void deberiaActualizarVotosIniciativa() throws ServicesException {
+        Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
+        serviciosIniciativa.updateVotosIniciativa(iniciativapr.getNombre(), 2);
+        try {
+            Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
+            int n = ini.getNumeroVotos();
+            assertTrue(n==2);
+            //System.out.println(iniciativapr);
+            System.out.println("funciona 8");
+        } catch (Exception e) {
+            System.out.println("fallas");
         }
     }
     // @Test

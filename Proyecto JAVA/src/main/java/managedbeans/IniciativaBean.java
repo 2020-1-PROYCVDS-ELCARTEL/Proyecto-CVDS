@@ -32,7 +32,7 @@ public class IniciativaBean implements Serializable {
     private BasePageBean baseBean;
     private ServiciosUsuario serviciosUsuario;
     private ServiciosIniciativa serviciosIniciativa;
-    private Iniciativa iniciativa;
+    //private Iniciativa iniciativa;
     private int checkUpdate;
     private String nombreIniciativa;
     private String descripcionIniciativa;
@@ -169,6 +169,10 @@ public class IniciativaBean implements Serializable {
         }
     }
 
+    public void votar(){
+        //in
+    }
+
     private void cambiarEstado(String nuevoEstado){
         try {
             serviciosIniciativa.updateIniciativa(iniciativaConsultadaId.getNombre(), estado);
@@ -208,14 +212,6 @@ public class IniciativaBean implements Serializable {
 
     public void setServiciosIniciativa(ServiciosIniciativa serviciosIniciativa) {
         this.serviciosIniciativa = serviciosIniciativa;
-    }
-
-    public Iniciativa getIniciativa() {
-        return iniciativa;
-    }
-
-    public void setIniciativa(Iniciativa iniciativa) {
-        this.iniciativa = iniciativa;
     }
 
     public String getNombreIniciativa() {

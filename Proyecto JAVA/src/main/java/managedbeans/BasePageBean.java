@@ -14,6 +14,7 @@ import entities.Usuario;
 import persistence.UsuarioDAO;
 import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
+import services.ServiciosVoto;
 
 
 @SuppressWarnings("deprecation")
@@ -50,6 +51,10 @@ public class BasePageBean implements Serializable {
 
     protected ServiciosIniciativa getServiciosIniciativa() {
         return getInjector().getInstance(ServiciosIniciativa.class);
+    }
+
+    protected ServiciosVoto getServiciosVoto() {
+        return getInjector().getInstance(ServiciosVoto.class);
     }
 
     protected void mensajeApp(Exception e) {
