@@ -1,26 +1,26 @@
-import static com.google.inject.Guice.createInjector;
-
 import entities.Iniciativa;
 import entities.Usuario;
-import exceptions.ServiciosUsuarioException;
-import services.ServiciosIniciativa;
-import services.bancoIdeasServicesFactory;
-import services.ServiciosUsuario;
 import exceptions.ServicesException;
-
-import static org.junit.Assert.assertTrue;
+import exceptions.ServiciosUsuarioException;
 import org.junit.Test;
+import services.ServiciosIniciativa;
+import services.ServiciosUsuario;
+import services.bancoIdeasServicesFactory;
+import services.ServiciosVoto;
 
 import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 public class serviciosBancoIdeasTest {
     private ServiciosUsuario serviciosUsuario;
     private ServiciosIniciativa serviciosIniciativa;
+    private ServiciosVoto serviciosVoto;
 
     public serviciosBancoIdeasTest() throws ServicesException {
         serviciosUsuario = bancoIdeasServicesFactory.getInstance().getUsuarioTesting();
         serviciosIniciativa = bancoIdeasServicesFactory.getInstance().InsertarIniciativaTesting();
-
+        serviciosVoto = bancoIdeasServicesFactory.getInstance().getVotoTesting();
     }
 
     /**
@@ -120,7 +120,7 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-    @Test
+    //@Test
     public void deberiaActualizarVotosIniciativa() throws ServicesException {
         Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
         serviciosIniciativa.updateVotosIniciativa(iniciativapr.getNombre(), 2);

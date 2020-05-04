@@ -34,13 +34,11 @@ public class bancoIdeasServicesFactory {
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
                 bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
-
-                //bind(VotoDAO.class).to(MyBatisVotoDAO.class);
+                bind(VotoDAO.class).to(MyBatisVotoDAO.class);
 
                 bind(ServiciosIniciativa.class).to(ServiciosIniciativaImpl.class);
                 bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
-
-                //bind(ServiciosVoto.class).to(ServiciosVotoImpl.class);
+                bind(ServiciosVoto.class).to(ServiciosVotoImpl.class);
             }
         });
         testInjector = Guice.createInjector(new XMLMyBatisModule(){
@@ -48,13 +46,14 @@ public class bancoIdeasServicesFactory {
             protected void initialize() {
                 install(JdbcHelper.PostgreSQL);
                 setClassPathResource("bd-config.xml");
-                bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
-                bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
-                bind(ServiciosIniciativa.class).to(ServiciosIniciativaImpl.class);
-                //bind(BlogServices.class).to(BlogServicesImpl.class);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
-                //bind(BlogDAO.class).to(MyBatisBlogDAO.class);
+                bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
+                bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
+                bind(VotoDAO.class).to(MyBatisVotoDAO.class);
 
+                bind(ServiciosIniciativa.class).to(ServiciosIniciativaImpl.class);
+                bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
+                bind(ServiciosVoto.class).to(ServiciosVotoImpl.class);
             }
         });
 
@@ -78,30 +77,20 @@ public class bancoIdeasServicesFactory {
     public ServiciosIniciativa getIniciativas(){
         return bancoInjector.getInstance(ServiciosIniciativa.class);
     }
-    /*public ServiciosVoto getVoto(){
+    public ServiciosVoto getVoto(){
         return bancoInjector.getInstance(ServiciosVoto.class);
     }
-    public ServiciosVoto insertVoto(){
-        return bancoInjector.getInstance(ServiciosVoto.class);
-    }
-    public ServiciosVoto deleteVoto(){
-        return bancoInjector.getInstance(ServiciosVoto.class);
-    }*/
-    public ServiciosUsuario insertUsuarioTesting(){
-        return bancoInjector.getInstance(ServiciosUsuario.class);
-    }
-    public ServiciosUsuario getUsuariosTesting(){
-        return testInjector.getInstance(ServiciosUsuario.class);
-    }
+
+
+    
     public ServiciosUsuario getUsuarioTesting(){
         return testInjector.getInstance(ServiciosUsuario.class);
     }
-
     public ServiciosIniciativa InsertarIniciativaTesting(){
         return testInjector.getInstance(ServiciosIniciativa.class);
     }
-    public ServiciosIniciativa getIniciativasTesting(){
-        return testInjector.getInstance(ServiciosIniciativa.class);
+    public ServiciosVoto getVotoTesting(){
+        return testInjector.getInstance(ServiciosVoto.class);
     }
 
     //     return optInjector.get().getInstance(BlogServices.class);

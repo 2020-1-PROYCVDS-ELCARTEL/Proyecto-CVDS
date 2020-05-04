@@ -13,31 +13,31 @@ public class MyBatisVotoDAO implements VotoDAO {
 
     @Override
     public void insertVoto(Voto voto) throws PersistenceException {
-        try {
-            votoMapper.insertVoto(voto);
-        }catch (final Exception e){
-            e.printStackTrace();
-            throw new PersistenceException("Save error voto");
-        }
+       try {
+           votoMapper.insertVoto(voto);
+       }catch (final Exception e){
+           e.printStackTrace();
+           throw new PersistenceException("Save error voto");
+       }
     }
 
     @Override
     public void getVoto(int idUsuario, int idIniciativa) throws PersistenceException {
-        try {
-            votoMapper.getVoto(idUsuario, idIniciativa);
-        }catch (final Exception e){
-            e.printStackTrace();
-            throw new PersistenceException("Get error voto");
-        }
+       try {
+           votoMapper.getVoto(idUsuario, idIniciativa);
+       }catch (final Exception e){
+           e.printStackTrace();
+           throw new PersistenceException("Get error voto");
+       }
     }
 
     @Override
     public void deleteVoto(int idUsuario, int idIniciativa) throws PersistenceException {
-        try {
-            votoMapper.deleteVoto(idUsuario, idIniciativa);
-        }catch (final Exception e){
-            e.printStackTrace();
-            throw new PersistenceException("Delete error voto");
-        }
+       try {
+           votoMapper.deleteVoto(idUsuario, idIniciativa);
+       }catch (final Exception e){
+           e.printStackTrace();
+           throw new PersistenceException("Delete error voto");
+       }
     }
 }
