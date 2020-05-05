@@ -14,6 +14,7 @@ import persistence.mybatisimpl.MyBatisComentarioDAO;
 import persistence.mybatisimpl.MyBatisIniciativaDAO;
 import persistence.mybatisimpl.MyBatisUsuarioDAO;
 import persistence.mybatisimpl.MyBatisVotoDAO;
+import services.impl.ServiciosComentarioImpl;
 import services.impl.ServiciosIniciativaImpl;
 import services.impl.ServiciosUsuarioImpl;
 import services.impl.ServiciosVotoImpl;
@@ -39,6 +40,7 @@ public class bancoIdeasServicesFactory {
                 bind(ServiciosIniciativa.class).to(ServiciosIniciativaImpl.class);
                 bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
                 bind(ServiciosVoto.class).to(ServiciosVotoImpl.class);
+                bind(ServiciosComentario.class).to(ServiciosComentarioImpl.class);
             }
         });
         testInjector = Guice.createInjector(new XMLMyBatisModule(){
@@ -54,6 +56,7 @@ public class bancoIdeasServicesFactory {
                 bind(ServiciosIniciativa.class).to(ServiciosIniciativaImpl.class);
                 bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
                 bind(ServiciosVoto.class).to(ServiciosVotoImpl.class);
+                bind(ServiciosComentario.class).to(ServiciosComentarioImpl.class);
             }
         });
 
@@ -80,6 +83,7 @@ public class bancoIdeasServicesFactory {
     public ServiciosVoto getVoto(){
         return bancoInjector.getInstance(ServiciosVoto.class);
     }
+    public ServiciosComentario getComentario(){ return bancoInjector.getInstance(ServiciosComentario.class); }
 
 
     

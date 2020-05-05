@@ -19,11 +19,13 @@ services\bancoIdeasServicesFactory$2.class
 persistence\PersistenceException.class
 persistence\mybatisimpl\mappers\ComentarioMapper.class
 persistence\mybatisimpl\MyBatisVotoDAO.class
+services\ServiciosComentario.class
 persistence\mybatisimpl\MyBatisComentarioDAO.class
 persistence\mybatisimpl\MyBatisIniciativaDAO.class
 services\impl\ServiciosUsuarioImpl.class
 guice\GuiceContextListener.class
 exceptions\PersistenceException.class
+services\impl\ServiciosComentarioImpl.class
 services\impl\ServiciosVotoImpl.class
 exceptions\ServicesException.class
 persistence\mybatisimpl\mappers\UsuarioMapper.class

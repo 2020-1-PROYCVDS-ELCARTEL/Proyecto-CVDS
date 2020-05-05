@@ -7,15 +7,14 @@
 
     <select parameterType="map" id="getComentarios" resultMap="ComentarioResult">
         SELECT
-        c.id,
         c.textoComentario,
-        c.idIniciativa
+        c.idIniciativa,
         c.idUsuario
         FROM comentario as c
         WHERE #{idIniciativa}=c.idiniciativa;
     </select>
 
-    <insert id="insertUsuario">
+    <insert id="insertComentario">
         insert into comentario (textoComentario, idIniciativa, idUsuario) values (#{textoComentario},#{idIniciativa},#{idUsuario})
     </insert>
 

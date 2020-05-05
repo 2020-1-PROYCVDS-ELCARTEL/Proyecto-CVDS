@@ -6,18 +6,23 @@
 <mapper namespace="persistence.mybatisimpl.mappers.ComentarioMapper">
 
     <select parameterType="map" id="getComentarios" resultMap="ComentarioResult">
-        SELECT i.nombre, c.textoComentario FROM iniciativa as i
-        JOIN comentario c on (#{idIniciativa}=c.idiniciativa);
+        SELECT
+        c.textoComentario,
+        c.idIniciativa,
+        c.idUsuario
+        FROM comentario as c
+        WHERE #{idIniciativa}=c.idiniciativa;
     </select>
 
-    <insert id="insertUsuario">
-        insert into comentario (textoComentario, idIniciativa) values (#{textoComentario},#{idIniciativa})
+    <insert id="insertComentario">
+        insert into comentario (textoComentario, idIniciativa, idUsuario) values (#{textoComentario},#{idIniciativa},#{idUsuario})
     </insert>
 
     <resultMap type='Comentario' id='ComentarioResult'>
         <id property='id' column='id'/>
         <result property='textoComentario' column='textoComentario'/>
         <result property='idIniciativa' column='idIniciativa'/>
+        <result property='idUsuario' column='idUsuario'/>
     </resultMap>
 
 

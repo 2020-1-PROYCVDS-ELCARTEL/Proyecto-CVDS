@@ -24,7 +24,7 @@ public class MyBatisComentarioDAO implements ComentarioDAO {
     }
 
     @Override
-    public List<Comentario> getComentarios(final int idIniciativa) throws PersistenceException {
+    public List<Comentario> getComentarios(int idIniciativa) throws PersistenceException {
         try {
             return comentarioMapper.getComentarios(idIniciativa);
         }catch (final Exception e){

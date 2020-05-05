@@ -1,5 +1,6 @@
 package managedbeans;
 
+import entities.Comentario;
 import entities.Iniciativa;
 import entities.Usuario;
 import entities.Voto;
@@ -9,6 +10,7 @@ import exceptions.ServiciosUsuarioException;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.ChartSeries;
+import services.ServiciosComentario;
 import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 
@@ -36,6 +38,7 @@ public class IniciativaBean implements Serializable {
     private ServiciosUsuario serviciosUsuario;
     private ServiciosIniciativa serviciosIniciativa;
     private ServiciosVoto serviciosVoto;
+    private ServiciosComentario serviciosComentario;
     //private Iniciativa iniciativa;
     private int checkUpdate;
     private String nombreIniciativa;
@@ -48,6 +51,7 @@ public class IniciativaBean implements Serializable {
     private Iniciativa iniciativaConsultadaId;
     private List<Integer> estadistica;
 	private BarChartModel model;
+	private List<Comentario> comentarios;
 
     public void Bean() {
         model = new BarChartModel();
@@ -99,6 +103,7 @@ public class IniciativaBean implements Serializable {
     public void verIniciativa(int idIniciativa){
         try {
             iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(idIniciativa);
+            comentarios = serviciosComentario.getComentarios(idIniciativa);
             if(usuario.getTipoUser().equals("PMO")) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/ModificarIniciativa.xhtml");
             }else {
@@ -150,6 +155,7 @@ public class IniciativaBean implements Serializable {
         setServiciosIniciativa(baseBean.getServiciosIniciativa());
         setServiciosUsuario(baseBean.getServiciosUsuario());
         setServiciosVoto(baseBean.getServiciosVoto());
+        setServiciosComentario(baseBean.getServiciosComentario());
         setUsuario(baseBean.getUser());
         setNombreUsuario(usuario.getNombre());
         setCorreoUsuario(usuario.getCorreo());
@@ -315,5 +321,21 @@ public class IniciativaBean implements Serializable {
 
     public void setServiciosVoto(ServiciosVoto serviciosVoto) {
         this.serviciosVoto = serviciosVoto;
+    }
+
+    public ServiciosComentario getServiciosComentario() {
+        return serviciosComentario;
+    }
+
+    public void setServiciosComentario(ServiciosComentario serviciosComentario) {
+        this.serviciosComentario = serviciosComentario;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 }

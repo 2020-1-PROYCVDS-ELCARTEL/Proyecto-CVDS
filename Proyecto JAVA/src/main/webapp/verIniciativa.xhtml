@@ -76,5 +76,12 @@
 
 
         </h:form>
+
+        <p:dataList value="#{IniciativaBean.comentarios}" var="comentario" type="ordered">
+            <f:facet name="header">
+                Comentarios
+            </f:facet>
+            #{comentario.textoComentario}
+        </p:dataList>
     </h:body>
 </html>

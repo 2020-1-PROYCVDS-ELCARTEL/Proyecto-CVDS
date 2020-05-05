@@ -12,10 +12,7 @@ import com.google.inject.Injector;
 
 import entities.Usuario;
 import persistence.UsuarioDAO;
-import services.ServiciosIniciativa;
-import services.ServiciosUsuario;
-import services.ServiciosVoto;
-import services.bancoIdeasServicesFactory;
+import services.*;
 
 
 @SuppressWarnings("deprecation")
@@ -50,6 +47,8 @@ public class BasePageBean implements Serializable {
     protected ServiciosIniciativa getServiciosIniciativa() { return getInjector().getInstance(ServiciosIniciativa.class); }
 
     protected ServiciosVoto getServiciosVoto() { return bancoIdeasServicesFactory.getInstance().getVoto(); }
+
+    protected ServiciosComentario getServiciosComentario() { return bancoIdeasServicesFactory.getInstance().getComentario(); }
 
     protected void mensajeApp(Exception e) {
         Mensajes.mensajeAplicacion(e.getMessage());

@@ -1,13 +1,11 @@
+import entities.Comentario;
 import entities.Iniciativa;
 import entities.Usuario;
 import entities.Voto;
 import exceptions.ServicesException;
 import exceptions.ServiciosUsuarioException;
 import org.junit.Test;
-import services.ServiciosIniciativa;
-import services.ServiciosUsuario;
-import services.bancoIdeasServicesFactory;
-import services.ServiciosVoto;
+import services.*;
 
 import java.util.List;
 
@@ -17,11 +15,13 @@ public class serviciosBancoIdeasTest {
     private ServiciosUsuario serviciosUsuario;
     private ServiciosIniciativa serviciosIniciativa;
     private ServiciosVoto serviciosVoto;
+    private ServiciosComentario serviciosComentario;
 
     public serviciosBancoIdeasTest() throws ServicesException {
         serviciosUsuario = bancoIdeasServicesFactory.getInstance().getUsuarioTesting();
         serviciosIniciativa = bancoIdeasServicesFactory.getInstance().InsertarIniciativaTesting();
         serviciosVoto = bancoIdeasServicesFactory.getInstance().getVotoTesting();
+        serviciosComentario = bancoIdeasServicesFactory.getInstance().getComentario();
     }
 
     /**
@@ -141,10 +141,22 @@ public class serviciosBancoIdeasTest {
         try {
             Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
             Usuario usuario = serviciosUsuario.consultarUsuario("juan@gmail.com");
-
+            //Comentario comentario = new Comentario("hola, ya funciona", iniciativapr.getId(), usuario.getId());
+            serviciosComentario.insertComentario(new Comentario("hola, ya funciona", iniciativapr.getId(), usuario.getId()));
+            serviciosComentario.insertComentario(new Comentario("Segundo comentario", iniciativapr.getId(), usuario.getId()));
             System.out.println("funciona 9");
         } catch (ServicesException | ServiciosUsuarioException e) {
-            System.out.println("fallas");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void deberiaConsultarComentario(){
+        try {
+            List<Comentario> comentarios = serviciosComentario.getComentarios(2);
+            System.out.println(comentarios);
+        } catch (ServicesException e) {
+            System.out.println(e.getMessage());
         }
     }
     // @Test
