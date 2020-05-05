@@ -170,7 +170,6 @@ public class IniciativaBean implements Serializable {
             borrarForm();
         } catch (IOException | ServicesException e) {
             this.baseBean.mensajeApp(e);
-            //e.printStackTrace();
         }
     }
 

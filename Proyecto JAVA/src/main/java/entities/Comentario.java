@@ -4,11 +4,13 @@ public class Comentario {
     private int id;
     private String textoComentario;
     private int idIniciativa;
+    private int idUsuario;
 
-    public Comentario(int id, String textoComentario, int idIniciativ) {
+    public Comentario(int id, String textoComentario, int idIniciativa, int idUsuario) {
         this.id = id;
         this.textoComentario = textoComentario;
-        this.idIniciativa = idIniciativ;
+        this.idIniciativa = idIniciativa;
+        this.idUsuario = idUsuario;
     }
 
     public int getId() {
@@ -35,12 +37,17 @@ public class Comentario {
         this.idIniciativa = idIniciativa;
     }
 
+    public int getIdUsuario() { return idUsuario; }
+
+    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
+
     @Override
     public String toString() {
         return "Comentario{" +
                 "id=" + id +
                 ", textoComentario='" + textoComentario + '\'' +
-                ", idIniciativ=" + idIniciativa +
+                ", idIniciativa=" + idIniciativa +
+                ", idUsuario=" + idUsuario +
                 '}';
     }
 }

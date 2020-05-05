@@ -19,7 +19,6 @@ public class MyBatisComentarioDAO implements ComentarioDAO {
         try {
             comentarioMapper.insertComentario(comentario);
         }catch (final Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Save error comentario");
         }
     }
@@ -29,7 +28,6 @@ public class MyBatisComentarioDAO implements ComentarioDAO {
         try {
             return comentarioMapper.getComentarios(idIniciativa);
         }catch (final Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Load error comentarios");
         }
     }

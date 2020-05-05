@@ -84,7 +84,6 @@ public class MyBatisExample {
 			System.out.println(date);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
         List<Date> horas=new ArrayList<Date>();

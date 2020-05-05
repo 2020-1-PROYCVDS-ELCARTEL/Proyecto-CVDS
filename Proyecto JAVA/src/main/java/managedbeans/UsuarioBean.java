@@ -154,7 +154,6 @@ public class UsuarioBean implements Serializable {
         }
         catch(Exception e) {
             this.baseBean.mensajeApp(e);
-            e.printStackTrace();
 
         }
 
@@ -166,7 +165,6 @@ public class UsuarioBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/menu.xhtml");
             } catch (IOException e) {
                 this.baseBean.mensajeApp(e);
-                e.printStackTrace();
             }
         }
 
@@ -178,7 +176,6 @@ public class UsuarioBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Admin.xhtml");
             } catch (IOException e) {
                 this.baseBean.mensajeApp(e);
-                e.printStackTrace();
             }
         }
 
@@ -189,7 +186,6 @@ public class UsuarioBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/PMO.xhtml");
             } catch (IOException e) {
                 this.baseBean.mensajeApp(e);
-                e.printStackTrace();
             }
         }
 
@@ -200,7 +196,6 @@ public class UsuarioBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Pro.xhtml");
             } catch (IOException e) {
                 this.baseBean.mensajeApp(e);
-                e.printStackTrace();
             }
         }
 
@@ -211,7 +206,6 @@ public class UsuarioBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("user?faces-redirect=true");
             } catch (IOException e) {
                 this.baseBean.mensajeApp(e);
-                e.printStackTrace();
             }
         }
 
@@ -233,7 +227,6 @@ public class UsuarioBean implements Serializable {
             FacesContext.getCurrentInstance().getExternalContext().redirect(path);
         } catch (IOException e) {
             this.baseBean.mensajeApp(e);
-            e.printStackTrace();
         }
     }
 

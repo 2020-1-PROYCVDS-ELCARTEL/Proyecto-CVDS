@@ -17,7 +17,6 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         try {
             return iniciativaMapper.insertIniciativa(iniciativa);
         }catch (Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Save error iniciativa");
         }
     }
@@ -27,7 +26,6 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         try {
             return iniciativaMapper.getIniciativasPaClave(palabraClave);
         }catch (Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Load error iniciativa str palabras clave");
         }
     }
@@ -51,7 +49,6 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         try {
             return iniciativaMapper.getIniciativasAll();
         }catch (Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Load error iniciativa todas, sin parametro");
         }
     }
@@ -61,7 +58,6 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         try {
              return iniciativaMapper.updateIniciativa(nombre, estado);
         }catch (Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Update error iniciativa nombre");
         }
     }
@@ -71,7 +67,6 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         try {
             return iniciativaMapper.updateVotosIniciativa(nombre, numerovotos);
         }catch (Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Update error iniciativa votos");
         }
     }

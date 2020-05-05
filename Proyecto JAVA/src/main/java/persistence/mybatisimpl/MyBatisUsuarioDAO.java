@@ -21,7 +21,6 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
         try {
             usuarioMapper.insertUsuario(usuario);
         }catch (final Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Save error");
         }
     }
@@ -39,7 +38,6 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
         try {
             return usuarioMapper.getUsuarios();
         }catch (final Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Load error");
         }
     }
@@ -49,7 +47,6 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
         try {
             return usuarioMapper.updateRolUsuario(idUsuario, tipoUser);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new PersistenceException("Actualizacion error");
         }
     }
