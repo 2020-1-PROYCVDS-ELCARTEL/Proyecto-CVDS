@@ -16,7 +16,7 @@
     </select>
 
     <insert id="insertUsuario">
-        insert into comentario (textoComentario, idIniciativa) values (#{textoComentario},#{idIniciativa})
+        insert into comentario (textoComentario, idIniciativa, idUsuario) values (#{textoComentario},#{idIniciativa},#{idUsuario})
     </insert>
 
     <resultMap type='Comentario' id='ComentarioResult'>
