@@ -120,14 +120,14 @@ public class serviciosBancoIdeasTest {
         }
     }
 
-    //@Test
+    @Test
     public void deberiaActualizarVotosIniciativa() throws ServicesException {
         Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
-        serviciosIniciativa.updateVotosIniciativa(iniciativapr.getNombre(), 2);
+        serviciosIniciativa.updateVotosIniciativa(iniciativapr.getNombre(), 4);
         try {
             Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
             int n = ini.getNumeroVotos();
-            assertTrue(n==2);
+            assertTrue(n==4);
             //System.out.println(iniciativapr);
             System.out.println("funciona 8");
         } catch (Exception e) {
