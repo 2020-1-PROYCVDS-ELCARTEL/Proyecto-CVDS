@@ -1,5 +1,6 @@
 import entities.Iniciativa;
 import entities.Usuario;
+import entities.Voto;
 import exceptions.ServicesException;
 import exceptions.ServiciosUsuarioException;
 import org.junit.Test;
@@ -122,13 +123,15 @@ public class serviciosBancoIdeasTest {
 
     @Test
     public void deberiaActualizarVotosIniciativa() throws ServicesException {
-        Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
-        serviciosIniciativa.updateVotosIniciativa(iniciativapr.getNombre(), 4);
         try {
+            Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
+            Usuario usuario = serviciosUsuario.consultarUsuario("juan@gmail.com");
+            Voto voto = new Voto(usuario.getId(), iniciativapr.getId());
+            serviciosIniciativa.updateVotosIniciativa(iniciativapr.getNombre(), iniciativapr.getNumeroVotos()+1);
+            serviciosVoto.insertVoto(voto);
             Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
             int n = ini.getNumeroVotos();
-            assertTrue(n==4);
-            //System.out.println(iniciativapr);
+            assertTrue(iniciativapr.getNumeroVotos()+1==n);
             System.out.println("funciona 8");
         } catch (Exception e) {
             System.out.println("fallas");

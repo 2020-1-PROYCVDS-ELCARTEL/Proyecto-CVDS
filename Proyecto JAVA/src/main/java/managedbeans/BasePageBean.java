@@ -15,6 +15,7 @@ import persistence.UsuarioDAO;
 import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 import services.ServiciosVoto;
+import services.bancoIdeasServicesFactory;
 
 
 @SuppressWarnings("deprecation")
@@ -28,8 +29,6 @@ public class BasePageBean implements Serializable {
     private long idRec;
     private String usuario;
     private Usuario user;
-
-
 
     private Injector getInjector() {
         if (injector == null) {
@@ -48,14 +47,9 @@ public class BasePageBean implements Serializable {
         return getInjector().getInstance(ServiciosUsuario.class);
     }
 
+    protected ServiciosIniciativa getServiciosIniciativa() { return getInjector().getInstance(ServiciosIniciativa.class); }
 
-    protected ServiciosIniciativa getServiciosIniciativa() {
-        return getInjector().getInstance(ServiciosIniciativa.class);
-    }
-
-    protected ServiciosVoto getServiciosVoto() {
-        return getInjector().getInstance(ServiciosVoto.class);
-    }
+    protected ServiciosVoto getServiciosVoto() { return bancoIdeasServicesFactory.getInstance().getVoto(); }
 
     protected void mensajeApp(Exception e) {
         Mensajes.mensajeAplicacion(e.getMessage());

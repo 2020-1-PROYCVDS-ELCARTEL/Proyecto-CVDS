@@ -16,7 +16,7 @@ public class MyBatisVotoDAO implements VotoDAO {
        try {
            votoMapper.insertVoto(voto);
        }catch (final Exception e){
-           e.printStackTrace();
+           //e.printStackTrace();
            throw new PersistenceException("Save error voto");
        }
     }
@@ -26,7 +26,7 @@ public class MyBatisVotoDAO implements VotoDAO {
        try {
            votoMapper.getVoto(idUsuario, idIniciativa);
        }catch (final Exception e){
-           e.printStackTrace();
+           //e.printStackTrace();
            throw new PersistenceException("Get error voto");
        }
     }
@@ -36,7 +36,7 @@ public class MyBatisVotoDAO implements VotoDAO {
        try {
            votoMapper.deleteVoto(idUsuario, idIniciativa);
        }catch (final Exception e){
-           e.printStackTrace();
+           //e.printStackTrace();
            throw new PersistenceException("Delete error voto");
        }
     }

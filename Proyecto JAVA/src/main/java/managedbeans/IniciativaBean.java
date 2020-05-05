@@ -2,6 +2,8 @@ package managedbeans;
 
 import entities.Iniciativa;
 import entities.Usuario;
+import entities.Voto;
+import exceptions.PersistenceException;
 import exceptions.ServicesException;
 import exceptions.ServiciosUsuarioException;
 import org.primefaces.model.chart.Axis;
@@ -19,6 +21,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.primefaces.model.chart.BarChartModel;
+import services.ServiciosVoto;
 
 
 @Deprecated
@@ -32,6 +35,7 @@ public class IniciativaBean implements Serializable {
     private BasePageBean baseBean;
     private ServiciosUsuario serviciosUsuario;
     private ServiciosIniciativa serviciosIniciativa;
+    private ServiciosVoto serviciosVoto;
     //private Iniciativa iniciativa;
     private int checkUpdate;
     private String nombreIniciativa;
@@ -145,6 +149,7 @@ public class IniciativaBean implements Serializable {
     public void configBasica() {
         setServiciosIniciativa(baseBean.getServiciosIniciativa());
         setServiciosUsuario(baseBean.getServiciosUsuario());
+        setServiciosVoto(baseBean.getServiciosVoto());
         setUsuario(baseBean.getUser());
         setNombreUsuario(usuario.getNombre());
         setCorreoUsuario(usuario.getCorreo());
@@ -165,12 +170,31 @@ public class IniciativaBean implements Serializable {
             borrarForm();
         } catch (IOException | ServicesException e) {
             this.baseBean.mensajeApp(e);
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
     public void votar(){
-        //in
+        try {
+            Voto voto = new Voto(usuario.getId(), iniciativaConsultadaId.getId());
+            //serviciosVoto.getVoto(usuario.getId(), iniciativaConsultadaId.getId());
+            serviciosVoto.insertVoto(voto);
+            serviciosIniciativa.updateVotosIniciativa(iniciativaConsultadaId.getNombre(), iniciativaConsultadaId.getNumeroVotos()+1);
+            iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(iniciativaConsultadaId.getId());
+        }catch (Exception e){
+            if(e.getMessage().equals("Error al insertar voto")){
+                try {
+                    serviciosVoto.deleteVoto(usuario.getId(), iniciativaConsultadaId.getId());
+                    serviciosIniciativa.updateVotosIniciativa(iniciativaConsultadaId.getNombre(), iniciativaConsultadaId.getNumeroVotos()-1);
+                    iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(iniciativaConsultadaId.getId());
+                } catch (ServicesException ex) {
+                    this.baseBean.mensajeApp(e);
+                }
+            }else {
+                this.baseBean.mensajeApp(e);
+            }
+        }
+
     }
 
     private void cambiarEstado(String nuevoEstado){
@@ -284,5 +308,13 @@ public class IniciativaBean implements Serializable {
 
     public void setIniciativaConsultadaId(Iniciativa iniciativaConsultadaId) {
         this.iniciativaConsultadaId = iniciativaConsultadaId;
+    }
+
+    public ServiciosVoto getServiciosVoto() {
+        return serviciosVoto;
+    }
+
+    public void setServiciosVoto(ServiciosVoto serviciosVoto) {
+        this.serviciosVoto = serviciosVoto;
     }
 }
