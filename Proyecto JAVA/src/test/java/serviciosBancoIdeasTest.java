@@ -31,10 +31,9 @@ public class serviciosBancoIdeasTest {
      * @throws ServiciosUsuarioException
      */
     @Test
-    public void deberiaConsultarUsuario() throws ServicesException, ServiciosUsuarioException {
-
-        Usuario usrPrueba = serviciosUsuario.consultarUsuario("santiago@gmail.com");
+    public void deberiaConsultarUsuario() {
         try {
+            Usuario usrPrueba = serviciosUsuario.consultarUsuario("santiago@gmail.com");
             assertTrue(usrPrueba != null);
             System.out.println("funciona 1");
         } catch (Exception e) {
@@ -43,9 +42,9 @@ public class serviciosBancoIdeasTest {
     }
 
     @Test
-    public void deberiaConsultarUsuarios() throws ServicesException, ServiciosUsuarioException {
-        List<Usuario> usrPrueba = serviciosUsuario.consultarUsuarios();
+    public void deberiaConsultarUsuarios() {
         try {
+            List<Usuario> usrPrueba = serviciosUsuario.consultarUsuarios();
             assertTrue(usrPrueba != null);
             System.out.println("funciona 2");
         } catch (Exception e) {
@@ -54,7 +53,7 @@ public class serviciosBancoIdeasTest {
     }
 
     @Test
-    public void deberiaActualizarUsuarios() throws ServicesException, ServiciosUsuarioException {
+    public void deberiaActualizarUsuarios() {
         Usuario userpr = new Usuario(8, "laura", "123456789", "laura@gmail.com", "Admin", "Finanzas");
         try {
             serviciosUsuario.insertarUsuario(userpr);
@@ -69,10 +68,10 @@ public class serviciosBancoIdeasTest {
     }
 
     @Test
-    public void deberiaInsertarUsuarios() throws ServicesException, ServiciosUsuarioException {
+    public void deberiaInsertarUsuarios() {
         Usuario userpr = new Usuario("laura", "1234567", "laura2@gmail.com", "Admin", "Finanzas");
-        serviciosUsuario.insertarUsuario(userpr);
         try {
+            serviciosUsuario.insertarUsuario(userpr);
             assertTrue(serviciosUsuario.consultarUsuario("laura2@gmail.com") != null);
             //System.out.println(serviciosUsuario.consultarUsuario("laura2@gmail.com"));
             System.out.println("funciona 4");
@@ -82,10 +81,9 @@ public class serviciosBancoIdeasTest {
     }
 
     @Test
-    public void deberiaConsultarIniciativas() throws ServicesException, ServiciosUsuarioException {
-
-        List<Iniciativa> iniciativasPrueba = serviciosIniciativa.getIniciativas();
+    public void deberiaConsultarIniciativas() {
         try {
+            List<Iniciativa> iniciativasPrueba = serviciosIniciativa.getIniciativas();
             assertTrue(iniciativasPrueba != null);
             //System.out.println(iniciativasPrueba);
             System.out.println("funciona 5");
@@ -95,10 +93,10 @@ public class serviciosBancoIdeasTest {
     }
 
     @Test
-    public void deberiaInsertarIniciativa() throws ServicesException, ServiciosUsuarioException {
+    public void deberiaInsertarIniciativa(){
         Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien", "En espera de revisión", 1,"prueba de que funciona", "prueba", "santi", "san@gmail.com");
-        serviciosIniciativa.insertIniciativa(iniciativaPrr);
         try {
+            serviciosIniciativa.insertIniciativa(iniciativaPrr);
             assertTrue(serviciosIniciativa.getIniciativas() != null);
             //System.out.println(serviciosIniciativa.getIniciativas());
             System.out.println("funciona 6");
@@ -134,6 +132,18 @@ public class serviciosBancoIdeasTest {
             assertTrue(iniciativapr.getNumeroVotos()+1==n);
             System.out.println("funciona 8");
         } catch (Exception e) {
+            System.out.println("fallas");
+        }
+    }
+
+    @Test
+    public void deberiaAgregarUnComentario(){
+        try {
+            Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
+            Usuario usuario = serviciosUsuario.consultarUsuario("juan@gmail.com");
+
+            System.out.println("funciona 9");
+        } catch (ServicesException | ServiciosUsuarioException e) {
             System.out.println("fallas");
         }
     }

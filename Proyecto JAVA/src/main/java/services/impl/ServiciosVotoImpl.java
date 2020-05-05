@@ -10,7 +10,6 @@ import services.ServiciosVoto;
 public class ServiciosVotoImpl implements ServiciosVoto {
 
     @Inject
-    //private ComentarioDAO comentarioDAO;
     private VotoDAO votoDAO;
 
     @Override
