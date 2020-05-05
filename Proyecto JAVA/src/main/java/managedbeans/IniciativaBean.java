@@ -100,6 +100,10 @@ public class IniciativaBean implements Serializable {
         }
     }
 
+    public void iniciativaPorProponente(){
+
+    }
+
     public void verIniciativa(int idIniciativa){
         try {
             iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(idIniciativa);
@@ -114,10 +118,19 @@ public class IniciativaBean implements Serializable {
         }
     }
 
+    public void guardarComentario(String comentario){
+        Comentario comentario1 = new Comentario(comentario, iniciativaConsultadaId.getId(), usuario.getId());
+        try{
+            serviciosComentario.insertComentario(comentario1);
+            comentarios = serviciosComentario.getComentarios(iniciativaConsultadaId.getId());
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
     public void iniciativaPorArea(){
         estadistica = new ArrayList<Integer>();
         try {
-
             int finanzas =0;
             int administrativo=0;
             int recursosHumanos=0;

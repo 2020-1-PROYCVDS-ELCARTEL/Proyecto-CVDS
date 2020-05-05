@@ -13,5 +13,5 @@ public interface ServiciosIniciativa {
     public List<Iniciativa> getIniciativas() throws ServicesException;
     public int updateIniciativa(String nombre, String estado) throws ServicesException;
     public int updateVotosIniciativa(String nombre, int numerovotos) throws ServicesException;
-
+    public List<Iniciativa> getIniciativaProponente(String nombreusuario) throws ServicesException;
 }

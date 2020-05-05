@@ -69,7 +69,7 @@ public class serviciosBancoIdeasTest {
 
     @Test
     public void deberiaInsertarUsuarios() {
-        Usuario userpr = new Usuario("laura", "1234567", "laura2@gmail.com", "Admin", "Finanzas");
+        Usuario userpr = new Usuario("laura2", "1234567", "laura2@gmail.com", "Admin", "Finanzas");
         try {
             serviciosUsuario.insertarUsuario(userpr);
             assertTrue(serviciosUsuario.consultarUsuario("laura2@gmail.com") != null);
@@ -94,7 +94,7 @@ public class serviciosBancoIdeasTest {
 
     @Test
     public void deberiaInsertarIniciativa(){
-        Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien", "En espera de revisión", 1,"prueba de que funciona", "prueba", "santi", "san@gmail.com");
+        Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien", "En espera de revisión", 1,"prueba de que funciona", "prueba", "Santiago", "santiago@gmail.com");
         try {
             serviciosIniciativa.insertIniciativa(iniciativaPrr);
             assertTrue(serviciosIniciativa.getIniciativas() != null);
@@ -154,8 +154,20 @@ public class serviciosBancoIdeasTest {
     public void deberiaConsultarComentario(){
         try {
             List<Comentario> comentarios = serviciosComentario.getComentarios(2);
-            System.out.println(comentarios);
+            System.out.println("funciona 10");
         } catch (ServicesException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void deberiaBuscarIniciativaPorProponente(){
+        try {
+            Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
+            Usuario usuario = serviciosUsuario.consultarUsuario("juan@gmail.com");
+            List<Iniciativa> iniciativas = serviciosIniciativa.getIniciativaProponente(usuario.getNombre());
+            System.out.println("funciona 11");
+        } catch (ServicesException | ServiciosUsuarioException e) {
             System.out.println(e.getMessage());
         }
     }

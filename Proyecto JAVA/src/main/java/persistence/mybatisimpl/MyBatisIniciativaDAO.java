@@ -70,4 +70,13 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
             throw new PersistenceException("Update error iniciativa votos");
         }
     }
+
+    @Override
+    public List<Iniciativa> getIniciativaProponente(String nombreusuario) throws PersistenceException {
+        try {
+            return iniciativaMapper.getIniciativaProponente(nombreusuario);
+        }catch (Exception e){
+            throw new PersistenceException("Get error iniciativa");
+        }
+    }
 }

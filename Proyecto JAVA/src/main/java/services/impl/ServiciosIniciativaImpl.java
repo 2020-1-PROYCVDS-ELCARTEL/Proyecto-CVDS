@@ -94,4 +94,16 @@ public class ServiciosIniciativaImpl implements ServiciosIniciativa {
             throw new ServicesException("Error al actualizar los votos de la iniciativa:"+nombre, e);
         }
     }
+
+    @Override
+    public List<Iniciativa> getIniciativaProponente(String nombreusuario) throws ServicesException {
+        List<Iniciativa> iniciativas =null;
+        try {
+            iniciativas = iniciativaDAO.getIniciativaProponente(nombreusuario);
+        }
+        catch (PersistenceException e) {
+            throw new ServicesException("Error al consultar las iniciativas del proponente: "+nombreusuario, e);
+        }
+        return iniciativas;
+    }
 }
