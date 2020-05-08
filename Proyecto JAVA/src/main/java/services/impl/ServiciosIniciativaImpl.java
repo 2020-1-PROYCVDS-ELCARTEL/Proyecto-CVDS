@@ -106,4 +106,15 @@ public class ServiciosIniciativaImpl implements ServiciosIniciativa {
         }
         return iniciativas;
     }
+
+    @Override
+    public int updateIniciativaDesc(String nombre, String descripcionIniciativa) throws ServicesException {
+        try {
+            return iniciativaDAO.updateIniciativaDesc(nombre, descripcionIniciativa);
+        } catch (Exception e) {
+            throw new ServicesException("Error al actualizar la descripcion de la iniciativa:"+nombre, e);   
+        }
+        
+
+    }
 }

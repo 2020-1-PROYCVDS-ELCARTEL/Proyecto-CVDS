@@ -100,6 +100,14 @@ public class IniciativaBean implements Serializable {
         }
     }
 
+    public void actualizarIniciativaInfo() {
+        try {
+            serviciosIniciativa.updateIniciativaDesc(nombreIniciativa, descripcionIniciativa);
+        } catch (Exception e) {
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
     public void iniciativaPorProponente(){
 
     }

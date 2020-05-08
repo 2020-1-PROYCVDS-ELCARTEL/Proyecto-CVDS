@@ -14,6 +14,7 @@ public interface IniciativaMapper {
     public int updateIniciativa(@Param("nombre") String nombre, @Param("estado")String estado);
     public int updateVotosIniciativa(@Param("nombre") String nombre, @Param("numerovotos")int numerovotos);
     public List<Iniciativa> getIniciativaProponente(@Param("nombreusuario") String nombreusuario);
+    public int updateIniciativaDesc(@Param("nombre") String nombre, @Param("descripcion")String descripcionIniciativa);
     //public void deleteAll();
 }
 
