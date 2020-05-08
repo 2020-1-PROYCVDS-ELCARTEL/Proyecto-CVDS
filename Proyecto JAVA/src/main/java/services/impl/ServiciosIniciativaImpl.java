@@ -117,4 +117,13 @@ public class ServiciosIniciativaImpl implements ServiciosIniciativa {
         
 
     }
+
+    @Override
+    public List<Iniciativa> getIniciativasEst(String estado) throws ServicesException {
+        try {
+            return iniciativaDAO.getIniciativasEst(estado);
+        } catch (Exception e) {
+            throw new ServicesException("Error al consultar las inciativas con el estado:"+estado, e);
+        }
+    }
 }

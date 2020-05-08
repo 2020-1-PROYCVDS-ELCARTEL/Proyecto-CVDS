@@ -185,6 +185,17 @@ public class serviciosBancoIdeasTest {
         }
     }
 
+    @Test
+    public void deberiaBuscarIniciativaPorEstado() throws ServiciosUsuarioException {
+        try {
+            List<Iniciativa> iniciativas = serviciosIniciativa.getIniciativasEst("En espera de revisión");
+            System.out.println(iniciativas);
+            System.out.println("funciona 13");
+        } catch (ServicesException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     // @Test
     // public void deberiaFiltrarRecursosPorId() throws ServicesException {
 

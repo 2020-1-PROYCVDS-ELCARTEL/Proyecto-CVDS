@@ -16,4 +16,5 @@ public interface IniciativaDAO {
     public int updateVotosIniciativa(String nombre, int numerovotos) throws PersistenceException;
     public List<Iniciativa> getIniciativaProponente(String nombreusuario) throws PersistenceException;
 	public int updateIniciativaDesc(String nombre, String descripcionIniciativa) throws PersistenceException;
+	public List<Iniciativa> getIniciativasEst(String estado) throws PersistenceException;
 }

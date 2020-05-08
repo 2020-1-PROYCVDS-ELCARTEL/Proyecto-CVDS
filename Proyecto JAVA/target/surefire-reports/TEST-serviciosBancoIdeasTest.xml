@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="12" failures="0" name="serviciosBancoIdeasTest" time="7.782" errors="0" skipped="0">
+<testsuite tests="13" failures="0" name="serviciosBancoIdeasTest" time="6.126" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib"/>
@@ -65,16 +65,17 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaConsultarUsuarios" time="1.673"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaConsultarIniciativas" time="0.181"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaInsertarIniciativa" time="0.238"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaActualizarIniciativaDesc" time="0.759"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaActualizarVotosIniciativa" time="0.877"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaConsultarUsuario" time="0.185"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaInsertarUsuarios" time="0.184"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaBuscarIniciativaPorProponente" time="0.595"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaConsultarComentario" time="1.334"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaAgregarUnComentario" time="0.762"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaActualizarUsuarios" time="0.193"/>
-  <testcase classname="serviciosBancoIdeasTest" name="deberiaActualizarIniciativa" time="0.801"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaConsultarUsuarios" time="1.396"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaConsultarIniciativas" time="0.17"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaInsertarIniciativa" time="0.187"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaActualizarIniciativaDesc" time="0.49"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaActualizarVotosIniciativa" time="0.691"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaBuscarIniciativaPorEstado" time="0.157"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaConsultarUsuario" time="0.188"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaInsertarUsuarios" time="0.198"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaBuscarIniciativaPorProponente" time="0.565"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaConsultarComentario" time="0.808"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaAgregarUnComentario" time="0.631"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaActualizarUsuarios" time="0.166"/>
+  <testcase classname="serviciosBancoIdeasTest" name="deberiaActualizarIniciativa" time="0.479"/>
 </testsuite>
