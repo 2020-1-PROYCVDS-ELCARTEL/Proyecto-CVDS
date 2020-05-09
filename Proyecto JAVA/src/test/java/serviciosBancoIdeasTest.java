@@ -173,24 +173,50 @@ public class serviciosBancoIdeasTest {
     }
 
     @Test
-    public void deberiaActualizarIniciativaDesc() throws ServicesException {
-        Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
-        serviciosIniciativa.updateIniciativaDesc(iniciativapr.getNombre(), "Se actualizo la descripcion");
+    public void deberiaActualizarIniciativaDesc() {
         try {
+            Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
+            serviciosIniciativa.updateIniciativaDesc(iniciativapr.getId(), "Se actualizo la descripcion");
             Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
             assertTrue("Se actualizo la descripcion".equals(ini.getDescripcion()));
             System.out.println("funciona 12");
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 
     @Test
-    public void deberiaBuscarIniciativaPorEstado() throws ServiciosUsuarioException {
+    public void deberiaActualizarIniciativaNombre() {
+        try {
+            Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
+            serviciosIniciativa.updateIniciativaNombre(iniciativapr.getId(), "Nuevo nombre");
+            Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
+            assertTrue("Nuevo nombre".equals(ini.getNombre()));
+            System.out.println("funciona 13");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void deberiaActualizarIniciativaPalabrasClave() {
+        try {
+            Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
+            serviciosIniciativa.updateIniciativaPalabrasC(iniciativapr.getId(), "Nueva palabra clave");
+            Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
+            assertTrue("Nueva palabra clave".equals(ini.getPalabrasClave()));
+            System.out.println("funciona 14");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void deberiaBuscarIniciativaPorEstado() {
         try {
             List<Iniciativa> iniciativas = serviciosIniciativa.getIniciativasEst("En espera de revisión");
             System.out.println(iniciativas);
-            System.out.println("funciona 13");
+            System.out.println("funciona 15");
         } catch (ServicesException e) {
             System.out.println(e.getMessage());
         }

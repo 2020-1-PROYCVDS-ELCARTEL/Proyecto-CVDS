@@ -53,7 +53,7 @@ public class AdminBean implements Serializable {
 
     public void modificarIniciativa() throws ServiciosUsuarioException, ServicesException {
         serviciosIniciativa = baseBean.getServiciosIniciativa();
-        checkUpdate = serviciosIniciativa.updateIniciativa(nombre, estado);
+        serviciosIniciativa.updateIniciativa(nombre, estado);
     }
 
     public Usuario getUsuario() {

@@ -54,18 +54,18 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     }
 
     @Override
-    public int updateIniciativa(String nombre, String estado) throws PersistenceException {
+    public void updateIniciativa(String nombre, String estado) throws PersistenceException {
         try {
-             return iniciativaMapper.updateIniciativa(nombre, estado);
+             iniciativaMapper.updateIniciativa(nombre, estado);
         }catch (Exception e){
             throw new PersistenceException("Update error iniciativa nombre");
         }
     }
 
     @Override
-    public int updateVotosIniciativa(String nombre, int numerovotos) throws PersistenceException {
+    public void updateVotosIniciativa(String nombre, int numerovotos) throws PersistenceException {
         try {
-            return iniciativaMapper.updateVotosIniciativa(nombre, numerovotos);
+            iniciativaMapper.updateVotosIniciativa(nombre, numerovotos);
         }catch (Exception e){
             throw new PersistenceException("Update error iniciativa votos");
         }
@@ -81,11 +81,29 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     }
 
     @Override
-    public int updateIniciativaDesc(String nombre, String descripcionIniciativa) throws PersistenceException {
+    public void updateIniciativaDesc(int id, String descripcionIniciativa) throws PersistenceException {
         try {
-            return iniciativaMapper.updateIniciativaDesc(nombre, descripcionIniciativa);
+            iniciativaMapper.updateIniciativaDesc(id, descripcionIniciativa);
         } catch (Exception e) {
             throw new PersistenceException("Update error iniciativa descripcion");
+        }
+    }
+
+    @Override
+    public void updateIniciativaNombre(int id, String nombre) throws PersistenceException {
+        try {
+            iniciativaMapper.updateIniciativaNombre(id, nombre);
+        }catch (Exception e) {
+            throw new PersistenceException("Update error iniciativa nombre");
+        }
+    }
+
+    @Override
+    public void updateIniciativaPalabrasC(int id, String palabrasclave) throws PersistenceException {
+        try {
+            iniciativaMapper.updateIniciativaPalabrasC(id, palabrasclave);
+        }catch (Exception e) {
+            throw new PersistenceException("Update error iniciativa palabras clave");
         }
     }
 

@@ -92,6 +92,16 @@ public class IniciativaBean implements Serializable {
         return iniciativas;
     }
 
+    public List<Iniciativa> getMisIniciativas(){
+        List<Iniciativa> iniciativas1 = null;
+        try {
+            iniciativas1 = serviciosIniciativa.getIniciativaProponente(usuario.getNombre());
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+        return iniciativas1;
+    }
+
     public List<Iniciativa> getIniciativasEst(){
         List<Iniciativa> iniciativaEst = null;
         try {
@@ -110,18 +120,6 @@ public class IniciativaBean implements Serializable {
         }
     }
 
-    public void actualizarIniciativaInfo() {
-        try {
-            serviciosIniciativa.updateIniciativaDesc(nombreIniciativa, descripcionIniciativa);
-        } catch (Exception e) {
-            this.baseBean.mensajeApp(e);
-        }
-    }
-
-    public void iniciativaPorProponente(){
-
-    }
-
     public void verIniciativa(int idIniciativa){
         try {
             iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(idIniciativa);
@@ -130,6 +128,27 @@ public class IniciativaBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/ModificarIniciativa.xhtml");
             }else {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/verIniciativa.xhtml");
+            }
+        } catch (IOException | ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
+    public void modificar(int idIniciativa){
+        try {
+            modificarIniciativa(idIniciativa);
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
+    public void modificarIniciativa(int idIniciativa) throws ServicesException{
+        try {
+            iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(idIniciativa);
+            if(iniciativaConsultadaId.getEstado().equals("En espera de revisión")){
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/actualizarIniciativa.xhtml");
+            } else {
+                throw new ServicesException("No se puede actualizar esta iniciativa, ya ha cambiado de estado");
             }
         } catch (IOException | ServicesException e) {
             this.baseBean.mensajeApp(e);
@@ -230,8 +249,8 @@ public class IniciativaBean implements Serializable {
                 this.baseBean.mensajeApp(e);
             }
         }
-
     }
+
 
     private void cambiarEstado(String nuevoEstado){
         try {
@@ -247,6 +266,16 @@ public class IniciativaBean implements Serializable {
             cambiarEstado(estado);
         }else {
             throw new ServicesException("Fallo al actualizar el estado de la iniciativa");
+        }
+    }
+
+    public void actualizarLaIniciativa(){
+        try {
+            serviciosIniciativa.updateIniciativaDesc(iniciativaConsultadaId.getId(), iniciativaConsultadaId.getDescripcion());
+            serviciosIniciativa.updateIniciativaPalabrasC(iniciativaConsultadaId.getId(), iniciativaConsultadaId.getPalabrasClave());
+            serviciosIniciativa.updateIniciativaNombre(iniciativaConsultadaId.getId(), iniciativaConsultadaId.getNombre());
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
         }
     }
 

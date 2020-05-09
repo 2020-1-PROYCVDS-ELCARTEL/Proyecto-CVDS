@@ -11,10 +11,12 @@ public interface IniciativaMapper {
     public Iniciativa getIniciativaId(@Param("idIniciativa")int id);
     public Iniciativa getIniciativaNombre(@Param("nombreIniciativa")String nombreIniciativa);
     public List<Iniciativa> getIniciativasAll();
-    public int updateIniciativa(@Param("nombre") String nombre, @Param("estado")String estado);
-    public int updateVotosIniciativa(@Param("nombre") String nombre, @Param("numerovotos")int numerovotos);
+    public void updateIniciativa(@Param("nombre") String nombre, @Param("estado")String estado);
+    public void updateVotosIniciativa(@Param("nombre") String nombre, @Param("numerovotos")int numerovotos);
+    public void updateIniciativaDesc(@Param("id") int id, @Param("descripcion")String descripcionIniciativa);
+    public void updateIniciativaNombre(@Param("id") int id, @Param("nombre")String nombre);
+    public void updateIniciativaPalabrasC(@Param("id") int id, @Param("palabrasclave")String palabrasclave);
     public List<Iniciativa> getIniciativaProponente(@Param("nombreusuario") String nombreusuario);
-    public int updateIniciativaDesc(@Param("nombre") String nombre, @Param("descripcion")String descripcionIniciativa);
 	public List<Iniciativa> getIniciativasEst(@Param("estado")String estado);
     //public void deleteAll();
 }

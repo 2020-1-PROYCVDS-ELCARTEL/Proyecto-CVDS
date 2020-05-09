@@ -78,18 +78,18 @@ public class ServiciosIniciativaImpl implements ServiciosIniciativa {
     }
 
     @Override
-    public int updateIniciativa(String nombre, String estado) throws ServicesException {
+    public void updateIniciativa(String nombre, String estado) throws ServicesException {
         try{
-            return iniciativaDAO.updateIniciativa(nombre, estado);
+            iniciativaDAO.updateIniciativa(nombre, estado);
         } catch (PersistenceException e) {
             throw new ServicesException("Error al actualizar la iniciativa:"+nombre, e);
         }
     }
 
     @Override
-    public int updateVotosIniciativa(String nombre, int numerovotos) throws ServicesException {
+    public void updateVotosIniciativa(String nombre, int numerovotos) throws ServicesException {
         try{
-            return iniciativaDAO.updateVotosIniciativa(nombre, numerovotos);
+            iniciativaDAO.updateVotosIniciativa(nombre, numerovotos);
         } catch (PersistenceException e) {
             throw new ServicesException("Error al actualizar los votos de la iniciativa:"+nombre, e);
         }
@@ -108,14 +108,30 @@ public class ServiciosIniciativaImpl implements ServiciosIniciativa {
     }
 
     @Override
-    public int updateIniciativaDesc(String nombre, String descripcionIniciativa) throws ServicesException {
+    public void updateIniciativaDesc(int id, String descripcionIniciativa) throws ServicesException {
         try {
-            return iniciativaDAO.updateIniciativaDesc(nombre, descripcionIniciativa);
+            iniciativaDAO.updateIniciativaDesc(id, descripcionIniciativa);
         } catch (Exception e) {
-            throw new ServicesException("Error al actualizar la descripcion de la iniciativa:"+nombre, e);   
+            throw new ServicesException("Error al actualizar la descripcion de la iniciativa:"+id, e);
         }
-        
+    }
 
+    @Override
+    public void updateIniciativaNombre(int id, String nombre) throws ServicesException {
+        try {
+            iniciativaDAO.updateIniciativaNombre(id, nombre);
+        } catch (Exception e) {
+            throw new ServicesException("Error al actualizar el nombre de la iniciativa:"+id, e);
+        }
+    }
+
+    @Override
+    public void updateIniciativaPalabrasC(int id, String palabrasclave) throws ServicesException {
+        try {
+            iniciativaDAO.updateIniciativaPalabrasC(id, palabrasclave);
+        } catch (Exception e) {
+            throw new ServicesException("Error al actualizar las palabras clave de la iniciativa:"+id, e);
+        }
     }
 
     @Override

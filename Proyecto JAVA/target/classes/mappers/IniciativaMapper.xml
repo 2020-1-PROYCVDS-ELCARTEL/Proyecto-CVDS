@@ -89,7 +89,15 @@
     </update>
 
     <update id="updateIniciativaDesc">
-        update iniciativa set descripcion=#{descripcion} where nombre = #{nombre};
+        update iniciativa set descripcion=#{descripcion} where id = #{id};
+    </update>
+
+    <update id="updateIniciativaNombre">
+        update iniciativa set nombre=#{nombre} where id = #{id};
+    </update>
+
+    <update id="updateIniciativaPalabrasC">
+        update iniciativa set palabrasclave=#{palabrasclave} where id = #{id};
     </update>
 
     <select parameterType="map" id="getIniciativasEst" resultMap="IniciativaResult">

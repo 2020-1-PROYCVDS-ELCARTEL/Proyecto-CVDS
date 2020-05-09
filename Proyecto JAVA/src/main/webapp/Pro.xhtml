@@ -28,7 +28,6 @@
 
 		  <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
 	      <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-		  <p:commandButton value="Cerrar sesión" action="#{LoginBean.logout}" align="center" />
 		  
 		  <p> <br/>
 		  <br/>
@@ -40,13 +39,15 @@
 		  </p>
 		  
 		  <h:form>
-		 
-		  
+
+			  <p:commandButton id="Menu" value="Menu" type="button"/>
+			  <p:menu overlay="true" trigger="Menu" my="left top" at="left bottom">
+				  <p:menuitem value="Registrar iniciativa" action="#{PageBean.page2}"/>
+				  <p:menuitem value="Mis Iniciativas" action="#{PageBean.page8}"/>
+				  <p:menuitem value="Cerrar sesión" action="#{LoginBean.logout}"/>
+			  </p:menu>
+
 			<section>
-				<div id="uno">
-					<p:commandButton value="Registrar iniciativa" action="#{PageBean.page2}" align="center" />
-				</div>
-				
 				<div id="dos">
 					<a align="center">
 					

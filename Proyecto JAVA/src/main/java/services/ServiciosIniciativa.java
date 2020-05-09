@@ -11,9 +11,11 @@ public interface ServiciosIniciativa {
     public Iniciativa getIniciativaId(int id) throws ServicesException;
     public Iniciativa getIniciativaNombre(String nombre) throws ServicesException;
     public List<Iniciativa> getIniciativas() throws ServicesException;
-    public int updateIniciativa(String nombre, String estado) throws ServicesException;
-    public int updateVotosIniciativa(String nombre, int numerovotos) throws ServicesException;
+    public void updateIniciativa(String nombre, String estado) throws ServicesException;
+    public void updateVotosIniciativa(String nombre, int numerovotos) throws ServicesException;
+    public void updateIniciativaDesc(int id, String descripcionIniciativa) throws ServicesException;
+    public void updateIniciativaNombre(int id, String nombre) throws ServicesException;
+    public void updateIniciativaPalabrasC(int id, String palabrasclave) throws ServicesException;
     public List<Iniciativa> getIniciativaProponente(String nombreusuario) throws ServicesException;
-	public int updateIniciativaDesc(String nombre, String descripcionIniciativa) throws ServicesException;
 	public List<Iniciativa> getIniciativasEst(String estado) throws ServicesException;
 }
