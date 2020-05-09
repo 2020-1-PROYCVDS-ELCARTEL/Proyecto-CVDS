@@ -171,6 +171,31 @@ public class serviciosBancoIdeasTest {
             System.out.println(e.getMessage());
         }
     }
+
+    @Test
+    public void deberiaActualizarIniciativaDesc() throws ServicesException {
+        Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
+        serviciosIniciativa.updateIniciativaDesc(iniciativapr.getNombre(), "Se actualizo la descripcion");
+        try {
+            Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
+            assertTrue("Se actualizo la descripcion".equals(ini.getDescripcion()));
+            System.out.println("funciona 12");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Test
+    public void deberiaBuscarIniciativaPorEstado() throws ServiciosUsuarioException {
+        try {
+            List<Iniciativa> iniciativas = serviciosIniciativa.getIniciativasEst("En espera de revisión");
+            System.out.println(iniciativas);
+            System.out.println("funciona 13");
+        } catch (ServicesException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     // @Test
     // public void deberiaFiltrarRecursosPorId() throws ServicesException {
 

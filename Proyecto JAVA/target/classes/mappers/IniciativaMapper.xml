@@ -88,6 +88,24 @@
         update iniciativa set numerovotos=#{numerovotos} where nombre = #{nombre};
     </update>
 
+    <update id="updateIniciativaDesc">
+        update iniciativa set descripcion=#{descripcion} where nombre = #{nombre};
+    </update>
+
+    <select parameterType="map" id="getIniciativasEst" resultMap="IniciativaResult">
+        SELECT
+        i.id,
+        i.nombre,
+        i.estado,
+        i.numerovotos,
+        i.descripcion,
+        i.palabrasclave,
+        i.nombreusuario,
+        i.correousuario
+        FROM
+        iniciativa as i WHERE i.estado=#{estado}
+    </select>
+
     <resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='id' column='id'/>
         <result property='nombre' column='nombre'/>

@@ -92,10 +92,28 @@ public class IniciativaBean implements Serializable {
         return iniciativas;
     }
 
+    public List<Iniciativa> getIniciativasEst(){
+        List<Iniciativa> iniciativaEst = null;
+        try {
+            iniciativaEst = serviciosIniciativa.getIniciativasEst(estado);
+        } catch (Exception e) {
+            this.baseBean.mensajeApp(e);
+        }
+        return iniciativaEst;
+    }
+
     public void actualizarIniciativa() {
         try {
             serviciosIniciativa.updateIniciativa(nombreIniciativa, estado);
         } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
+    public void actualizarIniciativaInfo() {
+        try {
+            serviciosIniciativa.updateIniciativaDesc(nombreIniciativa, descripcionIniciativa);
+        } catch (Exception e) {
             this.baseBean.mensajeApp(e);
         }
     }

@@ -79,4 +79,22 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
             throw new PersistenceException("Get error iniciativa");
         }
     }
+
+    @Override
+    public int updateIniciativaDesc(String nombre, String descripcionIniciativa) throws PersistenceException {
+        try {
+            return iniciativaMapper.updateIniciativaDesc(nombre, descripcionIniciativa);
+        } catch (Exception e) {
+            throw new PersistenceException("Update error iniciativa descripcion");
+        }
+    }
+
+    @Override
+    public List<Iniciativa> getIniciativasEst(String estado) throws PersistenceException {
+        try {
+            return iniciativaMapper.getIniciativasEst(estado);
+        } catch (Exception e) {
+            throw new PersistenceException("Get error iniciativa estado");
+        }
+    }
 }
