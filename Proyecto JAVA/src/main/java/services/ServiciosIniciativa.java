@@ -1,6 +1,7 @@
 package services;
 
 import entities.Iniciativa;
+import exceptions.PersistenceException;
 import exceptions.ServicesException;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public interface ServiciosIniciativa {
     public void updateIniciativaDesc(int id, String descripcionIniciativa) throws ServicesException;
     public void updateIniciativaNombre(int id, String nombre) throws ServicesException;
     public void updateIniciativaPalabrasC(int id, String palabrasclave) throws ServicesException;
+    public void updateIniciativaRelacionada(int id, int idIniciativaRelacionada) throws ServicesException;
     public List<Iniciativa> getIniciativaProponente(String nombreusuario) throws ServicesException;
 	public List<Iniciativa> getIniciativasEst(String estado) throws ServicesException;
 }

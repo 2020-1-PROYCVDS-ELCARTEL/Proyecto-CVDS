@@ -49,9 +49,11 @@ public class IniciativaBean implements Serializable {
     private String correoUsuario;
     private Usuario usuario;
     private Iniciativa iniciativaConsultadaId;
+    private Iniciativa iniciativaConsultadaId1;
     private List<Integer> estadistica;
 	private BarChartModel model;
 	private List<Comentario> comentarios;
+    private List<Comentario> comentarios1;
 
     public void Bean() {
         model = new BarChartModel();
@@ -126,7 +128,11 @@ public class IniciativaBean implements Serializable {
             comentarios = serviciosComentario.getComentarios(idIniciativa);
             if(usuario.getTipoUser().equals("PMO")) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/ModificarIniciativa.xhtml");
-            }else {
+            } else if(iniciativaConsultadaId.getIdIniciativaRelacionada()!=-1){
+                iniciativaConsultadaId1 = serviciosIniciativa.getIniciativaId(iniciativaConsultadaId.getIdIniciativaRelacionada());
+                comentarios1 = serviciosComentario.getComentarios(iniciativaConsultadaId1.getId());
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/verIniciativas.xhtml");
+            } else {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/verIniciativa.xhtml");
             }
         } catch (IOException | ServicesException e) {
@@ -219,6 +225,10 @@ public class IniciativaBean implements Serializable {
         setEstado("");
     }
 
+    public void relacionarIniciativas(){
+
+    }
+
     public void agregarIniciativa() {
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Pro.xhtml");
@@ -231,6 +241,12 @@ public class IniciativaBean implements Serializable {
 
     public void votar(){
         try {
+            if(iniciativaConsultadaId.getIdIniciativaRelacionada()!=-1){
+                Voto voto1 = new Voto(usuario.getId(), iniciativaConsultadaId1.getId());
+                serviciosVoto.insertVoto(voto1);
+                serviciosIniciativa.updateVotosIniciativa(iniciativaConsultadaId1.getNombre(), iniciativaConsultadaId1.getNumeroVotos()+1);
+                iniciativaConsultadaId1 = serviciosIniciativa.getIniciativaId(iniciativaConsultadaId1.getId());
+            }
             Voto voto = new Voto(usuario.getId(), iniciativaConsultadaId.getId());
             //serviciosVoto.getVoto(usuario.getId(), iniciativaConsultadaId.getId());
             serviciosVoto.insertVoto(voto);
@@ -239,6 +255,11 @@ public class IniciativaBean implements Serializable {
         }catch (Exception e){
             if(e.getMessage().equals("Error al insertar voto")){
                 try {
+                    if(iniciativaConsultadaId.getIdIniciativaRelacionada()!=-1){
+                        serviciosVoto.deleteVoto(usuario.getId(), iniciativaConsultadaId1.getId());
+                        serviciosIniciativa.updateVotosIniciativa(iniciativaConsultadaId1.getNombre(), iniciativaConsultadaId1.getNumeroVotos()-1);
+                        iniciativaConsultadaId1 = serviciosIniciativa.getIniciativaId(iniciativaConsultadaId1.getId());
+                    }
                     serviciosVoto.deleteVoto(usuario.getId(), iniciativaConsultadaId.getId());
                     serviciosIniciativa.updateVotosIniciativa(iniciativaConsultadaId.getNombre(), iniciativaConsultadaId.getNumeroVotos()-1);
                     iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(iniciativaConsultadaId.getId());
@@ -375,6 +396,14 @@ public class IniciativaBean implements Serializable {
         this.iniciativaConsultadaId = iniciativaConsultadaId;
     }
 
+    public Iniciativa getIniciativaConsultadaId1() {
+        return iniciativaConsultadaId1;
+    }
+
+    public void setIniciativaConsultadaId1(Iniciativa iniciativaConsultadaId1) {
+        this.iniciativaConsultadaId1 = iniciativaConsultadaId1;
+    }
+
     public ServiciosVoto getServiciosVoto() {
         return serviciosVoto;
     }
@@ -397,5 +426,13 @@ public class IniciativaBean implements Serializable {
 
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public List<Comentario> getComentarios1() {
+        return comentarios1;
+    }
+
+    public void setComentarios1(List<Comentario> comentarios1) {
+        this.comentarios1 = comentarios1;
     }
 }

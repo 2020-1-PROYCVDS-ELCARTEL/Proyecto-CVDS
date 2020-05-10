@@ -14,7 +14,8 @@
         i.descripcion,
         i.palabrasclave,
         i.nombreusuario,
-        i.correousuario
+        i.correousuario,
+        i.idIniciativaRelacionada
         FROM
         iniciativa as i WHERE i.id=#{idIniciativa}
     </select>
@@ -28,7 +29,8 @@
         i.descripcion,
         i.palabrasclave,
         i.nombreusuario,
-        i.correousuario
+        i.correousuario,
+        i.idIniciativaRelacionada
         FROM
         iniciativa as i WHERE i.nombre=#{nombreIniciativa}
     </select>
@@ -42,7 +44,8 @@
         i.descripcion,
         i.palabrasclave,
         i.nombreusuario,
-        i.correousuario
+        i.correousuario,
+        i.idIniciativaRelacionada
         FROM
         iniciativa as i WHERE i.nombreusuario=#{nombreusuario}
     </select>
@@ -56,7 +59,8 @@
         i.descripcion,
         i.palabrasclave,
         i.nombreusuario,
-        i.correousuario
+        i.correousuario,
+        i.idIniciativaRelacionada
         FROM
         iniciativa as i WHERE i.palabrasclave LIKE concat('%',#{palabraClave},'%')
         <!--Preguntar si el like esta bien-->
@@ -71,7 +75,8 @@
         i.descripcion,
         i.palabrasclave,
         i.nombreusuario,
-        i.correousuario
+        i.correousuario,
+        i.idIniciativaRelacionada
         FROM
         iniciativa as i
     </select>
@@ -100,6 +105,10 @@
         update iniciativa set palabrasclave=#{palabrasclave} where id = #{id};
     </update>
 
+    <update id="updateIniciativaRelacionada">
+        update iniciativa set idIniciativaRelacionada=#{idIniciativaRelacionada} where id = #{id};
+    </update>
+
     <select parameterType="map" id="getIniciativasEst" resultMap="IniciativaResult">
         SELECT
         i.id,
@@ -109,7 +118,8 @@
         i.descripcion,
         i.palabrasclave,
         i.nombreusuario,
-        i.correousuario
+        i.correousuario,
+        i.idIniciativaRelacionada
         FROM
         iniciativa as i WHERE i.estado=#{estado}
     </select>
@@ -123,6 +133,7 @@
         <result property='palabrasClave' column='palabrasclave'/>
         <result property='nombreUsuario' column='nombreusuario'/>
         <result property='correoUsuario' column='correousuario'/>
+        <result property='idIniciativaRelacionada' column='idIniciativaRelacionada'/>
     </resultMap>
 
 

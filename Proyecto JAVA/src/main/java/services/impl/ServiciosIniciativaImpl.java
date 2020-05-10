@@ -135,6 +135,16 @@ public class ServiciosIniciativaImpl implements ServiciosIniciativa {
     }
 
     @Override
+    public void updateIniciativaRelacionada(int id, int idIniciativaRelacionada) throws ServicesException {
+        try {
+            iniciativaDAO.updateIniciativaRelacionada(id, idIniciativaRelacionada);
+            iniciativaDAO.updateIniciativaRelacionada(idIniciativaRelacionada, id);
+        } catch (Exception e) {
+            throw new ServicesException("Error al actualizar la iniciativa relacionada: "+id, e);
+        }
+    }
+
+    @Override
     public List<Iniciativa> getIniciativasEst(String estado) throws ServicesException {
         try {
             return iniciativaDAO.getIniciativasEst(estado);

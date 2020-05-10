@@ -11,17 +11,31 @@ public class Iniciativa {
     private String palabrasclave;
     private String nombreusuario;
     private String correousuario;
+    private int idIniciativaRelacionada;
     private Date fecha;
     private List<Comentario> comentarioList;
     //Iniciativa("pruebaDosBien","En espera de revisión",1,"prueba de que funciona","prueba","santi","san@gmail.com");
-    public Iniciativa(String nombre, String estado, int numeroVotos, String descripcion, String palabrasclave, String nombreusuario, String correousuario){
+
+
+    public Iniciativa(String nombre, String estado, int numerovotos, String descripcion, String palabrasclave, String nombreusuario, String correousuario) {
         this.nombre = nombre;
         this.estado = estado;
-        this.numerovotos = numeroVotos;
+        this.numerovotos = numerovotos;
         this.descripcion = descripcion;
         this.palabrasclave = palabrasclave;
         this.nombreusuario = nombreusuario;
         this.correousuario = correousuario;
+    }
+
+    public Iniciativa(String nombre, String estado, int numerovotos, String descripcion, String palabrasclave, String nombreusuario, String correousuario, int idIniciativaRelacionada) {
+        this.nombre = nombre;
+        this.estado = estado;
+        this.numerovotos = numerovotos;
+        this.descripcion = descripcion;
+        this.palabrasclave = palabrasclave;
+        this.nombreusuario = nombreusuario;
+        this.correousuario = correousuario;
+        this.idIniciativaRelacionada = idIniciativaRelacionada;
     }
 
     public String getNombre() {
@@ -104,6 +118,14 @@ public class Iniciativa {
         this.comentarioList = comentarioList;
     }
 
+    public int getIdIniciativaRelacionada() {
+        return idIniciativaRelacionada;
+    }
+
+    public void setIdIniciativaRelacionada(int idIniciativaRelacionada) {
+        this.idIniciativaRelacionada = idIniciativaRelacionada;
+    }
+
     @Override
     public String toString() {
         return "Iniciativa{" +
@@ -118,7 +140,7 @@ public class Iniciativa {
                 ", fecha=" + fecha + '}';
     }
     //Iniciativa("pruebaDosBien","En espera de revisión",1,"prueba de que funciona","prueba","santi","san@gmail.com");
-    public Iniciativa(int id, String nombre, String estado, int numeroVotos, String descripcion, String palabrasClave, String nombreusuario, String correoUsuario) {
+    public Iniciativa(int id, String nombre, String estado, int numeroVotos, String descripcion, String palabrasClave, String nombreusuario, String correoUsuario, int idIniciativaRelacionada) {
         this.id = id;
         this.nombre = nombre;
         this.estado = estado;
@@ -127,5 +149,6 @@ public class Iniciativa {
         this.palabrasclave = palabrasClave;
         this.nombreusuario = nombreusuario;
         this.correousuario = correoUsuario;
+        this.idIniciativaRelacionada = idIniciativaRelacionada;
     }
 }
