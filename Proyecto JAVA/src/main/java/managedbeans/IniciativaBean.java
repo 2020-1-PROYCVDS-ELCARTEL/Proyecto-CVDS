@@ -54,6 +54,7 @@ public class IniciativaBean implements Serializable {
 	private BarChartModel model;
 	private List<Comentario> comentarios;
     private List<Comentario> comentarios1;
+    private int idRelacionar;
 
     public void Bean() {
         model = new BarChartModel();
@@ -117,6 +118,25 @@ public class IniciativaBean implements Serializable {
     public void actualizarIniciativa() {
         try {
             serviciosIniciativa.updateIniciativa(nombreIniciativa, estado);
+        } catch (ServicesException e) {
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
+    public void relacionarIniciativas(int idIniciativa){
+        try {
+            iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(idIniciativa);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/relacionarIniciativa.xhtml");
+            verIniciativa(iniciativaConsultadaId.getId());
+        } catch (ServicesException | IOException e) {
+            this.baseBean.mensajeApp(e);
+        }
+    }
+
+    public void relacionar(){
+        try {
+            serviciosIniciativa.updateIniciativaRelacionada(iniciativaConsultadaId.getId(), idRelacionar);
+            verIniciativa(iniciativaConsultadaId.getId());
         } catch (ServicesException e) {
             this.baseBean.mensajeApp(e);
         }
@@ -223,10 +243,6 @@ public class IniciativaBean implements Serializable {
         setPalabrasClave("");
         setPalabrasClave("");
         setEstado("");
-    }
-
-    public void relacionarIniciativas(){
-
     }
 
     public void agregarIniciativa() {
@@ -434,5 +450,13 @@ public class IniciativaBean implements Serializable {
 
     public void setComentarios1(List<Comentario> comentarios1) {
         this.comentarios1 = comentarios1;
+    }
+
+    public int getIdRelacionar() {
+        return idRelacionar;
+    }
+
+    public void setIdRelacionar(int idRelacionar) {
+        this.idRelacionar = idRelacionar;
     }
 }
