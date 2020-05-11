@@ -127,7 +127,6 @@ public class IniciativaBean implements Serializable {
         try {
             iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(idIniciativa);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/relacionarIniciativa.xhtml");
-            verIniciativa(iniciativaConsultadaId.getId());
         } catch (ServicesException | IOException e) {
             this.baseBean.mensajeApp(e);
         }
