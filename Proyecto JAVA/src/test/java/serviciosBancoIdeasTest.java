@@ -94,7 +94,7 @@ public class serviciosBancoIdeasTest {
 
     @Test
     public void deberiaInsertarIniciativa(){
-        Iniciativa iniciativaPrr = new Iniciativa("pruebaSietesoBien", "En espera de revisión", 1,"prueba de que funciona", "prueba", "Santiago", "santiago@gmail.com");
+        Iniciativa iniciativaPrr = new Iniciativa("pruebaDeInsersion", "En revisión", 1,"prueba de que funciona", "prueba", "Santiago", "santiago@gmail.com");
         try {
             serviciosIniciativa.insertIniciativa(iniciativaPrr);
             assertTrue(serviciosIniciativa.getIniciativas() != null);
@@ -142,8 +142,8 @@ public class serviciosBancoIdeasTest {
             Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
             Usuario usuario = serviciosUsuario.consultarUsuario("juan@gmail.com");
             //Comentario comentario = new Comentario("hola, ya funciona", iniciativapr.getId(), usuario.getId());
-            serviciosComentario.insertComentario(new Comentario("hola, ya funciona", iniciativapr.getId(), usuario.getId()));
-            serviciosComentario.insertComentario(new Comentario("Segundo comentario", iniciativapr.getId(), usuario.getId()));
+            serviciosComentario.insertComentario(new Comentario("hola, ya funciona completo", iniciativapr.getId(), usuario.getId()));
+            serviciosComentario.insertComentario(new Comentario("Segundo comentario bien", iniciativapr.getId(), usuario.getId()));
             System.out.println("funciona 9");
         } catch (ServicesException | ServiciosUsuarioException e) {
             System.out.println(e.getMessage());

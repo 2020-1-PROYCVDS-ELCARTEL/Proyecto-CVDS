@@ -1,5 +1,6 @@
 package managedbeans;
 
+
 import entities.Comentario;
 import entities.Iniciativa;
 import entities.Usuario;
@@ -14,6 +15,12 @@ import services.ServiciosComentario;
 import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 
+
+//import com.csvreader.CsvReader;
+//import com.csvreader.CsvWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -56,6 +63,7 @@ public class IniciativaBean implements Serializable {
     private List<Comentario> comentarios1;
     private int idRelacionar;
 
+
     public void Bean() {
         model = new BarChartModel();
         ChartSeries e= new ChartSeries();
@@ -65,11 +73,16 @@ public class IniciativaBean implements Serializable {
 		e.set("Recursos humanos", estadistica.get(2));
 		e.set("TI", estadistica.get(3));
 		e.set("Unidad de proyectos", estadistica.get(4));
+		//e.set("En espera de revisión", estadisticaArea.get(5));
+        //e.set("En revisión", estadisticaArea.get(6));
+        //e.set("Proyecto", estadisticaArea.get(7));
+        //e.set("Solucionado", estadisticaArea.get(8));
 		model.addSeries(e);
+		//model.addSeries(o);
 		model.setTitle("Estadísticas");
         model.setLegendPosition("ne");
         Axis xAxis = model.getAxis(AxisType.X);
-        xAxis.setLabel("Dependencias");
+        xAxis.setLabel("Dependencias y Areas");
         Axis yAxis = model.getAxis(AxisType.Y);
         yAxis.setLabel("Iniciativas registradas");
         yAxis.setMin(0);
@@ -192,12 +205,16 @@ public class IniciativaBean implements Serializable {
 
     public void iniciativaPorArea(){
         estadistica = new ArrayList<Integer>();
-        try {
+        try{
             int finanzas =0;
             int administrativo=0;
             int recursosHumanos=0;
             int TI=0;
             int unidadDeProyectos = 0;
+            int EnEsperaRevision =0;
+            int EnRevision=0;
+            int proyecto=0;
+            int Solucionado=0;
             List<Iniciativa> iniciativas = serviciosIniciativa.getIniciativas();
             List<Usuario> usuarios = serviciosUsuario.consultarUsuarios();
             for(int i=0; i<iniciativas.size(); i++){
@@ -211,12 +228,27 @@ public class IniciativaBean implements Serializable {
                     }
                 }
             }
+            for(int i=0; i<iniciativas.size(); i++) {
+                if (iniciativas.get(i).getEstado().equals("En espera de revisión")) {
+                    EnEsperaRevision += 1;
+                } else if (iniciativas.get(i).getEstado().equals("En revisión")) {
+                    EnRevision += 1;
+                } else if (iniciativas.get(i).getEstado().equals("Proyecto")) {
+                    proyecto += 1;
+                } else if (iniciativas.get(i).getEstado().equals("Solucionado")) {
+                    Solucionado += 1;
+                }
+            }
             estadistica.add(finanzas);
             estadistica.add(administrativo);
             estadistica.add(recursosHumanos);
             estadistica.add(TI);
             estadistica.add(unidadDeProyectos);
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/informes.xhtml");
+            estadistica.add(EnEsperaRevision);
+            estadistica.add(EnRevision);
+            estadistica.add(proyecto);
+            estadistica.add(Solucionado);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/informes.xhtml");
         } catch (ServicesException e) {
             this.baseBean.mensajeApp(e);
         } catch (ServiciosUsuarioException e) {
@@ -224,7 +256,81 @@ public class IniciativaBean implements Serializable {
         } catch (IOException e) {
             this.baseBean.mensajeApp(e);
         }
+        //ExportarCSV(iniciativas);
     }
+
+    /*public static void ExportarCSV(List<Iniciativa> inicitivaInfoCVS) {
+        String salidaArchivo = "inicitivaInfoCVS.csv"; // Nombre del archivo
+        boolean existe = new File(salidaArchivo).exists(); // Verifica si existe
+
+        // Si existe un archivo llamado asi lo borra
+        if(existe) {
+            File archivoinicitivaInfoCVS = new File(salidaArchivo);
+            archivoinicitivaInfoCVS.delete();
+        }
+
+        try {
+            // Crea el archivo
+            CsvWriter salidaCSV = new CsvWriter(new FileWriter(salidaArchivo, true), ',');
+
+            // Datos para identificar las columnas
+            salidaCSV.write("Nombre");
+            salidaCSV.write("Estado");
+            salidaCSV.write("Numero Votos");
+            salidaCSV.write("Descripcion");
+
+            salidaCSV.endRecord(); // Deja de escribir en el archivo
+
+            // Recorremos la lista y lo insertamos en el archivo
+            for(Usuario ini : Iniciativa) {
+                salidaCSV.write(ini.getNombre());
+                salidaCSV.write(ini.getEstado());
+                salidaCSV.write(ini.getNumeroVotos());
+                salidaCSV.write(ini.getDescripcion());
+
+                salidaCSV.endRecord(); // Deja de escribir en el archivo
+            }
+
+            salidaCSV.close(); // Cierra el archivo
+
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*public static void ImportarCSV() {
+        try{
+            List<Usuario> usuarios = new ArrayList<Usuario>(); // Lista donde guardaremos los datos del archivo
+
+            CsvReader leerUsuarios = new CsvReader("Usuarios.csv");
+            leerUsuarios.readHeaders();
+
+            // Mientras haya lineas obtenemos los datos del archivo
+            while(leerUsuarios.readRecord()) {
+                String nombre = leerUsuarios.get(0);
+                String telefono = leerUsuarios.get(1);
+                String email = leerUsuarios.get(2);
+
+                usuarios.add(new Usuario(nombre, telefono, email)); // Añade la informacion a la lista
+            }
+
+            leerUsuarios.close(); // Cierra el archivo
+
+            // Recorremos la lista y la mostramos en la pantalla
+            for(Usuario user : usuarios) {
+                System.out.println(user.getNombre() + " , "
+                        + user.getTelefono() + " , "
+                        +user.getEmail());
+            }
+
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+     */
 
     public void configBasica() {
         setServiciosIniciativa(baseBean.getServiciosIniciativa());
