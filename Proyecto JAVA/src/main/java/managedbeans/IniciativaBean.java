@@ -16,8 +16,8 @@ import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 
 
-//import com.csvreader.CsvReader;
-//import com.csvreader.CsvWriter;
+import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -205,6 +205,7 @@ public class IniciativaBean implements Serializable {
 
     public void iniciativaPorArea(){
         estadistica = new ArrayList<Integer>();
+
         try{
             int finanzas =0;
             int administrativo=0;
@@ -228,6 +229,7 @@ public class IniciativaBean implements Serializable {
                     }
                 }
             }
+
             for(int i=0; i<iniciativas.size(); i++) {
                 if (iniciativas.get(i).getEstado().equals("En espera de revisión")) {
                     EnEsperaRevision += 1;
@@ -249,6 +251,7 @@ public class IniciativaBean implements Serializable {
             estadistica.add(proyecto);
             estadistica.add(Solucionado);
         FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/informes.xhtml");
+        //ExportarCSV(iniciativas);
         } catch (ServicesException e) {
             this.baseBean.mensajeApp(e);
         } catch (ServiciosUsuarioException e) {
@@ -256,10 +259,10 @@ public class IniciativaBean implements Serializable {
         } catch (IOException e) {
             this.baseBean.mensajeApp(e);
         }
-        //ExportarCSV(iniciativas);
-    }
 
-    /*public static void ExportarCSV(List<Iniciativa> inicitivaInfoCVS) {
+    }
+/*
+    public static void ExportarCSV(List<Iniciativa> inicitivaInfoCVS) {
         String salidaArchivo = "inicitivaInfoCVS.csv"; // Nombre del archivo
         boolean existe = new File(salidaArchivo).exists(); // Verifica si existe
 
@@ -282,12 +285,13 @@ public class IniciativaBean implements Serializable {
             salidaCSV.endRecord(); // Deja de escribir en el archivo
 
             // Recorremos la lista y lo insertamos en el archivo
-            for(Usuario ini : Iniciativa) {
+            for(Iniciativa ini : inicitivaInfoCVS) {
                 salidaCSV.write(ini.getNombre());
                 salidaCSV.write(ini.getEstado());
-                salidaCSV.write(ini.getNumeroVotos());
+                salidaCSV.write(String.valueOf(ini.getNumeroVotos()));
                 salidaCSV.write(ini.getDescripcion());
-
+                //int numEntero = 4;
+                //String numCadena= String.valueOf(numEntero);
                 salidaCSV.endRecord(); // Deja de escribir en el archivo
             }
 

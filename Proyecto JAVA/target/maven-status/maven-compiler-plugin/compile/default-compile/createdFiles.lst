@@ -25,6 +25,7 @@ persistence\mybatisimpl\MyBatisIniciativaDAO.class
 services\impl\ServiciosUsuarioImpl.class
 guice\GuiceContextListener.class
 exceptions\PersistenceException.class
+managedbeans\ChartView.class
 services\impl\ServiciosComentarioImpl.class
 services\impl\ServiciosVotoImpl.class
 exceptions\ServicesException.class

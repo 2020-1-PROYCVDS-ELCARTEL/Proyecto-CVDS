@@ -63,6 +63,9 @@
                     <h:outputText value="#{IniciativaBean.estadistica.get(8)}"/><br></br><br></br>
                 </div>
                 <p:commandButton value="Volver" action="#{LoginBean.direccionarPorPerfil}" align="center" />
+
+                <p:chart type="line" model="#{chartView.lineModel1}" style="width:400px;height:300px" />
+                <br />
             </section>
 
 
