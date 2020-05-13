@@ -61,8 +61,11 @@ public class IniciativaBean implements Serializable {
 	private BarChartModel model;
 	private List<Comentario> comentarios;
     private List<Comentario> comentarios1;
+    private String comentario;
+    private String comentario2;
+    private String estadoParaFiltrar;
     private int idRelacionar;
-
+    private List<Iniciativa> iniciativaEst = null;
 
     public void Bean() {
         model = new BarChartModel();
@@ -118,14 +121,13 @@ public class IniciativaBean implements Serializable {
         return iniciativas1;
     }
 
-    public List<Iniciativa> getIniciativasEst(){
-        List<Iniciativa> iniciativaEst = null;
+    public void getIniciativasEst(){
         try {
-            iniciativaEst = serviciosIniciativa.getIniciativasEst(estado);
+            iniciativaEst = serviciosIniciativa.getIniciativasEst(estadoParaFiltrar);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/filtrarEstado.xhtml");
         } catch (Exception e) {
             this.baseBean.mensajeApp(e);
         }
-        return iniciativaEst;
     }
 
     public void actualizarIniciativa() {
@@ -157,7 +159,7 @@ public class IniciativaBean implements Serializable {
     public void verIniciativa(int idIniciativa){
         try {
             iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(idIniciativa);
-            comentarios = serviciosComentario.getComentarios(idIniciativa);
+            comentarios = serviciosComentario.getComentarios(iniciativaConsultadaId.getId());
             if(usuario.getTipoUser().equals("PMO")) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/ModificarIniciativa.xhtml");
             } else if(iniciativaConsultadaId.getIdIniciativaRelacionada()!=-1){
@@ -193,13 +195,32 @@ public class IniciativaBean implements Serializable {
         }
     }
 
-    public void guardarComentario(String comentario){
-        Comentario comentario1 = new Comentario(comentario, iniciativaConsultadaId.getId(), usuario.getId());
-        try{
+    public void guardarComentario(String comment, Iniciativa iniciativa){
+        try {
+            Comentario comentario1 = new Comentario(comment, iniciativa.getId(), usuario.getId());
             serviciosComentario.insertComentario(comentario1);
-            comentarios = serviciosComentario.getComentarios(iniciativaConsultadaId.getId());
         } catch (ServicesException e) {
             this.baseBean.mensajeApp(e);
+        }
+    }
+
+    public void comentarIniciativa1() throws ServicesException {
+        if(comentario !=null && !comentario.equals("")) {
+            guardarComentario(comentario, iniciativaConsultadaId);
+            comentarios = serviciosComentario.getComentarios(iniciativaConsultadaId.getId());
+            comentario=null;
+        }else {
+            throw new ServicesException("No se puede comentar esta iniciativa");
+        }
+    }
+
+    public void comentarIniciativa2() throws ServicesException {
+        if(comentario2 !=null && !comentario2.equals("")) {
+            guardarComentario(comentario2, iniciativaConsultadaId1);
+            comentarios1 = serviciosComentario.getComentarios(iniciativaConsultadaId1.getId());
+            comentario2=null;
+        }else {
+            throw new ServicesException("No se puede comentar esta iniciativa");
         }
     }
 
@@ -513,6 +534,14 @@ public class IniciativaBean implements Serializable {
         this.estadistica = estadistica;
     }
 
+    public List<Iniciativa> getIniciativaEst() {
+        return iniciativaEst;
+    }
+
+    public void setIniciativaEst(List<Iniciativa> iniciativaEst) {
+        this.iniciativaEst = iniciativaEst;
+    }
+
     public Iniciativa getIniciativaConsultadaId() {
         return iniciativaConsultadaId;
     }
@@ -568,4 +597,30 @@ public class IniciativaBean implements Serializable {
     public void setIdRelacionar(int idRelacionar) {
         this.idRelacionar = idRelacionar;
     }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getComentario2() {
+        return comentario2;
+    }
+
+    public void setComentario2(String comentario2) {
+        this.comentario2 = comentario2;
+    }
+
+    public String getEstadoParaFiltrar() {
+        return estadoParaFiltrar;
+    }
+
+    public void setEstadoParaFiltrar(String estadoParaFiltrar) {
+        this.estadoParaFiltrar = estadoParaFiltrar;
+    }
+
+
 }

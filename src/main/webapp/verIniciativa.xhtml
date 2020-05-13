@@ -60,8 +60,10 @@
                     <h:outputText value="Votos: " style="font-weight: bold"/>
                     <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNumeroVotos()}"/>
 
-                    <h:commandButton id="Votar" class="botonImagen" image="img/like.png" action="#{IniciativaBean.votar}"></h:commandButton>
+                    <p:inputText value="#{IniciativaBean.comentario}" placeholder="Introduce un comentario"/>
+                    <h:commandButton class="comentar" value="Comentar" action="#{IniciativaBean.comentarIniciativa1}"></h:commandButton>
 
+                    <h:commandButton id="Votar" class="botonImagen" image="img/like.png" action="#{IniciativaBean.votar}"></h:commandButton>
                 </h:panelGrid>
 
         </h:form>
@@ -72,8 +74,7 @@
             </f:facet>
             #{comentario.textoComentario}
         </p:dataList>
-        <p>
-            <p:inputText id ="comentario" value="#{IniciativaBean.comentario}" placeholder="Introduce un comentario" class="form-control"/>
-        </p>
+
+
     </h:body>
 </html>

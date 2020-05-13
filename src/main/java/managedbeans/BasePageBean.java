@@ -110,6 +110,10 @@ public class BasePageBean implements Serializable {
         return "relacionarIniciativa?faces-redirect=true";
     }
 
+    public String page10(){
+        return "filtrarEstado?faces-redirect=true";
+    }
+
     public long getIdRec() {
         return this.idRec;
     }

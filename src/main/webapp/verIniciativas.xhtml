@@ -61,8 +61,12 @@
                 <h:outputText value="Votos: " style="font-weight: bold"/>
                 <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.numeroVotos}"/>
 
-                <p:commandButton value="Votar" action="#{IniciativaBean.votar}" align="center" update="form"/>
+                <p:inputText value="#{IniciativaBean.comentario}" placeholder="Introduce un comentario"/>
+                <h:commandButton class="comentar" value="Comentar" action="#{IniciativaBean.comentarIniciativa1}"></h:commandButton>
+
+                <h:commandButton id="Votar" class="botonImagen" image="img/like.png" action="#{IniciativaBean.votar}"></h:commandButton>
             </h:panelGrid>
+
         </div>
 
         <div id="tres">
@@ -86,7 +90,10 @@
                 <h:outputText value="#{IniciativaBean.iniciativaConsultadaId1.estado}"/>
 
                 <h:outputText value="Votos: " style="font-weight: bold"/>
-                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId1.numeroVotos}"/><br></br>
+                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId1.numeroVotos}"/>
+
+                <p:inputText value="#{IniciativaBean.comentario2}" placeholder="Introduce un comentario"/>
+                <h:commandButton class="comentar" value="Comentar" action="#{IniciativaBean.comentarIniciativa2}"></h:commandButton><br/>
 
             </h:panelGrid>
         </div>
@@ -98,12 +105,12 @@
         </f:facet>
         #{comentario.textoComentario}
     </p:dataList>
-        <p:dataList value="#{IniciativaBean.comentarios1}" var="comentario1" type="ordered">
-            <f:facet name="header">
-                Comentarios de iniciativa relacionada
-            </f:facet>
-            #{comentario1.textoComentario}
-        </p:dataList>
+    <p:dataList value="#{IniciativaBean.comentarios1}" var="comentario1" type="ordered">
+        <f:facet name="header">
+            Comentarios de iniciativa relacionada
+        </f:facet>
+        #{comentario1.textoComentario}
+    </p:dataList>
 
 </h:body>
 </html>

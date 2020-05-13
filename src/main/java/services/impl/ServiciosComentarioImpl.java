@@ -21,6 +21,7 @@ public class ServiciosComentarioImpl implements ServiciosComentario {
             comentarioDAO.insertComentario(comentario);
         }
         catch (PersistenceException e) {
+            e.printStackTrace();
             throw new ServicesException("Error al insertar comentario", e);
         }
     }
