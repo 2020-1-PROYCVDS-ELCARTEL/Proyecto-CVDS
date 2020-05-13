@@ -19,25 +19,23 @@
                 location.replace( history.forward(1) );
               }
             </script>
-
-
         <title>Informes</title>
 
+        <img style="float: right; margin: 0px 0px 15px 15px;" src="img/usuario.jpg" width="50" />
+        <h3 align="right">
+            <h:outputText value="#{LoginBean.getNombreUsuario()}"/> <br/>
+            <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
+            <p:commandButton class="logout" value="Volver" action="#{PageBean.page02}"/>
+            <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
+        </h3>
     </h:head>
+
     <h:body>
 
-        <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
-        <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-        <p:commandButton value="Cerrar sesión" action="#{LoginBean.logout}" align="center" />
-
-        <p> <br/>
-            <br/>
-        </p>
+        <br/><br/>
         <h1>Bienvenido al banco de iniciativas</h1>
         <h2>Informes</h2>
-        <p> <br/>
-            <br/>
-        </p>
+        <br/><br/>
 
         <h:form id="form">
 
@@ -53,21 +51,9 @@
                     <h:outputText value="#{IniciativaBean.estadistica.get(3)}"/><br></br><br></br>
                     <h:outputText value="Unidad De Proyectos: "/>
                     <h:outputText value="#{IniciativaBean.estadistica.get(4)}"/><br></br><br></br>
-                    <h:outputText value="En espera de revisión: "/>
-                    <h:outputText value="#{IniciativaBean.estadistica.get(5)}"/><br></br><br></br>
-                    <h:outputText value="En revisión: "/>
-                    <h:outputText value="#{IniciativaBean.estadistica.get(6)}"/><br></br><br></br>
-                    <h:outputText value="Proyectos: "/>
-                    <h:outputText value="#{IniciativaBean.estadistica.get(7)}"/><br></br><br></br>
-                    <h:outputText value="Solucionado: "/>
-                    <h:outputText value="#{IniciativaBean.estadistica.get(8)}"/><br></br><br></br>
                 </div>
                 <p:commandButton value="Volver" action="#{LoginBean.direccionarPorPerfil}" align="center" />
-
-                <p:chart type="line" model="#{chartView.lineModel1}" style="width:400px;height:300px" />
-                <br />
             </section>
-
 
         </h:form>
 		

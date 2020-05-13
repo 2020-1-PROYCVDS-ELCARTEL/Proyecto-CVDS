@@ -19,61 +19,50 @@
                 location.replace( history.forward(1) );
               }
             </script>
-
-
         <title>Admin-Iniciativas</title>
 
+        <img style="float: right; margin: 0px 0px 15px 15px;" src="img/usuario.jpg" width="50" />
+        <h3 align="right">
+            <h:outputText value="#{LoginBean.getNombreUsuario()}"/> <br/>
+            <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
+            <p:commandButton class="logout" value="Volver" action="#{LoginBean.direccionarPorPerfil}" align="center" />
+            <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
+        </h3>
     </h:head>
+
     <h:body>
-
-        <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
-        <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-        <p:commandButton id="Menu" value="Menu" type="button"/>
-
-        <p> <br/>
-            <br/>
-        </p>
+        <br/><br/>
         <h1>Modificar estado de iniciativas</h1>
         <h2>Unidad de proyectos</h2>
-        <p> <br/>
-            <br/>
-        </p>
+        <br/><br/>
 
         <h:form id="form">
-            <p:menu overlay="true" trigger="Menu" my="left top" at="left bottom">
-                <p:menuitem value="Volver" action="#{LoginBean.direccionarPorPerfil}"/>
-                <p:menuitem value="Cerrar sesión" action="#{LoginBean.logout}"/>
-            </p:menu>
 
-
-            <div id="dos">
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                    <h:outputText value="Nombre: "/>
+                    <h:outputText value="Nombre: " style="font-weight: bold"/>
                     <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNombre()}"/>
 
-                    <h:outputText value="Descripción: "/>
+                    <h:outputText value="Descripción: " style="font-weight: bold"/>
                     <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getDescripcion()}"/>
 
-                    <h:outputText value="Palabras clave: "/>
+                    <h:outputText value="Palabras clave: " style="font-weight: bold"/>
                     <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getPalabrasClave()}"/>
 
-                    <h:outputText value="Nombres proponente: "/>
+                    <h:outputText value="Nombres proponente: " style="font-weight: bold"/>
                     <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNombreUsuario()}"/>
 
-                    <h:outputText value="Correo proponente: "/>
+                    <h:outputText value="Correo proponente: " style="font-weight: bold"/>
                     <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getCorreoUsuario()}"/>
 
-                    <h:outputText value="Estado: "/>
+                    <h:outputText value="Estado: " style="font-weight: bold"/>
                     <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getEstado()}"/>
 
-                    <h:outputText value="Votos: "/>
+                    <h:outputText value="Votos: " style="font-weight: bold"/>
                     <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNumeroVotos()}"/>
 
-                    <p:commandButton value="Votar" action="#{IniciativaBean.votar}" align="center" update="form"/>
+                    <h:commandButton id="Votar" class="botonImagen" image="img/like.png" action="#{IniciativaBean.votar}"></h:commandButton>
+
                 </h:panelGrid>
-            </div>
-
-
 
         </h:form>
 
@@ -83,5 +72,8 @@
             </f:facet>
             #{comentario.textoComentario}
         </p:dataList>
+        <p>
+            <p:inputText id ="comentario" value="#{IniciativaBean.comentario}" placeholder="Introduce un comentario" class="form-control"/>
+        </p>
     </h:body>
 </html>

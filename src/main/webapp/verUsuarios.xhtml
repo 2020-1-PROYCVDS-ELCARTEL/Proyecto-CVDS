@@ -19,32 +19,25 @@
 		    location.replace( history.forward(1) );
 		  }
 		</script>
-
-
     <title>Usuarios</title>
 
+    <img style="float: right; margin: 0px 0px 15px 15px;" src="img/usuario.jpg" width="50" />
+    <h3 align="right">
+        <h:outputText value="#{LoginBean.getNombreUsuario()}"/> <br/>
+        <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
+        <p:commandButton class="logout" value="Volver" action="#{PageBean.page02}"/>
+        <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
+    </h3>
 </h:head>
+
 <h:body>
-
-    <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
-    <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-    <p:commandButton value="Cerrar sesión" action="#{LoginBean.logout}" align="center" />
-
-    <p> <br/>
-        <br/>
-    </p>
+    <br/><br/>
     <h1>Bienvenido al banco de iniciativas</h1>
     <h2>Unidad de proyectos</h2>
-    <p> <br/>
-        <br/>
-    </p>
+    <br/><br/>
 
     <h:form>
-
-
         <section>
-
-
             <a align="center">
 
                 <p:dataTable class="iniciativas" value="#{LoginBean.getUsuarios()}" var = "usuario" style="margin: 0 auto;"
@@ -72,12 +65,8 @@
                         <p:commandButton value="Modificar" id="ver" action="#{LoginBean.verUsuario(usuario.correo)}"/>
                     </p:column>
 
-
                 </p:dataTable>
-
             </a>
-
-
         </section>
 
     </h:form>

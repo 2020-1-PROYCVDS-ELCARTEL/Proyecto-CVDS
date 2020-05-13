@@ -2,6 +2,16 @@ body {
   background-color:#fffffa;
 }
 
+head {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #666;
+	background: #f2f2f2;
+	font-size: 1em;
+	line-height: 1.5em;
+}
+
 h1{
 	 color: firebrick;
 	 text-align: center;
@@ -15,7 +25,24 @@ h2{
   	font-size:1.5vw;
   	text-align:center;
 	margin: 1vw 1vw 0;
+}
 
+h3{
+	color: grey;
+  	font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+  	font-size:1.0vw;
+  	text-align:right;
+	margin: 1vw 1vw 0;
+}
+
+.logout{
+    text-decoration: none;
+    padding: 0px;
+    font-weight: 600;
+    font-size: 1.0vw;
+    color: #000000;
+    border-radius: 6px;
+    border: 2px solid #ffffff;
 }
 
 p{
@@ -23,7 +50,6 @@ p{
   font-size: 1.2vw;
   font-family: "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
 }
-
 
 .iniciativas {
   font-size:1.2vw;
@@ -33,25 +59,28 @@ p{
 }
 
 .iniciativas tr:nth-child(even){
-	background-color: #f9f256;
-	color: white;
+	background-color: #c4c4bc;
+	text-align: center;
+	color: black;
 }
 
 .iniciativas tr:nth-child(odd){
-	background-color: #fcf8a5;
+	background-color: #ffffff;
+	text-align: center;
 	color: black;
 }
 
 .iniciativas tr:hover {
-	background-color: #f04c65;
+	background-color: #e3e3d8;
+	text-align: center;
 }
 
 .iniciativas th {
   padding-top: 25px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color:#ececec;
-  color: black;
+  color: #990606;
 }
 
  
@@ -102,9 +131,9 @@ div#dos{
 
 .texto{
   	font-family: "Calibri", "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
-	font-size: 1.2em;
+	font-size: 1em;
 	color:black;
-	text-align: rigth;
+	text-align: center;
 	padding-top:2vw;
 	opacity:0.6;
 	-webkit-transition: padding-top .4s;
@@ -112,4 +141,27 @@ div#dos{
 
 .contenedor:hover .icon{
 	-webkit-box-shadow:0px 0px 0px 0px rgba(255,255,255,.0);
+}
+
+.botonImagen{
+  background-color:transparent;
+  background-repeat:no-repeat;
+  height:30px;
+  width:30px;
+  background-position:center;
+}
+
+.ui-datascroller{
+    width: 48%;
+    display: inline-block;
+}
+
+.rf-ds{
+    font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+    font-size:1.0vw;
+}
+
+.rf-ds-btn{
+    font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+    font-size:1.0vw;
 }

@@ -20,84 +20,75 @@
 		  }
 		</script>
 
-
     <title>Actualizar iniciativas</title>
+    <img style="float: right; margin: 0px 0px 15px 15px;" src="img/usuario.jpg" width="50" />
+    <h3 align="right">
+        <h:outputText value="#{LoginBean.getNombreUsuario()}"/> <br/>
+        <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
+        <p:commandButton class="logout" value="Volver" action="#{PageBean.page02}"/>
+        <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
+    </h3>
 
 </h:head>
+
 <h:body>
-
-    <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
-    <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-
-    <p> <br/>
-        <br/>
-    </p>
+    <br/><br/>
     <h1>Actualizar iniciativas</h1>
     <h2>Unidad de proyectos</h2>
-    <p> <br/>
-        <br/>
-    </p>
+    <br/><br/>
 
     <h:form id="form">
 
-        <p:commandButton id="Menu" value="Menu" type="button"/>
-        <p:menu overlay="true" trigger="Menu" my="left top" at="left bottom">
-            <p:menuitem value="Registrar iniciativa" action="#{PageBean.page2}"/>
-            <p:menuitem value="Volver" action="#{PageBean.page02}"/>
-            <p:menuitem value="Cerrar sesión" action="#{LoginBean.logout}"/>
-        </p:menu>
+        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+            <h:outputText value="Nombre: " style="font-weight: bold"/>
+            <h:inputText value="#{IniciativaBean.iniciativaConsultadaId.nombre}"/>
 
-        <div id="dos">
-            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                <h:outputText value="Nombre: "/>
-                <h:inputText value="#{IniciativaBean.iniciativaConsultadaId.nombre}"/>
+            <h:outputText value="Descripción: " style="font-weight: bold"/>
+            <h:inputText value="#{IniciativaBean.iniciativaConsultadaId.descripcion}"/>
 
-                <h:outputText value="Descripción: "/>
-                <h:inputText value="#{IniciativaBean.iniciativaConsultadaId.descripcion}"/>
+            <h:outputText value="Palabras clave: " style="font-weight: bold"/>
+            <h:inputText value="#{IniciativaBean.iniciativaConsultadaId.palabrasClave}"/>
 
-                <h:outputText value="Palabras clave: "/>
-                <h:inputText value="#{IniciativaBean.iniciativaConsultadaId.palabrasClave}"/>
+            <h:outputText value="Nombres proponente: " style="font-weight: bold"/>
+            <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.nombreUsuario}"/>
 
-                <h:outputText value="Nombres proponente: "/>
-                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.nombreUsuario}"/>
+            <h:outputText value="Correo proponente: " style="font-weight: bold"/>
+            <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.correoUsuario}"/>
 
-                <h:outputText value="Correo proponente: "/>
-                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.correoUsuario}"/>
+            <h:outputText value="Estado: " style="font-weight: bold"/>
+            <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.estado}"/>
 
-                <h:outputText value="Estado: "/>
-                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.estado}"/>
+            <h:outputText value="Votos: " style="font-weight: bold"/>
+            <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.numeroVotos}"/>
 
-                <h:outputText value="Votos: "/>
-                <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.numeroVotos}"/>
+            <h:commandButton id="Votar" class="botonImagen" image="img/like.png" action="#{IniciativaBean.votar}"></h:commandButton>
+            <p:commandButton class="logout" value="Guardar" action="#{IniciativaBean.actualizarLaIniciativa}" oncomplete="PF('dlg').show()" align="center" update="form"/>
 
-                <p:commandButton value="Votar" action="#{IniciativaBean.votar}" align="center" update="form"/>
-                <p:commandButton value="Guardar" action="#{IniciativaBean.actualizarLaIniciativa}" oncomplete="PF('dlg').show()" align="center" update="form"/>
+        </h:panelGrid>
 
-            </h:panelGrid>
-
-        </div>
         <p:dialog header="Iniciativa actualizada" modal="true" showEffect="bounce" widgetVar="dlg" resizable="false">
             <p:panelGrid columns="2" id="display" columnClasses="label,value">
-                <h:outputText value="Nombre: "/>
+                <h:outputText value="Nombre: " style="font-weight: bold"/>
                 <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.nombre}"/>
 
-                <h:outputText value="Descripción: "/>
+                <h:outputText value="Descripción: " style="font-weight: bold"/>
                 <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.descripcion}"/>
 
-                <h:outputText value="Palabras clave: "/>
+                <h:outputText value="Palabras clave: " style="font-weight: bold"/>
                 <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.palabrasClave}"/>
 
-                <h:outputText value="Nombres proponente: "/>
+                <h:outputText value="Nombres proponente: " style="font-weight: bold"/>
                 <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.nombreUsuario}"/>
 
-                <h:outputText value="Correo proponente: "/>
+                <h:outputText value="Correo proponente: " style="font-weight: bold"/>
                 <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.correoUsuario}"/>
 
-                <h:outputText value="Estado: "/>
+                <h:outputText value="Estado: " style="font-weight: bold"/>
                 <h:outputText value="#{IniciativaBean.iniciativaConsultadaId.estado}"/>
 
             </p:panelGrid>
-            <br></br><br></br><p:commandButton value="Volver" action="#{PageBean.page02}" align="center" update="form"/>
+
+            <br></br><br></br><p:commandButton class="logout" value="Volver" action="#{PageBean.page02}" align="center" update="form"/>
         </p:dialog>
     </h:form>
 </h:body>

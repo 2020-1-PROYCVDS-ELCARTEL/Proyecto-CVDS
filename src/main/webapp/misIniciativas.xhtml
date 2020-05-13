@@ -19,59 +19,47 @@
 		    location.replace( history.forward(1) );
 		  }
 		</script>
-
-
     <title>Mis Iniciativas</title>
 
+    <img style="float: right; margin: 0px 0px 15px 15px;" src="img/usuario.jpg" width="50" />
+    <h3 align="right">
+        <h:outputText value="#{LoginBean.getNombreUsuario()}"/> <br/>
+        <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
+        <p:commandButton class="logout" value="Volver" action="#{PageBean.page02}"/>
+        <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
+    </h3>
+
 </h:head>
-    <h:body>
 
-        <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
-        <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-
-
-        <p> <br/>
-            <br/>
-        </p>
-        <h1>Bienvenido al banco de iniciativas</h1>
+<h:body>
+        <br/><br/>
+        <h1>Mis iniciativas</h1>
         <h2>Unidad de proyectos</h2>
-        <p> <br/>
-            <br/>
-        </p>
-
+        <br/><br/>
 
         <h:form>
 
-            <p:commandButton id="Menu" value="Menu" type="button"/>
-            <p:menu overlay="true" trigger="Menu" my="left top" at="left bottom">
-                <p:menuitem value="Registrar iniciativa" action="#{PageBean.page2}"/>
-                <p:menuitem value="Volver" action="#{PageBean.page02}"/>
-                <p:menuitem value="Cerrar sesión" action="#{LoginBean.logout}"/>
-            </p:menu>
-
-            <p:dataScroller value="#{IniciativaBean.getMisIniciativas()}" var="iniciativa" chunkSize="8">
-                <h:panelGrid columns="1" style="width:60%">
-
+            <p:dataScroller value="#{IniciativaBean.getMisIniciativas()}" var="iniciativa" chunkSize="5">
+                <h:panelGrid columns="1" style="width:40%" styleClass="showcase-text-align-center">
                     <p:outputPanel>
                         <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Id:" />
-                            <h:outputText value="#{iniciativa.id}" style="font-weight: bold"/>
+                            <h:outputText class="texto" value="Id:" style="font-weight: bold"/>
+                            <h:outputText class="texto" value="#{iniciativa.id}"/>
 
-                            <h:outputText value="Nombre:" />
-                            <h:outputText value="#{iniciativa.nombre}" style="font-weight: bold"/>
+                            <h:outputText value="Nombre:" style="font-weight: bold" />
+                            <h:outputText value="#{iniciativa.nombre}"/>
 
-                            <h:outputText value="Descripción:" />
-                            <h:outputText value="#{iniciativa.descripcion}" style="font-weight: bold"/>
+                            <h:outputText value="Descripción:" style="font-weight: bold" />
+                            <h:outputText value="#{iniciativa.descripcion}"/>
 
-                            <h:outputText value="Estado:" />
-                            <h:outputText value="#{iniciativa.estado}" style="font-weight: bold"/>
+                            <h:outputText value="Estado:" style="font-weight: bold"/>
+                            <h:outputText value="#{iniciativa.estado}"/>
 
-                            <h:outputText value="Votos:" />
-                            <h:outputText value="#{iniciativa.numeroVotos}" style="font-weight: bold"/>
+                            <h:outputText value="Votos:" style="font-weight: bold"/>
+                            <h:outputText value="#{iniciativa.numeroVotos}"/>
 
-                            <h:commandButton value="Ver" id="ver" action="#{IniciativaBean.verIniciativa(iniciativa.id)}"/>
-                            <h:commandButton value="Modificar" id="modificar" action="#{IniciativaBean.modificar(iniciativa.id)}"/>
-
+                            <h:commandButton class="logout" value="Ver" id="ver" action="#{IniciativaBean.verIniciativa(iniciativa.id)}"/>
+                            <h:commandButton class="logout" value="Modificar" id="modificar" action="#{IniciativaBean.modificar(iniciativa.id)}"/><br/><br/><br/>
 
                         </h:panelGrid>
                     </p:outputPanel>

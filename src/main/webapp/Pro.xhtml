@@ -19,38 +19,33 @@
 		    location.replace( history.forward(1) );
 		  }
 		</script>
-		
-      	
       	<title>General-Proponente</title>
-      
+		  <img style="float: right; margin: 0px 0px 15px 15px;" src="img/usuario.jpg" width="50" />
+		  <h3 align="right">
+			  <h:outputText value="#{LoginBean.getNombreUsuario()}"/> <br/>
+			  <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
+			  <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
+		  </h3>
 	</h:head>
+
       <h:body>
 
-		  <h:outputText value="#{LoginBean.getRolUsuario()}: " align ="right"/>
-	      <h:outputText value="#{LoginBean.getNombreUsuario()} " align ="right"/>
-		  
-		  <p> <br/>
-		  <br/>
-		  </p>
+		  <br/><br/>
 		  <h1>Bienvenido al banco de iniciativas</h1>
 		  <h2>Unidad de proyectos</h2>
-		  <p> <br/>
-		  <br/>
-		  </p>
-		  
-		  <h:form>
+		  <br/><br/>
 
-			  <p:commandButton id="Menu" value="Menu" type="button"/>
-			  <p:menu overlay="true" trigger="Menu" my="left top" at="left bottom">
-				  <p:menuitem value="Registrar iniciativa" action="#{PageBean.page2}"/>
-				  <p:menuitem value="Mis Iniciativas" action="#{PageBean.page8}"/>
-				  <p:menuitem value="Cerrar sesión" action="#{LoginBean.logout}"/>
-			  </p:menu>
+		  <h:form>
+			  <div id="uno">
+			  <br/><br/>
+				  <p:commandButton class="logout" value="Registrar iniciativa" action="#{PageBean.page2}"/><br/><br/>
+				  <p:commandButton class="logout" value="Mis Iniciativas" action="#{PageBean.page8}"/><br/><br/>
+			  </div>
 
 			<section>
 				<div id="dos">
 					<a align="center">
-					
+
 					<p:dataTable class="iniciativas" value="#{IniciativaBean.getIniciativas()}" var = "iniciativa" style="margin: 0 auto;"
                     rows="6" paginator="true" 
     				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
@@ -77,10 +72,9 @@
 						</p:column>
 
 						<p:column headerText="Ver">
-							<p:commandButton value="Ver" id="ver" action="#{IniciativaBean.verIniciativa(iniciativa.id)}"/>
+							<h:commandButton id="ver" class="botonImagen" image="img/ojo.png" action="#{IniciativaBean.verIniciativa(iniciativa.id)}"></h:commandButton>
 						</p:column>
-						
-					
+
                     </p:dataTable>
 	
 					</a>
