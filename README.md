@@ -35,4 +35,4 @@ al tanto de cómo se va analizando o elaborando su propuesta.
 
 ### Funcionalidades más Importantes y Manual de Usuario
 
-![login](/img/login.jpg "Imagen del login")
+![login](/Proyecto-CVDS/img/login.jpg "Imagen del login")
