@@ -33,4 +33,5 @@ Esto con el fin de que las iniciativas puedan ser monitoreadas de manera mas fá
 al tanto de cómo se va analizando o elaborando su propuesta.
 
 
-###Funcionalidades más Importantes y Manual de Usuario
+### Funcionalidades más Importantes y Manual de Usuario
+
