@@ -13,11 +13,11 @@ Ciclos de Vida y Desarrollo de Software
 
 ### Integrantes
 
-1. Oscar David Ospina Rodriguez………………………………………………………Dueno del producto
-1. Adriana Marcela Castañeda Velasquez………………………………………..…Equipo
-2. Juan Manuel Muñoz Delgadillo……………………………………………………….Equipo
-3. Juan Manuel Herrera Moya…………………………………………………………….Equipo
-4. Santiago Lopez Osorio……………………………………………………………………Equipo
+1. Oscar David Ospina Rodriguez…………………………………………………Dueño del producto
+1. Adriana Marcela Castañeda Velasquez………………………………Team Developer
+2. Juan Manuel Muñoz Delgadillo…………………………………………………Team Developer
+3. Juan Manuel Herrera Moya……………………………………………………………Team Developer
+4. Santiago Lopez Osorio……………………………………………………………………Team Developer
 
 
 ### Producto
@@ -33,4 +33,4 @@ Esto con el fin de que las iniciativas puedan ser monitoreadas de manera mas fá
 al tanto de cómo se va analizando o elaborando su propuesta.
 
 
-
+###Funcionalidades más Importantes y Manual de Usuario
