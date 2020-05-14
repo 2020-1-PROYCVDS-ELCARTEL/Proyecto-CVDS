@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
@@ -27,6 +26,7 @@
             <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
             <p:commandButton class="logout" value="Volver" action="#{LoginBean.direccionarPorPerfil}"/>
             <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
+
         </h3>
     </h:head>
 
@@ -36,6 +36,7 @@
         <h1>Bienvenido al banco de iniciativas</h1>
         <h2>Informes</h2>
         <br/><br/>
+
 
         <h:form id="form">
 
@@ -51,12 +52,19 @@
                     <h:outputText value="#{IniciativaBean.estadistica.get(3)}"/><br></br><br></br>
                     <h:outputText value="Unidad De Proyectos: "/>
                     <h:outputText value="#{IniciativaBean.estadistica.get(4)}"/><br></br><br></br>
+                    <h:outputText value="EnEsperaRevision: "/>
+                    <h:outputText value="#{IniciativaBean.estadistica.get(5)}"/><br></br><br></br>
+                    <h:outputText value="EnRevision: "/>
+                    <h:outputText value="#{IniciativaBean.estadistica.get(6)}"/><br></br><br></br>
+                    <h:outputText value="proyecto: "/>
+                    <h:outputText value="#{IniciativaBean.estadistica.get(7)}"/><br></br><br></br>
+                    <h:outputText value="Solucionado: "/>
+                    <h:outputText value="#{IniciativaBean.estadistica.get(8)}"/><br></br><br></br>
                 </div>
-            </section>
 
+            </section>
+            <h2>Graficos</h2>
+            <p:chart type="pie"  responsive="true"  model="#{ChartBean.pieModel1}" />
         </h:form>
-		
-		<!--<p:chart type="bar" model="#{IniciativaBean.model}"/-->
-		
     </h:body>
 </html>

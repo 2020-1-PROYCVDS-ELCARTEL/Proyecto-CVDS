@@ -23,7 +23,7 @@ import org.apache.shiro.subject.Subject;
 import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 
-@Deprecated
+
 @ManagedBean(name = "AdminBean")
 @SessionScoped
 

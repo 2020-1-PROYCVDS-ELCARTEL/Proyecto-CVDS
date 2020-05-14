@@ -152,4 +152,13 @@ public class ServiciosIniciativaImpl implements ServiciosIniciativa {
             throw new ServicesException("Error al consultar las inciativas con el estado:"+estado, e);
         }
     }
+
+    @Override
+    public List<Integer> getEstadisitica() throws ServicesException {
+        try{
+            return iniciativaDAO.getEstadistica();
+        }catch (Exception e) {
+            throw new ServicesException("Error al calcular las estadisticas", e);
+        }
+    }
 }

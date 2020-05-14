@@ -20,6 +20,6 @@ public interface IniciativaMapper {
     public void updateIniciativaRelacionada(@Param("id") int id, @Param("idIniciativaRelacionada") int idIniciativaRelacionada);
     public List<Iniciativa> getIniciativaProponente(@Param("nombreusuario") String nombreusuario);
 	public List<Iniciativa> getIniciativasEst(@Param("estado")String estado);
-    //public void deleteAll();
+    public List<Integer> getEstadistica();
 }
 

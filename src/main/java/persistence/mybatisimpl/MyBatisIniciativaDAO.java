@@ -124,4 +124,13 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
             throw new PersistenceException("Get error iniciativa estado");
         }
     }
+
+    @Override
+    public List<Integer> getEstadistica() throws PersistenceException {
+        try {
+            return iniciativaMapper.getEstadistica();
+        } catch (Exception e) {
+            throw new PersistenceException("Get error estadisticas");
+        }
+    }
 }

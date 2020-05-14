@@ -5,7 +5,6 @@ import entities.Comentario;
 import entities.Iniciativa;
 import entities.Usuario;
 import entities.Voto;
-import exceptions.PersistenceException;
 import exceptions.ServicesException;
 import exceptions.ServiciosUsuarioException;
 import org.primefaces.model.chart.Axis;
@@ -16,11 +15,6 @@ import services.ServiciosIniciativa;
 import services.ServiciosUsuario;
 
 
-import com.csvreader.CsvReader;
-import com.csvreader.CsvWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -33,7 +27,6 @@ import org.primefaces.model.chart.BarChartModel;
 import services.ServiciosVoto;
 
 
-@Deprecated
 @ManagedBean(name = "IniciativaBean")
 @SessionScoped
 
@@ -66,6 +59,7 @@ public class IniciativaBean implements Serializable {
     private String estadoParaFiltrar;
     private int idRelacionar;
     private List<Iniciativa> iniciativaEst = null;
+    private ChartBean chartView;
 
     public void Bean() {
         model = new BarChartModel();
