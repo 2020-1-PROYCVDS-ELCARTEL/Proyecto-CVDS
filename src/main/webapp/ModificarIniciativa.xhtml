@@ -25,7 +25,7 @@
 		  <h3 align="right">
 			  <h:outputText value="#{LoginBean.getNombreUsuario()}"/> <br/>
 			  <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
-			  <p:commandButton class="logout" value="Volver" action="#{PageBean.page02}"/>
+			  <p:commandButton class="logout" value="Volver" action="#{LoginBean.direccionarPorPerfil}"/>
 			  <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
 		  </h3>
       

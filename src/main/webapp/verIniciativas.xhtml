@@ -99,17 +99,17 @@
         </div>
     </h:form>
 
-    <p:dataList value="#{IniciativaBean.comentarios}" var="comentario" type="ordered">
+    <p:dataList value="#{IniciativaBean.comentarios1}" var="comentario1" type="ordered">
         <f:facet name="header">
             Comentarios
         </f:facet>
-        #{comentario.textoComentario}
+        #{comentario1.textoComentario}
     </p:dataList>
-    <p:dataList value="#{IniciativaBean.comentarios1}" var="comentario1" type="ordered">
+    <p:dataList value="#{IniciativaBean.comentarios}" var="comentario" type="ordered">
         <f:facet name="header">
             Comentarios de iniciativa relacionada
         </f:facet>
-        #{comentario1.textoComentario}
+        #{comentario.textoComentario}
     </p:dataList>
 
 </h:body>
