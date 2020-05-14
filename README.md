@@ -35,4 +35,4 @@ al tanto de cómo se va analizando o elaborando su propuesta.
 
 ### Funcionalidades más Importantes y Manual de Usuario
 
-![login](/Proyecto-CVDS/img/login.jpg "Imagen del login")
+![login](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/login.jpg?raw=true "Imagen del login")
