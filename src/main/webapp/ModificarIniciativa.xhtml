@@ -63,8 +63,17 @@
 							<h:outputText value="Votos: "/>
 							<h:outputText value="#{IniciativaBean.iniciativaConsultadaId.getNumeroVotos()}"/>
 
+							<p:inputText value="#{IniciativaBean.comentario}" placeholder="Introduce un comentario"/>
+							<h:commandButton class="comentar" value="Comentar" action="#{IniciativaBean.comentarIniciativa1}"></h:commandButton>
+
 							<p:commandButton value="Votar" action="#{IniciativaBean.votar}" align="center" update="form"/>
 						</h:panelGrid>
+						<p:dataList value="#{IniciativaBean.comentarios}" var="comentario" type="ordered">
+							<f:facet name="header">
+								Comentarios
+							</f:facet>
+							#{comentario.textoComentario}
+						</p:dataList>
 						<p:messages>
 							<p:autoUpdate />
 						</p:messages>
