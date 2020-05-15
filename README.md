@@ -70,3 +70,11 @@ disponible en la pagina de 'Mis Iniciativas'. Aqui podrá cambiar todos los camp
 El usuario podra filtrar las iniciativas por su estado actual, para acceder a esto solo debe usar la opción de 'Ver por estado' en esta pantalla podra ver una
 lista de los estados donde debe escoger uno de ellos y hacer clic en el boton de filtrar.\
 ![filtrarPorEstado](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/filtrarEstado.jpg "Imagen filtrar por estado")\
+### Arquitectura y Diseño detallado:
+- Modelo E-R.\
+- Diagrama de clases.\
+![diagramaClasesMini](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesMini.jpg "Imagen diagrama de Clases mini")\
+![diagramaClasesFull](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesFull.jpg "Imagen diagrama de Clases Full")\
+- Descripción de la arquitectura y del Stack de tecnologías utilizado.\
+- Enlace a la aplicación en Heroku. <https://elcartel.herokuapp.com/>\
+- Enlace al sistema de integración continua.[![CircleCI](https://circleci.com/gh/PDSW-ECI/base-proyectos.svg?style=svg)](https://app.circleci.com/pipelines/github/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS)\
