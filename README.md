@@ -57,7 +57,7 @@ El administrador tambien puede cambiar el rol que estos tienen dentro de la orga
 ![modificarUsuario](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/modificarUsuario.jpg "Imagen modificar usuario")\
 El PMO es el unico autorizado para cambiar el estado de una iniciativa, espor eso cuando en la pagina inicial haga clic sobre el ojo, esto lo va a llevar a una pagina
 como la de la imagen, donde tambien podra votar por la iniciativa y dejar un comentario acerca de la misma.
-![cambiarEstadoIni](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadoIniciativa.jpg "Imagen cambiar estado de una Iniciativa")\
+![cambiarEstadoIni](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadoIniciativas.jpg "Imagen cambiar estado de una Iniciativa")\
 El proponente es el unico que puede registrar iniciativas, por lo que en su pagina principal puede ver la opción 'Registar Iniciativa', la cual lo lleva a una pagina como
 la de la imagen, donde podra llenar los campos y al hacer clic en guardar ya queda su iniciativa registrada.\
 ![registrarIniciativa](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/registarIniciativa.jpg "Imagen registrar iniciativa")\
