@@ -1,5 +1,7 @@
 package managedbeans;
 
+import com.csvreader.CsvWriter;
+
 import entities.Comentario;
 import entities.Iniciativa;
 import entities.Usuario;
@@ -18,6 +20,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -74,6 +78,7 @@ public class IniciativaBean implements Serializable {
     private String estadoParaFiltrar;
     private int idRelacionar;
     private List<Iniciativa> iniciativaEst = null;
+    private List<Iniciativa> listIniciativa;
     private ChartBean chartView;
 
     @PostConstruct
@@ -343,7 +348,11 @@ public class IniciativaBean implements Serializable {
         }
 
     }
-/*
+
+    public void crearCsv(){
+        listIniciativa = getIniciativas();
+        ExportarCSV(listIniciativa);
+    }
     public static void ExportarCSV(List<Iniciativa> inicitivaInfoCVS) {
         String salidaArchivo = "inicitivaInfoCVS.csv"; // Nombre del archivo
         boolean existe = new File(salidaArchivo).exists(); // Verifica si existe
@@ -384,39 +393,6 @@ public class IniciativaBean implements Serializable {
         }
     }
 
-    /*public static void ImportarCSV() {
-        try{
-            List<Usuario> usuarios = new ArrayList<Usuario>(); // Lista donde guardaremos los datos del archivo
-
-            CsvReader leerUsuarios = new CsvReader("Usuarios.csv");
-            leerUsuarios.readHeaders();
-
-            // Mientras haya lineas obtenemos los datos del archivo
-            while(leerUsuarios.readRecord()) {
-                String nombre = leerUsuarios.get(0);
-                String telefono = leerUsuarios.get(1);
-                String email = leerUsuarios.get(2);
-
-                usuarios.add(new Usuario(nombre, telefono, email)); // Añade la informacion a la lista
-            }
-
-            leerUsuarios.close(); // Cierra el archivo
-
-            // Recorremos la lista y la mostramos en la pantalla
-            for(Usuario user : usuarios) {
-                System.out.println(user.getNombre() + " , "
-                        + user.getTelefono() + " , "
-                        +user.getEmail());
-            }
-
-        } catch(FileNotFoundException e) {
-            e.printStackTrace();
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-     */
 
     public void configBasica() {
         setServiciosIniciativa(baseBean.getServiciosIniciativa());
