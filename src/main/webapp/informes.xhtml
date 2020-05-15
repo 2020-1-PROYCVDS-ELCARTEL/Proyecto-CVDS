@@ -27,7 +27,7 @@
             <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
             <p:commandButton class="logout" value="Volver" action="#{LoginBean.direccionarPorPerfil}"/>
             <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
-
+                <p:commandButton class="IniciativaBean" value="Descargar Informe" action="#{IniciativaBean.crearCsv}"/><br/>
         </h3>
     </h:head>
 
