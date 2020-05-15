@@ -98,4 +98,4 @@ lista de los estados donde debe escoger uno de ellos y hacer clic en el boton de
   ![estadisticaSprint3](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadisticaSprint3.jpg "Imagen estadistica Sprint3")
   Imagen del 'sprint-burndown chart' (sacado del sprint-backlog anterior), y una descripción breve de los problemas encontrados y mejoras realizadas al proceso.
 - Reporte de pruebas y de cubrimiento de las mismas (sólo la foto del reporte principal). Para la cobertura, pueden usar los plugins disponibles (EclEmma, Jacoco, etc.)
-- Reporte de análisis estático de código. Se pueden usar las mismas herramientas trabajadas en los laboratorios.
+- Reporte de análisis estático de código. <https://app.codacy.com/gh/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/dashboard>
