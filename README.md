@@ -14,10 +14,10 @@ Ciclos de Vida y Desarrollo de Software
 ### Integrantes
 
 1. Oscar David Ospina Rodriguez         ………………………………………………… Dueño del producto
-1. Adriana Marcela Castañeda Velasquez  ………………………………………………… Team Developer
-2. Juan Manuel Muñoz Delgadillo         ………………………………………………… Team Developer
-3. Juan Manuel Herrera Moya             ………………………………………………… Team Developer
-4. Santiago Lopez Osorio                ………………………………………………… Team Developer
+2. Adriana Marcela Castañeda Velasquez  ………………………………………………… Team Developer
+3. Juan Manuel Muñoz Delgadillo         ………………………………………………… Team Developer
+4. Juan Manuel Herrera Moya             ………………………………………………… Team Developer
+5. Santiago Lopez Osorio                ………………………………………………… Team Developer
 
 
 ### Producto
@@ -69,12 +69,33 @@ disponible en la pagina de 'Mis Iniciativas'. Aqui podrá cambiar todos los camp
 ![actualizarIniciativa](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/actualizarIniciativa.jpg "Imagen actualizar iniciativa")\
 El usuario podra filtrar las iniciativas por su estado actual, para acceder a esto solo debe usar la opción de 'Ver por estado' en esta pantalla podra ver una
 lista de los estados donde debe escoger uno de ellos y hacer clic en el boton de filtrar.\
-![filtrarPorEstado](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/filtrarEstado.jpg "Imagen filtrar por estado")\
+![filtrarPorEstado](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/filtrarEstado.jpg "Imagen filtrar por estado")
 ### Arquitectura y Diseño detallado:
-- Modelo E-R.\
-- Diagrama de clases.\
+- Modelo E-R.
+- Diagrama de clases.
 ![diagramaClasesMini](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesMini.jpg "Imagen diagrama de Clases mini")\
-![diagramaClasesFull](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesFull.jpg "Imagen diagrama de Clases Full")\
-- Descripción de la arquitectura y del Stack de tecnologías utilizado.\
-- Enlace a la aplicación en Heroku. <https://elcartel.herokuapp.com/>\
-- Enlace al sistema de integración continua.[![CircleCI](https://circleci.com/gh/PDSW-ECI/base-proyectos.svg?style=svg)](https://app.circleci.com/pipelines/github/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS)\
+![diagramaClasesFull](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesFull.jpg "Imagen diagrama de Clases Full")
+- Descripción de la arquitectura y del Stack de tecnologías utilizado.
+- Enlace a la aplicación en Heroku. <https://elcartel.herokuapp.com/>
+- Enlace al sistema de integración continua.[![CircleCI](https://circleci.com/gh/PDSW-ECI/base-proyectos.svg?style=svg)](https://app.circleci.com/pipelines/github/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS)
+
+### Descripción del proceso:
+- Integrantes
+    1. Santiago Lopez Osorio
+    2. Adriana Marcela Castañeda Velasquez
+    3. Juan Manuel Muñoz Delgadillo
+    4. Juan Manuel Herrera Moya
+- Breve descripción de la Metodología.
+- Enlace a Taiga. <https://tree.taiga.io/project/adrianamcv-plataforma-banco-de-iniciativas-de-proyectos/backlog>
+- Generar el 'release-burndown chart' del proyecto, e indicar los puntos de historia realizados y los faltantes.
+- Sprint 1:
+  ![estadisticaSprint1](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadisticaSprint1.jpg "Imagen estadistica Sprint1")
+  Imagen del 'sprint-burndown chart' (sacado del sprint-backlog anterior), y una descripción breve de los problemas encontrados y mejoras realizadas al proceso.
+- Sprint 2:
+  ![estadisticaSprint2](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadisticaSprint2.jpg "Imagen estadistica Sprint2")
+  Imagen del 'sprint-burndown chart' (sacado del sprint-backlog anterior), y una descripción breve de los problemas encontrados y mejoras realizadas al proceso.
+- Sprint 3:
+  ![estadisticaSprint3](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadisticaSprint3.jpg "Imagen estadistica Sprint3")
+  Imagen del 'sprint-burndown chart' (sacado del sprint-backlog anterior), y una descripción breve de los problemas encontrados y mejoras realizadas al proceso.
+- Reporte de pruebas y de cubrimiento de las mismas (sólo la foto del reporte principal). Para la cobertura, pueden usar los plugins disponibles (EclEmma, Jacoco, etc.)
+- Reporte de análisis estático de código. Se pueden usar las mismas herramientas trabajadas en los laboratorios.
