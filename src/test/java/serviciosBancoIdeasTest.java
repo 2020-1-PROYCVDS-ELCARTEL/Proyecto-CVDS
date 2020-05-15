@@ -125,14 +125,27 @@ public class serviciosBancoIdeasTest {
             Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
             Usuario usuario = serviciosUsuario.consultarUsuario("juan@gmail.com");
             Voto voto = new Voto(usuario.getId(), iniciativapr.getId());
-            serviciosIniciativa.updateVotosIniciativa(iniciativapr.getNombre(), iniciativapr.getNumeroVotos()+1);
             serviciosVoto.insertVoto(voto);
+            serviciosIniciativa.updateVotosIniciativa(iniciativapr.getNombre(), iniciativapr.getNumeroVotos()+1);
             Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
             int n = ini.getNumeroVotos();
             assertTrue(iniciativapr.getNumeroVotos()+1==n);
             System.out.println("funciona 8");
         } catch (Exception e) {
-            System.out.println("fallas");
+            if(e.getMessage().equals("Error al insertar voto")) {
+                try {
+                    Iniciativa iniciativapr = serviciosIniciativa.getIniciativaId(1);
+                    Usuario usuario = serviciosUsuario.consultarUsuario("juan@gmail.com");
+                    serviciosVoto.deleteVoto(usuario.getId(), iniciativapr.getId());
+                    serviciosIniciativa.updateVotosIniciativa(iniciativapr.getNombre(), iniciativapr.getNumeroVotos()-1);
+                    Iniciativa ini = serviciosIniciativa.getIniciativaId(iniciativapr.getId());
+                    int n = ini.getNumeroVotos();
+                    assertTrue(iniciativapr.getNumeroVotos()-1==n);
+                    System.out.println("funciona 8.1");
+                } catch (ServicesException | ServiciosUsuarioException ex) {
+                    System.out.println("fallas");
+                }
+            }
         }
     }
 
