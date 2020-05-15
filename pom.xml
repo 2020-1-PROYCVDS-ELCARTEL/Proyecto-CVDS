@@ -283,7 +283,7 @@
             </executions>
             <configuration>
                 <classpathScope>test</classpathScope>
-                <mainClass>servlet.index</mainClass>
+                <mainClass>servlet.iniciosesion.xhtml</mainClass>
             </configuration>
         </plugin>
         </plugins>
