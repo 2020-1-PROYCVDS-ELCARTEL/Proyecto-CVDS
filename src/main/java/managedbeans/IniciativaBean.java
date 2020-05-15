@@ -40,7 +40,7 @@ import java.util.List;
 
 @ManagedBean(name = "IniciativaBean")
 @SessionScoped
-@ViewScoped
+//@ViewScoped
 public class IniciativaBean implements Serializable {
 
     private LineChartModel lineModel;
