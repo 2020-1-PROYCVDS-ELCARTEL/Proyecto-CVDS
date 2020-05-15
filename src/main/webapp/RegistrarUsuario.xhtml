@@ -36,7 +36,7 @@
 		  <h2>Unidad de proyectos</h2>
 		  <br/><br/>
 		  
-		  <h:form id="registroUsuario_form">
+		  <h:form>
 
 			<section>
 				
@@ -86,7 +86,7 @@
 				
 				</div>
 				<div id="botones" style="text-align: center">
-    				<p:commandButton value="Registrar" action="#{LoginBean.agregarUsuario}" update="registroUsuario_form"/>
+    				<p:commandButton value="Registrar" class="logout" action="#{LoginBean.agregarUsuario}" update="registroUsuario_form"/>
 				</div>
 				
 			</section>

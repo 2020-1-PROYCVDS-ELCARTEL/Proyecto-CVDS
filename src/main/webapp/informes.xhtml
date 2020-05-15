@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <h:head>
         <meta charset="UTF-8"></meta>
@@ -41,7 +42,8 @@
         <h:form id="form">
 
             <section>
-                <div id="dos">
+                <div id="uno">
+                    <h2> Dependencias</h2><br/>
                     <h:outputText value="Finanzas: "/>
                     <h:outputText value="#{IniciativaBean.estadistica.get(0)}"/><br></br><br></br>
                     <h:outputText value="Administrativo: "/>
@@ -51,7 +53,8 @@
                     <h:outputText value="TI: "/>
                     <h:outputText value="#{IniciativaBean.estadistica.get(3)}"/><br></br><br></br>
                     <h:outputText value="Unidad De Proyectos: "/>
-                    <h:outputText value="#{IniciativaBean.estadistica.get(4)}"/><br></br><br></br>
+                    <h:outputText value="#{IniciativaBean.estadistica.get(4)}"/><br></br><br></br><br/><br/>
+                    <h2> Estado</h2><br/>
                     <h:outputText value="EnEsperaRevision: "/>
                     <h:outputText value="#{IniciativaBean.estadistica.get(5)}"/><br></br><br></br>
                     <h:outputText value="EnRevision: "/>
@@ -62,9 +65,16 @@
                     <h:outputText value="#{IniciativaBean.estadistica.get(8)}"/><br></br><br></br>
                 </div>
 
+                <div id="dos" align="center">
+                <h2>Graficas</h2>
+                    <p:chart type="bar" model="#{IniciativaBean.barModel}" style="height:400px;width:600px"/>
+                </div>
             </section>
-            <h2>Graficos</h2>
-            <p:chart type="pie"  responsive="true"  model="#{ChartBean.pieModel1}" />
+
+
+
+
+
         </h:form>
     </h:body>
 </html>

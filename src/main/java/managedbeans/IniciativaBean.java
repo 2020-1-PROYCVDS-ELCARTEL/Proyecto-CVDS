@@ -1,6 +1,5 @@
 package managedbeans;
 
-
 import entities.Comentario;
 import entities.Iniciativa;
 import entities.Usuario;
@@ -26,12 +25,28 @@ import java.util.List;
 import org.primefaces.model.chart.BarChartModel;
 import services.ServiciosVoto;
 
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.LineChartModel;
+import org.primefaces.model.chart.PieChartModel;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.LineChartSeries;
+import org.primefaces.model.chart.BarChartSeries;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import java.util.List;
 
 @ManagedBean(name = "IniciativaBean")
 @SessionScoped
-
+@ViewScoped
 public class IniciativaBean implements Serializable {
+
+    private LineChartModel lineModel;
     private static final long serialVersionUID = 1L;
+    private BarChartModel barModel;
+
 
     @ManagedProperty(value = "#{PageBean}")
     private BasePageBean baseBean;
@@ -40,6 +55,7 @@ public class IniciativaBean implements Serializable {
     private ServiciosVoto serviciosVoto;
     private ServiciosComentario serviciosComentario;
     //private Iniciativa iniciativa;
+    private PieChartModel model;
     private int checkUpdate;
     private String nombreIniciativa;
     private String descripcionIniciativa;
@@ -51,7 +67,6 @@ public class IniciativaBean implements Serializable {
     private Iniciativa iniciativaConsultadaId;
     private Iniciativa iniciativaConsultadaId1;
     private List<Integer> estadistica;
-	private BarChartModel model;
 	private List<Comentario> comentarios;
     private List<Comentario> comentarios1;
     private String comentario;
@@ -61,8 +76,60 @@ public class IniciativaBean implements Serializable {
     private List<Iniciativa> iniciativaEst = null;
     private ChartBean chartView;
 
+    @PostConstruct
+    public void init() {
+        lineModel = new LineChartModel();
+        LineChartSeries s = new LineChartSeries();
+
+        barModel = new BarChartModel();
+        ChartSeries boys = new ChartSeries();
+
+        s.setLabel("Dependencias");
+
+        s.set("Finanzas", 5.20);
+        s.set("Adminstrativo", 19.63);
+        s.set("Recursos Humanos", 59.01);
+        s.set("TI", 139.76);
+        s.set("Unidad de proyectos", 300.4);
+
+        lineModel.addSeries(s);
+        lineModel.setLegendPosition("e");
+
+        Axis y = lineModel.getAxis(AxisType.Y);
+        y.setMin(1);
+        y.setMax(20);
+        y.setLabel("Iniciativas");
+
+        boys.setLabel("Boys");
+        boys.set("2004", 120);
+        boys.set("2005", 100);
+        boys.set("2006", 44);
+        boys.set("2007", 150);
+        boys.set("2008", 25);
+        barModel.addSeries(boys);
+
+        barModel.setTitle("Bar Chart");
+        barModel.setLegendPosition("ne");
+
+        Axis xAxis = barModel.getAxis(AxisType.X);
+        xAxis.setLabel("Gender");
+
+        Axis yAxis = barModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Births");
+        yAxis.setMin(0);
+        yAxis.setMax(200);
+
+    }
+
+    public LineChartModel getLineModel() {
+        return lineModel;
+    }
+    public BarChartModel getBarModel() {
+        return barModel;
+    }
+
     public void Bean() {
-        model = new BarChartModel();
+        //model = new BarChartModel();
         ChartSeries e= new ChartSeries();
         e.setLabel("Estadisticas");
         e.set("Finanzas", estadistica.get(0));
@@ -74,25 +141,25 @@ public class IniciativaBean implements Serializable {
         //e.set("En revisión", estadisticaArea.get(6));
         //e.set("Proyecto", estadisticaArea.get(7));
         //e.set("Solucionado", estadisticaArea.get(8));
-		model.addSeries(e);
+		//model.addSeries(e);
 		//model.addSeries(o);
 		model.setTitle("Estadísticas");
         model.setLegendPosition("ne");
-        Axis xAxis = model.getAxis(AxisType.X);
+        /*Axis xAxis = model.getAxis(AxisType.X);
         xAxis.setLabel("Dependencias y Areas");
         Axis yAxis = model.getAxis(AxisType.Y);
         yAxis.setLabel("Iniciativas registradas");
         yAxis.setMin(0);
-        yAxis.setMax(15);
+        yAxis.setMax(15);*/
 	}
 
-	public BarChartModel getModel() {
+	/*public BarChartModel getModel() {
         return model;
-    }
+    }*/
 
-    public void setModel(BarChartModel model) {
+    /*public void setModel(BarChartModel model) {
         this.model = model;
-    }
+    }*/
 
     public List<Iniciativa> getIniciativas(){
         configBasica();
