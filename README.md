@@ -15,7 +15,7 @@ Ciclos de Vida y Desarrollo de Software
 
 1. Oscar David Ospina Rodriguez         ………………………………………………… Dueño del producto
 2. Adriana Marcela Castañeda Velasquez  ………………………………………………… Team Developer
-3. Juan Manuel Muñoz Delgadillo         ………………………………………………… Team Developer
+3. Juan Manuel Muñoz Delgadillo         ………………………………………………… Scrum Master
 4. Juan Manuel Herrera Moya             ………………………………………………… Team Developer
 5. Santiago Lopez Osorio                ………………………………………………… Team Developer
 
@@ -92,7 +92,7 @@ lista de los estados donde debe escoger uno de ellos y hacer clic en el boton de
     3. Juan Manuel Muñoz Delgadillo
     4. Juan Manuel Herrera Moya
 - Breve descripción de la Metodología.
-    - Se utilizo la metodologia scrum en donde se plantearon diferentes sprints con unos puntos definidos y unas fechas establecidas. También se definieron los diferentes roles, donde el Product Owner era Oscar Ospina, Scrum Master era … y el Team Developer conformado por …  y se procuro seguir la metodologia Scrum. 
+    - Se utilizo la metodologia scrum en donde se plantearon diferentes sprints con unos puntos definidos y unas fechas establecidas. También se definieron los diferentes roles, donde el Product Owner era Oscar Ospina, Scrum Master era Juan Muñoz y el Team Developer conformado por Santiago Lopez, Juan Herrera y Adriana Castañeda y se procuro seguir la metodologia Scrum. 
 - Enlace a Taiga. <https://tree.taiga.io/project/adrianamcv-plataforma-banco-de-iniciativas-de-proyectos/backlog>
 - Sprint 1:
   ![estadisticaSprint1](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadisticaSprint1.jpg "Imagen estadistica Sprint1")
