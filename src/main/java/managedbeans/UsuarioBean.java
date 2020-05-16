@@ -42,8 +42,9 @@ public class UsuarioBean implements Serializable {
     private String nombreUsuario;
     private String nuevoUsuarioNombre;
     private String nuevoUsuarioContraseña;
+    private String nuevoUsuarioContraseñaConfirmacion;
     private String nuevoUsuarioCorreo;
-    private String nuevoUsuarioTipoUser;
+    private String nuevoUsuarioTipoUser = "User";
     private String nuevoUsuarioDependencia;
     private String actualizarUsuarioCorreo;
     private String changeTipoUser;
@@ -58,6 +59,26 @@ public class UsuarioBean implements Serializable {
             //FacesContext.getCurrentInstance().addMessage(null,
               //      new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         }
+    }
+
+    public void registrarUsuario(){
+        if (nuevoUsuarioContraseña.equals(nuevoUsuarioContraseñaConfirmacion)) {
+            Usuario nuevoUsuario = new Usuario(nuevoUsuarioNombre, nuevoUsuarioContraseña, nuevoUsuarioCorreo, nuevoUsuarioTipoUser, nuevoUsuarioDependencia);
+            try {
+                serviciosUsuario.insertarUsuario(nuevoUsuario);
+                quitInifoNuevoUser();
+                direccionarPorPerfil();
+            } catch (ServiciosUsuarioException e) {
+                //e.printStackTrace();
+            }
+        }
+    }
+
+    private void quitInifoNuevoUser(){
+        setNuevoUsuarioNombre("");
+        setNuevoUsuarioCorreo("");
+        setNuevoUsuarioContraseña("");
+        setNuevoUsuarioContraseñaConfirmacion("");
     }
 
     public List<Usuario> getUsuarios(){
@@ -349,5 +370,13 @@ public class UsuarioBean implements Serializable {
 
     public void setChangeTipoUser(String changeTipoUser) {
         this.changeTipoUser = changeTipoUser;
+    }
+
+    public String getNuevoUsuarioContraseñaConfirmacion() {
+        return nuevoUsuarioContraseñaConfirmacion;
+    }
+
+    public void setNuevoUsuarioContraseñaConfirmacion(String nuevoUsuarioContraseñaConfirmacion) {
+        this.nuevoUsuarioContraseñaConfirmacion = nuevoUsuarioContraseñaConfirmacion;
     }
 }

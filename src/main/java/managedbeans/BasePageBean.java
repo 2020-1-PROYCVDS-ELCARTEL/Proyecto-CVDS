@@ -83,7 +83,7 @@ public class BasePageBean implements Serializable {
     }
 
     public String page3(){
-        return "RegistrarUsuario?faces-redirect=true";
+        return "registroUser?faces-redirect=true";
     }
 
     public String page4(){

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta charset="UTF-8"></meta>
+    <link rel="stylesheet" type="text/css" href="css/PMO.css" />
+
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+
+    <script type="text/javascript">
+		  if(history.forward(1)){
+		    location.replace( history.forward(1) );
+		  }
+		</script>
+    <title>Registrar iniciativa</title>
+
+    <img style="float: right; margin: 0px 0px 15px 15px;" src="img/usuario.jpg" width="50" />
+    <h3 align="right">
+        <h:outputText value="#{LoginBean.getNombreUsuario()}"/> <br/>
+        <h:outputText value="#{LoginBean.getRolUsuario()}"/><br/>
+        <p:commandButton class="logout" value="Volver" action="#{PageBean.page02}"/>
+        <p:commandButton class="logout" value="Cerrar sesión" action="#{LoginBean.logout}"/><br/>
+    </h3>
+</h:head>
+
+<h:body>
+
+    <br/><br/>
+    <h1>Registro de Usuarios</h1>
+    <h2>Unidad de proyectos</h2>
+    <br/><br/>
+
+    <h:form id="registro_form">
+
+        <a align="center">
+            <section>
+
+                <div class="registro" style="text-align: left">
+
+                    <div class="container" >
+
+                        <legend>Datos personales</legend><br/><br/>
+                        <div class="form-group">
+                            <p>
+                                <span class="label nombre"><b> Nombres </b></span>
+                                <p:inputText id ="nombre" value="#{LoginBean.nuevoUsuarioNombre}" placeholder="Introduce nombre completo" class="form-control"/>
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <p>
+                                <span class="label correo"><b> Correo </b></span>
+                                <p:inputText id ="correo" value="#{LoginBean.nuevoUsuarioCorreo}" placeholder="Introduce correo" class="form-control"/>
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <p>
+                                <span class="label contra1"><b> Contraseña </b></span>
+                                <p:inputText id ="contra1" value="#{LoginBean.nuevoUsuarioContraseña}" placeholder="Introduce contraseña" class="form-control"/>
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <p>
+                                <span class="label contra2"><b> Confirma la Contraseña </b></span>
+                                <p:inputText id ="contra2" value="#{LoginBean.nuevoUsuarioContraseñaConfirmacion}" placeholder="Introduce de nuevo la contraseña" class="form-control"/>
+                            </p>
+                        </div>
+
+                        <br/><br/><br/>
+                    </div>
+                </div>
+
+                <br/><br/>
+                <div id="botones" style="text-align: center">
+                    <p:commandButton class="logout" value="Registrar" action="#{LoginBean.registrarUsuario}" update="registro_form"/>
+                </div>
+
+            </section>
+        </a>
+        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+            <p:outputLabel for="@next" value="Dependencia:" />
+            <p:selectOneMenu id="console" value="#{LoginBean.nuevoUsuarioDependencia}" style="width:125px">
+                <f:selectItem itemLabel="Select One" itemValue="" />
+                <f:selectItem itemLabel="Finanzas" itemValue="Finanzas" />
+                <f:selectItem itemLabel="Administrativo" itemValue="Administrativo" />
+                <f:selectItem itemLabel="Recursos Humanos" itemValue="Recursos Humanos" />
+                <f:selectItem itemLabel="TI" itemValue="TI" />
+                <f:selectItem itemLabel="Unidad de proyectos" itemValue="Unidad de proyectos" />
+            </p:selectOneMenu>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
