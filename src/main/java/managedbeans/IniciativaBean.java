@@ -172,7 +172,7 @@ public class IniciativaBean implements Serializable {
         try {
             iniciativas = serviciosIniciativa.getIniciativas();
         } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
         return iniciativas;
     }
@@ -182,7 +182,7 @@ public class IniciativaBean implements Serializable {
         try {
             iniciativas1 = serviciosIniciativa.getIniciativaProponente(usuario.getNombre());
         } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
         return iniciativas1;
     }
@@ -192,7 +192,7 @@ public class IniciativaBean implements Serializable {
             iniciativaEst = serviciosIniciativa.getIniciativasEst(estadoParaFiltrar);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/filtrarEstado.xhtml");
         } catch (Exception e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -200,7 +200,7 @@ public class IniciativaBean implements Serializable {
         try {
             serviciosIniciativa.updateIniciativa(nombreIniciativa, estado);
         } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -209,7 +209,7 @@ public class IniciativaBean implements Serializable {
             iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(idIniciativa);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/relacionarIniciativa.xhtml");
         } catch (ServicesException | IOException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -218,7 +218,7 @@ public class IniciativaBean implements Serializable {
             serviciosIniciativa.updateIniciativaRelacionada(iniciativaConsultadaId.getId(), idRelacionar);
             verIniciativa(iniciativaConsultadaId.getId());
         } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -236,7 +236,7 @@ public class IniciativaBean implements Serializable {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/verIniciativa.xhtml");
             }
         } catch (IOException | ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -244,7 +244,7 @@ public class IniciativaBean implements Serializable {
         try {
             modificarIniciativa(idIniciativa);
         } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -257,7 +257,7 @@ public class IniciativaBean implements Serializable {
                 throw new ServicesException("No se puede actualizar esta iniciativa, ya ha cambiado de estado");
             }
         } catch (IOException | ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -266,7 +266,7 @@ public class IniciativaBean implements Serializable {
             Comentario comentario1 = new Comentario(comment, iniciativa.getId(), usuario.getId());
             serviciosComentario.insertComentario(comentario1);
         } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -292,7 +292,6 @@ public class IniciativaBean implements Serializable {
 
     public void iniciativaPorArea(){
         estadistica = new ArrayList<Integer>();
-
         try{
             int finanzas =0;
             int administrativo=0;
@@ -339,14 +338,9 @@ public class IniciativaBean implements Serializable {
             estadistica.add(Solucionado);
         FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/informes.xhtml");
         //ExportarCSV(iniciativas);
-        } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
-        } catch (ServiciosUsuarioException e) {
-            this.baseBean.mensajeApp(e);
-        } catch (IOException e) {
-            this.baseBean.mensajeApp(e);
+        } catch (ServicesException |ServiciosUsuarioException | IOException e) {
+            //this.baseBean.mensajeApp(e);
         }
-
     }
 
     public void crearCsv(){
@@ -418,7 +412,7 @@ public class IniciativaBean implements Serializable {
             checkUpdate = serviciosIniciativa.insertIniciativa(new Iniciativa(nombreIniciativa, "En espera de revisión", 0, descripcionIniciativa, palabrasClave, nombreUsuario, correoUsuario));
             borrarForm();
         } catch (IOException | ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -447,10 +441,10 @@ public class IniciativaBean implements Serializable {
                     serviciosIniciativa.updateVotosIniciativa(iniciativaConsultadaId.getNombre(), iniciativaConsultadaId.getNumeroVotos()-1);
                     iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(iniciativaConsultadaId.getId());
                 } catch (ServicesException ex) {
-                    this.baseBean.mensajeApp(e);
+                    //this.baseBean.mensajeApp(e);
                 }
             }else {
-                this.baseBean.mensajeApp(e);
+                //this.baseBean.mensajeApp(e);
             }
         }
     }
@@ -461,7 +455,7 @@ public class IniciativaBean implements Serializable {
             serviciosIniciativa.updateIniciativa(iniciativaConsultadaId.getNombre(), estado);
             iniciativaConsultadaId = serviciosIniciativa.getIniciativaId(iniciativaConsultadaId.getId());
         } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -479,7 +473,7 @@ public class IniciativaBean implements Serializable {
             serviciosIniciativa.updateIniciativaPalabrasC(iniciativaConsultadaId.getId(), iniciativaConsultadaId.getPalabrasClave());
             serviciosIniciativa.updateIniciativaNombre(iniciativaConsultadaId.getId(), iniciativaConsultadaId.getNombre());
         } catch (ServicesException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -658,6 +652,4 @@ public class IniciativaBean implements Serializable {
     public void setEstadoParaFiltrar(String estadoParaFiltrar) {
         this.estadoParaFiltrar = estadoParaFiltrar;
     }
-
-
 }

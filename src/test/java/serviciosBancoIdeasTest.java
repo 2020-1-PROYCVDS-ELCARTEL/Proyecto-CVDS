@@ -242,9 +242,8 @@ public class serviciosBancoIdeasTest {
             serviciosIniciativa.updateIniciativaRelacionada(iniciativapr.getId(), 2);
             iniciativapr = serviciosIniciativa.getIniciativaId(1);
             Iniciativa ini = serviciosIniciativa.getIniciativaId(2);
-            //assertTrue("Nueva palabra clave".equals(ini.getPalabrasClave()));
-            System.out.println("id :"+iniciativapr.getId()+"id rela: "+iniciativapr.getIdIniciativaRelacionada());
-            System.out.println("id :"+ini.getId()+"id rela: "+ini.getIdIniciativaRelacionada());
+            assertTrue(iniciativapr.getId()==ini.getIdIniciativaRelacionada());
+            assertTrue(ini.getId()==iniciativapr.getIdIniciativaRelacionada());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -36,7 +36,7 @@
 		  <h2>Unidad de proyectos</h2>
 		  <br/><br/>
 
-		  <h:form>
+		  <h:form id="form">
 
 			<section>
 			  <div id="dos">
@@ -67,8 +67,7 @@
 					  <f:selectItem itemLabel="User" itemValue="User" />
 					  <f:selectItem itemLabel="Proponente" itemValue="Proponente" />
 				  </p:selectOneMenu>
-				  <p:commandButton value="Guardar" action="#{LoginBean.convertirTipoUser}" align="center" oncomplete="PF('dlg').show()" />
-
+				  <p:commandButton value="Guardar" action="#{LoginBean.convertirTipoUser}" oncomplete="PF('dlg').show()" align="center" update="form"/>
 			  </h:panelGrid>
 
 			  <p:dialog header="Usuario actualizado" modal="true" showEffect="bounce" widgetVar="dlg" resizable="false">
@@ -80,7 +79,7 @@
 					  <h:outputText value="#{LoginBean.usuarioConsultado.getCorreo()}"/>
 
 					  <h:outputText value="Tipo de usuario: "/>
-					  <h:outputText value="#{LoginBean.usuarioConsultado.getTipoUser()}"/>
+					  <h:outputText value="#{LoginBean.usuarioConsultado.tipoUser}"/>
 
 					  <h:outputText value="Dependencia: "/>
 					  <h:outputText value="#{LoginBean.usuarioConsultado.getDependencia()}"/>

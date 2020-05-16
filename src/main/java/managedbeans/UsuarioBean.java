@@ -54,9 +54,9 @@ public class UsuarioBean implements Serializable {
             usuarioConsultado = serviciosUsuario.consultarUsuario(usuarioConsultado.getCorreo());
             actualizarUsuarioCorreo="";
         } catch (ServiciosUsuarioException e) {
-            this.baseBean.mensajeApp(e);
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
+            //this.baseBean.mensajeApp(e);
+            //FacesContext.getCurrentInstance().addMessage(null,
+              //      new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         }
     }
 
@@ -65,7 +65,7 @@ public class UsuarioBean implements Serializable {
         try {
             usuarios = serviciosUsuario.consultarUsuarios();
         } catch (ServiciosUsuarioException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
         return usuarios;
     }
@@ -75,7 +75,7 @@ public class UsuarioBean implements Serializable {
             usuarioConsultado = serviciosUsuario.consultarUsuario(correoUsuario);
             FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/ModificarUsuario.xhtml");
         } catch (IOException | ServiciosUsuarioException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
@@ -104,19 +104,10 @@ public class UsuarioBean implements Serializable {
                 baseBean.setUser(usuario);
                 direccionarPorPerfil();
             }
-        } catch (UnknownAccountException e) {
-           this.baseBean.mensajeApp(e);
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
-        }
-
-        catch (IncorrectCredentialsException e) {
-            this.baseBean.mensajeApp(e);
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
-
-        } catch (ServiciosUsuarioException e) {
-            this.baseBean.mensajeApp(e);
+        } catch (UnknownAccountException | IncorrectCredentialsException | ServiciosUsuarioException e) {
+            //this.baseBean.mensajeApp(e);
+            //FacesContext.getCurrentInstance().addMessage(null,
+            //        new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         }
     }
 
@@ -147,16 +138,12 @@ public class UsuarioBean implements Serializable {
         try {
             if(getUser().isAuthenticated()) {
                 getUser().logout();
-
                 redirectTo("/faces/iniciosesion.xhtml");
-
             }
         }
         catch(Exception e) {
-            this.baseBean.mensajeApp(e);
-
+            //this.baseBean.mensajeApp(e);
         }
-
     }
 
     public void redirectToMenu(){
@@ -164,10 +151,9 @@ public class UsuarioBean implements Serializable {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/menu.xhtml");
             } catch (IOException e) {
-                this.baseBean.mensajeApp(e);
+                //this.baseBean.mensajeApp(e);
             }
         }
-
     }
 	
 	public void redirectToAdmin(){
@@ -175,7 +161,7 @@ public class UsuarioBean implements Serializable {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Admin.xhtml");
             } catch (IOException e) {
-                this.baseBean.mensajeApp(e);
+                //this.baseBean.mensajeApp(e);
             }
         }
 
@@ -185,7 +171,7 @@ public class UsuarioBean implements Serializable {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/PMO.xhtml");
             } catch (IOException e) {
-                this.baseBean.mensajeApp(e);
+                //this.baseBean.mensajeApp(e);
             }
         }
 
@@ -195,7 +181,7 @@ public class UsuarioBean implements Serializable {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Pro.xhtml");
             } catch (IOException e) {
-                this.baseBean.mensajeApp(e);
+                //this.baseBean.mensajeApp(e);
             }
         }
 
@@ -205,7 +191,7 @@ public class UsuarioBean implements Serializable {
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("user?faces-redirect=true");
             } catch (IOException e) {
-                this.baseBean.mensajeApp(e);
+                //this.baseBean.mensajeApp(e);
             }
         }
 
@@ -226,7 +212,7 @@ public class UsuarioBean implements Serializable {
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect(path);
         } catch (IOException e) {
-            this.baseBean.mensajeApp(e);
+            //this.baseBean.mensajeApp(e);
         }
     }
 
