@@ -71,9 +71,13 @@ El usuario podra filtrar las iniciativas por su estado actual, para acceder a es
 lista de los estados donde debe escoger uno de ellos y hacer clic en el boton de filtrar.\
 ![filtrarPorEstado](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/filtrarEstado.jpg "Imagen filtrar por estado")
 ### Arquitectura y Diseño detallado:
-- Modelo E-R.
+- Modelo E-R
+    - Conceptos
+    ![entidadRelacion](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/entidadRelacion.jpg "Imagen entidad Relacion")
+    - Modelo mini
+    ![diagramaClasesMini](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesMini.jpg "Imagen diagrama Clases Mini")
 - Diagrama de clases.
-![diagramaClasesMini](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesMini.jpg "Imagen diagrama de Clases mini")\
+![diagramaClasesMini](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/entidadRelacion.jpg "Imagen diagrama de Clases mini")\
 ![diagramaClasesFull](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesFull.jpg "Imagen diagrama de Clases Full")
 - Descripción de la arquitectura y del Stack de tecnologías utilizado: 
     - Se utilizo la arquitectura de maven webapp 
