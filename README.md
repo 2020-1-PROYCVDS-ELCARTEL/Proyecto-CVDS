@@ -75,7 +75,9 @@ lista de los estados donde debe escoger uno de ellos y hacer clic en el boton de
 - Diagrama de clases.
 ![diagramaClasesMini](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesMini.jpg "Imagen diagrama de Clases mini")\
 ![diagramaClasesFull](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/diagramaClasesFull.jpg "Imagen diagrama de Clases Full")
-- Descripción de la arquitectura y del Stack de tecnologías utilizado.
+- Descripción de la arquitectura y del Stack de tecnologías utilizado: 
+    - Se utilizo la arquitectura de maven webapp 
+    - Se utilizo Java, PrimeFaces, PostgreSQL y xhtml
 - Enlace a la aplicación en Heroku. <https://elcartel.herokuapp.com/>
 - Enlace al sistema de integración continua.[![CircleCI](https://circleci.com/gh/PDSW-ECI/base-proyectos.svg?style=svg)](https://app.circleci.com/pipelines/github/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS)
 
@@ -86,6 +88,7 @@ lista de los estados donde debe escoger uno de ellos y hacer clic en el boton de
     3. Juan Manuel Muñoz Delgadillo
     4. Juan Manuel Herrera Moya
 - Breve descripción de la Metodología.
+    - Se utilizo la metodologia scrum en donde se plantearon diferentes sprints con unos puntos definidos y unas fechas establecidas. También se definieron los diferentes roles, donde el Product Owner era Oscar Ospina, Scrum Master era … y el Team Developer conformado por …  y se procuro seguir la metodologia Scrum. 
 - Enlace a Taiga. <https://tree.taiga.io/project/adrianamcv-plataforma-banco-de-iniciativas-de-proyectos/backlog>
 - Generar el 'release-burndown chart' del proyecto, e indicar los puntos de historia realizados y los faltantes.
 - Sprint 1:
