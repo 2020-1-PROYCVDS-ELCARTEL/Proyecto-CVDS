@@ -90,15 +90,11 @@ lista de los estados donde debe escoger uno de ellos y hacer clic en el boton de
 - Breve descripción de la Metodología.
     - Se utilizo la metodologia scrum en donde se plantearon diferentes sprints con unos puntos definidos y unas fechas establecidas. También se definieron los diferentes roles, donde el Product Owner era Oscar Ospina, Scrum Master era … y el Team Developer conformado por …  y se procuro seguir la metodologia Scrum. 
 - Enlace a Taiga. <https://tree.taiga.io/project/adrianamcv-plataforma-banco-de-iniciativas-de-proyectos/backlog>
-- Generar el 'release-burndown chart' del proyecto, e indicar los puntos de historia realizados y los faltantes.
 - Sprint 1:
   ![estadisticaSprint1](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadisticaSprint1.jpg "Imagen estadistica Sprint1")
-  Imagen del 'sprint-burndown chart' (sacado del sprint-backlog anterior), y una descripción breve de los problemas encontrados y mejoras realizadas al proceso.
 - Sprint 2:
   ![estadisticaSprint2](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadisticaSprint2.jpg "Imagen estadistica Sprint2")
-  Imagen del 'sprint-burndown chart' (sacado del sprint-backlog anterior), y una descripción breve de los problemas encontrados y mejoras realizadas al proceso.
 - Sprint 3:
   ![estadisticaSprint3](https://github.com/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/blob/master/img/estadisticaSprint3.jpg "Imagen estadistica Sprint3")
-  Imagen del 'sprint-burndown chart' (sacado del sprint-backlog anterior), y una descripción breve de los problemas encontrados y mejoras realizadas al proceso.
 - Reporte de pruebas y de cubrimiento de las mismas (sólo la foto del reporte principal). Para la cobertura, pueden usar los plugins disponibles (EclEmma, Jacoco, etc.)
 - Reporte de análisis estático de código. <https://app.codacy.com/gh/2020-1-PROYCVDS-ELCARTEL/Proyecto-CVDS/dashboard>
