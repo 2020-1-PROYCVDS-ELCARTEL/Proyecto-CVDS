@@ -86,8 +86,11 @@ public class IniciativaBean implements Serializable {
         lineModel = new LineChartModel();
         LineChartSeries s = new LineChartSeries();
 
+
         barModel = new BarChartModel();
-        ChartSeries boys = new ChartSeries();
+        ChartSeries dependencias = new ChartSeries();
+        ChartSeries estado = new ChartSeries();
+        
 
         s.setLabel("Dependencias");
 
@@ -105,24 +108,31 @@ public class IniciativaBean implements Serializable {
         y.setMax(20);
         y.setLabel("Iniciativas");
 
-        boys.setLabel("Boys");
-        boys.set("2004", 120);
-        boys.set("2005", 100);
-        boys.set("2006", 44);
-        boys.set("2007", 150);
-        boys.set("2008", 25);
-        barModel.addSeries(boys);
+        dependencias.setLabel("Dependencias");
+        dependencias.set("Finanzas", 0);
+        dependencias.set("Administrativo", 0);
+        dependencias.set("RecursosHumanos", 3);
+        dependencias.set("TI", 4);
+        dependencias.set("UnidadDeProyectos", 0);
+        barModel.addSeries(dependencias);
 
-        barModel.setTitle("Bar Chart");
+        estado.setLabel("Estado");
+        estado.set("EnEsperaDeRevisión", 4);
+        estado.set("EnRevisión", 2);
+        estado.set("Proyecto", 1);
+        estado.set("Solucionado", 0);
+        barModel.addSeries(estado);
+
+        barModel.setTitle("Gráficas");
         barModel.setLegendPosition("ne");
 
         Axis xAxis = barModel.getAxis(AxisType.X);
-        xAxis.setLabel("Gender");
+        xAxis.setLabel("Iniciativas por:");
 
         Axis yAxis = barModel.getAxis(AxisType.Y);
-        yAxis.setLabel("Births");
+        yAxis.setLabel("Iniciativas");
         yAxis.setMin(0);
-        yAxis.setMax(200);
+        yAxis.setMax(5);
 
     }
 
